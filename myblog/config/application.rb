@@ -6,13 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module Raceday
+module Myblog
   class Application < Rails::Application
-
-    #bootstraps mongoid within applications -- like rails console
-    Mongoid.load!('./config/mongoid.yml')
-    config.generators { |generator| generator.orm :mongoid }
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

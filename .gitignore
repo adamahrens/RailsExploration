@@ -37,3 +37,11 @@ bower.json
 # Stupid .keep
 .keep
 */.keep
+workspace.xml
+raceday.iml
+modules.xml
+misc.xml
+encodings.xml
+.rakeTasks
+.name
+.generators
