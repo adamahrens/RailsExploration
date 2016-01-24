@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 	def index
-		@posts = ["Blog1", "Blog2", "Blog3"]
+		@posts = []
 	end
 
 	def new
