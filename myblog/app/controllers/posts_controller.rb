@@ -4,9 +4,16 @@ class PostsController < ApplicationController
 	end
 
 	def new
+		@post = Post.new
 	end
 
 	def create
+		@post = Post.new(post_params)
+		if @post.save 
+			redirect_to posts_path
+		else 
+			redirect_to new_post_path
+		end
 	end
 
 	def edit
@@ -16,8 +23,15 @@ class PostsController < ApplicationController
 	end 
 
 	def show
+		@post = Post.find(params[:id])
 	end 
 
 	def destroy
 	end
+
+	private
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def post_params
+      params.require(:post).permit(:title, :body)
+    end
 end
