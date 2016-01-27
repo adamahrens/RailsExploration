@@ -45,6 +45,19 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
+  # Silencings the assets fetching from the stdout
   gem 'quiet_assets'
+
+  # Adds color to the logging in stdout
+  gem "awesome_print", require:"ap"
+
+  # Allows using the Rails Panel Chrome Extension
+  gem "meta_request"
+
+  # The Best way to Debug
+  gem "better_errors"
+
+  # Not required for better_errors but enhances it
+  gem "binding_of_caller"
 end
 
