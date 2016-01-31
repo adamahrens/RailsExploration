@@ -20,6 +20,8 @@
 		end
 
 		def to_s
+			# String interpolation only works with " " quotes
+			# '#{@title}' will print just that. Value of title won't be inserted
 			"#{@title} by #{@author}. Price is $#{price}"
 		end
 	end
