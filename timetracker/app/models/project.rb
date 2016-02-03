@@ -1,4 +1,4 @@
 class Project < ActiveRecord::Base
   belongs_to :company
-  has_many :work
+  has_many :works
 end
