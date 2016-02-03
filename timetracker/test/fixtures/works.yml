@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  project_id: 
-  user_id: 
+  project: core 
+  user: bruce
   date_performed: 2016-02-02
-  number_of_hours: 1
+  number_of_hours: 8
 
 two:
-  project_id: 
-  user_id: 
+  project: migration 
+  user: tony 
   date_performed: 2016-02-02
-  number_of_hours: 1
+  number_of_hours: 8
