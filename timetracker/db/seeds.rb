@@ -30,7 +30,7 @@ work = Work.new
 work.project = project
 work.user = adam
 work.date_performed = DateTime.new(2016,2, 2)
-work.number_of_hours = 8
+work.hours = 8
 
 smartthings.save
 bestbuy.save

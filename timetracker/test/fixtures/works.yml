@@ -4,10 +4,10 @@ one:
   project: core 
   user: bruce
   date_performed: 2016-02-02
-  number_of_hours: 8
+  hours: 8
 
 two:
   project: migration 
   user: tony 
   date_performed: 2016-02-02
-  number_of_hours: 8
+  hours: 8
