@@ -1,6 +1,8 @@
 class WorksController < ApplicationController
 	def index
-		@works = Work.all
+		# Include prevents N+1 queries in the View
+		# @works.project.name would have caused an N+1 query
+		@works = Work.all.includes(:user).includes(:project)
 	end
 
 	def show
