@@ -4,8 +4,10 @@ core:
   name: Core
   company: google
   default_rate: 7.5
+  slug: project-core
 
 migration:
   name: Migration
   company: apple
   default_rate: 1.5
+  slug: project-migration

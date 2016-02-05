@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   # recentworks/10 => Last 10 days of Work
   get 'recentworks/:days' => 'works#index'
+  get 'projecttracker/:slug' => 'projects#show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

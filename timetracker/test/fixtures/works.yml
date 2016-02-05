@@ -11,3 +11,9 @@ two:
   user: tony 
   date_performed: 2016-02-02
   hours: 8
+
+three:
+  project: core 
+  user: bruce
+  date_performed: 2016-02-04
+  hours: 4
