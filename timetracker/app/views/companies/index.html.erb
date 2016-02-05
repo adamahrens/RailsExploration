@@ -1,0 +1,5 @@
+<h1>Companies</h1>
+<% @companies.each do |company| %>
+	<%= render company %>
+	<p><%= link_to 'View Company Page', company %></p>
+<% end %>

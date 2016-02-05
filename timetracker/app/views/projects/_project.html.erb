@@ -1,0 +1,7 @@
+<div>
+	<h2>Project <%= project.name %></h2>
+	<% unless project.company.nil? %>
+		<p>Currently in development at <%= project.company.name %></p>
+	<% end %>
+	<p>Rate is <%= project.default_rate %></p>
+</div>
