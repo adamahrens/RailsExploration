@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: works
+#
+#  id             :integer          not null, primary key
+#  project_id     :integer
+#  user_id        :integer
+#  date_performed :date
+#  hours          :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
 class Work < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
@@ -15,5 +28,9 @@ class Work < ActiveRecord::Base
   def self.recent_days(number_of_days_ago)
   	since_date = Time.now - number_of_days_ago.to_i.days
   	where("date_performed > :since_date", since_date: since_date)
+  end
+
+  def to_s
+    "#{user} is on #{project}"
   end
 end

@@ -6,6 +6,9 @@ gem 'devise'
 # Gem for pagination
 gem 'will_paginate'
 
+# Add schema information at the top of model classes
+gem 'annotate'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
