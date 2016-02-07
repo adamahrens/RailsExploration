@@ -3,3 +3,7 @@
 	<%= render work %>
 	<%= link_to 'View Work', work %>
 <% end %>
+
+<% content_for :aside do %>
+	<% render 'sidebar' %>
+<% end %>
