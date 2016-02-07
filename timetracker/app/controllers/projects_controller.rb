@@ -1,6 +1,10 @@
 class ProjectsController < ApplicationController
 	def index
 		@projects = Project.all.includes(:company)
+		respond_to do |format| 
+			format.html 
+			format.json {render json: @projects }
+		end
 	end
 
 	def show

@@ -7,6 +7,11 @@ class WorksController < ApplicationController
 			# @works.project.name would have caused an N+1 query
 			@works = Work.all.includes(:user).includes(:project)
 		end
+
+		respond_to do |format| 
+			format.html 
+			format.json {render json: @works }
+		end
 	end
 
 	def show
