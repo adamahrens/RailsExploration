@@ -2,13 +2,34 @@
 <html>
 <head>
   <title>Timetracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<div id="container">
+	<header>
+		<%= link_to content_tag(:canvas, 'Time Tracker', id: 'logocanvas'), root_path %>
+		<nav>
+			<ul>
+				<% navbar_items.each do |item| %>
+					<%= display_navbar_item(item[:displayText], item[:controller], item[:link]) %>
+				<% end %>
+			</ul>
+		</nav>
+	</header>
+	<section id="main">
+		<article>
+			<%= yield %>
+		</article>
+		<aside>
+			<%= yield :aside %>
+		</aside>
+	</section>
+	<footer>
+		<p>TimeTracker by <em>Appsbyahrens</em></p>
+	</footer>
+</div>
 </body>
 </html>
