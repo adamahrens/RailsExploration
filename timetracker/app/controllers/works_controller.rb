@@ -23,7 +23,7 @@ class WorksController < ApplicationController
 
 		respond_to do |format| 
 			format.html 
-			format.json {render json: @works }
+			format.json { render json: @works }
 		end
 	end
 

@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
 		@projects = Project.all.includes(:company)
 		respond_to do |format| 
 			format.html 
-			format.json {render json: @projects }
+			format.json { render json: @projects }
 		end
 	end
 
