@@ -15,10 +15,10 @@ class User < ActiveRecord::Base
   has_many :works
   has_many :projects, through: :works
 
-  validates_length_of :first_name, minimum: 2, message: 'First name must be greater than 1 character'
-  validates_length_of :last_name, minimum: 5, message: 'Last name must be greater than 4 characters'
-  validates_presence_of :company, message: 'User must belog to a Company'
-  
+  validates :first_name, length: { minimum: 2, message: 'First name must be greater than 1 character' }
+  validates :last_name, length: { minimum: 5, message: 'Last name must be greater than 4 characters' }
+  validates :company, presence: { message: 'User must belog to a Company' }
+
   def to_s
   	"#{first_name} #{last_name}"
   end
