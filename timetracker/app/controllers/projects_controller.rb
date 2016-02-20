@@ -32,4 +32,21 @@ class ProjectsController < ApplicationController
 		@project = Project.new
 		@companies = Company.all
 	end
+
+	def create
+		@project = Project.new(project_params)
+		if @project.save
+			flash[:notice] = "#{@project.name} created successfully"
+			redirect_to @project
+		else
+			# Validation errors, show the form again
+			@companies = Company.all
+			render 'new'
+		end
+	end
+
+	private
+	def project_params
+		params.require(:project).permit(:name, :company_id, :default_rate, :slug)
+	end
 end

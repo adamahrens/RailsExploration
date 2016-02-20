@@ -26,6 +26,18 @@ class CompaniesController < ApplicationController
 	end
 
 	def create
-		
+		@company = Company.new(company_params)
+		if @company.save
+			flash[:notice] = "#{@company.name} created successfully"
+			redirect_to @company
+		else
+			# Validation errors, show the form again
+			render 'new'
+		end
+	end
+
+	private
+	def company_params
+		params.require(:company).permit(:name)
 	end
 end

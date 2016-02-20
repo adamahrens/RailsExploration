@@ -36,4 +36,22 @@ class WorksController < ApplicationController
 		@projects = Project.all
 		@users = User.all.order('last_name', 'first_name')
 	end
+
+	def create
+		@work = Work.new(work_params)
+		if @work.save
+			flash[:notice] = "Work created successfully"
+			redirect_to @work
+		else
+			# Validation errors, show the form again
+			@projects = Project.all
+			@users = User.all.order('last_name', 'first_name')
+			render 'new'
+		end
+	end
+
+	private
+	def work_params
+		params.require(:work).permit(:project_id, :user_id, :date_performed, :hours)
+	end
 end
