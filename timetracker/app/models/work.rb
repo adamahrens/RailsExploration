@@ -17,7 +17,7 @@ class Work < ActiveRecord::Base
 
   validates :project, presence: { message: 'Work must belong to a Project' }
   validates :user, presence: { message: 'Work must belong to a User' }
-  valdiates :hours, numericality: { greater_than: 0, less_than_or_equal_to: 8, message: 'Work must be 1-8 hours' }
+  validates :hours, numericality: { greater_than: 0, less_than_or_equal_to: 8, message: 'Work must be 1-8 hours' }
   validate :date_not_in_future
 
   # validation method

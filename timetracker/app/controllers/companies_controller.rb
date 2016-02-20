@@ -11,13 +11,21 @@
 class CompaniesController < ApplicationController
 	def index
 		@companies = Company.all
-		respond_to do |format| 
-			format.html 
+		respond_to do |format|
+			format.html
 			format.json { render json: @companies }
 		end
 	end
 
 	def show
 		@company = Company.find(params[:id])
+	end
+
+	def new
+		@company = Company.new
+	end
+
+	def create
+		
 	end
 end

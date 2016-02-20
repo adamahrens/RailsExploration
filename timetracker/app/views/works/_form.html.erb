@@ -1,0 +1,21 @@
+<%= form_for @work do |form| %>
+  <div>
+    <%= form.label :project_id %>
+    <%= form.collection_select :project_id, @projects, :id, :name, prompt: true %>
+  </div>
+  <div>
+    <%= form.label :user_id %>
+    <%= form.collection_select :user_id, @users, :id, :to_s, prompt: true %>
+  </div>
+  <div>
+    <%= form.label :hours %>
+    <%= form.select :hours, [1, 2, 3, 4, 5, 6, 7, 8], prompt: true %>
+  </div>
+  <div>
+    <%= form.label :date_performed %>
+    <%= form.datetime_select :date_performed %>
+  </div>
+  <div>
+    <%= form.submit "Create Work" %>
+  </div>
+<% end %>

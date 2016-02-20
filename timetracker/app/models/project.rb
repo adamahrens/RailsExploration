@@ -17,7 +17,7 @@ class Project < ActiveRecord::Base
   has_many :users, through: :works
 
   validates :name, length: { minimum: 5, message: 'Company name must be greater than 4 characters' }
-  validates :company presence: { message: 'Project must belong to a Project' }
+  validates :company, presence: { message: 'Project must belong to a Project' }
   validates :slug, uniqueness: { message: 'Slug field must be unique' }, length: { minimum: 3, message: 'Must have a Slug field' }
   validates :default_rate, numericality: { greater_than_or_equal_to: 50, message: 'Default rate must be >= 50' }
 

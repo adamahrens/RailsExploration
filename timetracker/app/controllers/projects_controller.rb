@@ -14,8 +14,8 @@
 class ProjectsController < ApplicationController
 	def index
 		@projects = Project.all.includes(:company)
-		respond_to do |format| 
-			format.html 
+		respond_to do |format|
+			format.html
 			format.json { render json: @projects }
 		end
 	end
@@ -26,5 +26,10 @@ class ProjectsController < ApplicationController
 		else
 			@project = Project.find(params[:id])
 		end
+	end
+
+	def new
+		@project = Project.new
+		@companies = Company.all
 	end
 end

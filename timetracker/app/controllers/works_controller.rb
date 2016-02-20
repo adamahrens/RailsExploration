@@ -21,13 +21,19 @@ class WorksController < ApplicationController
 			@works = Work.all.includes(:user).includes(:project)
 		end
 
-		respond_to do |format| 
-			format.html 
+		respond_to do |format|
+			format.html
 			format.json { render json: @works }
 		end
 	end
 
 	def show
 		@work = Work.find(params[:id])
+	end
+
+	def new
+		@work = Work.new
+		@projects = Project.all
+		@users = User.all.order('last_name', 'first_name')
 	end
 end
