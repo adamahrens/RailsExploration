@@ -12,6 +12,8 @@
 #
 
 class WorksController < ApplicationController
+	before_action :find_work, only: [:show, :edit, :update]
+
 	def index
 		if params[:days]
 			@works = Work.recent_days(params[:days]).order('date_performed desc').includes(:user).includes(:project)
@@ -28,7 +30,7 @@ class WorksController < ApplicationController
 	end
 
 	def show
-		@work = Work.find(params[:id])
+		# before_action finds the work
 	end
 
 	def new
@@ -48,6 +50,28 @@ class WorksController < ApplicationController
 			@users = User.all.order('last_name', 'first_name')
 			render 'new'
 		end
+	end
+
+	def edit
+		# before_action handles finding the work
+		@projects = Project.all
+		@users = User.all.order('last_name', 'first_name')
+	end
+
+	def update
+		# before_action handles finding the work
+		if @work.update(work_params)
+			flash[:notice] = "Work updated successfully"
+			redirect_to @work
+		else
+			@projects = Project.all
+			@users = User.all.order('last_name', 'first_name')
+			render 'edit'
+		end
+	end
+
+	def find_work
+		@work = Work.find(params[:id])
 	end
 
 	private

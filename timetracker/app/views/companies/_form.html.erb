@@ -4,6 +4,10 @@
     <%= form.text_field :name %>
   </div>
   <div>
-    <%= form.submit "Create Company" %>
+    <% if @company.new_record? %>
+      <%= form.submit "Create Company" %>
+    <% else %>
+      <%= form.submit "Update Company" %>
+    <% end %>
   </div>
 <% end %>

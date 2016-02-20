@@ -12,6 +12,8 @@
 #
 
 class ProjectsController < ApplicationController
+	before_action :find_project, only: [:edit, :update]
+
 	def index
 		@projects = Project.all.includes(:company)
 		respond_to do |format|
@@ -43,6 +45,26 @@ class ProjectsController < ApplicationController
 			@companies = Company.all
 			render 'new'
 		end
+	end
+
+	def edit
+		# before_action handles finding the work
+		@companies = Company.all
+	end
+
+	def update
+		# before_action handles finding the work
+		if @project.update(project_params)
+			flash[:notice] = "Work updated successfully"
+			redirect_to @project
+		else
+			@companies = Company.all
+			render 'edit'
+		end
+	end
+
+	def find_project
+		@project = Project.find(params[:id])
 	end
 
 	private

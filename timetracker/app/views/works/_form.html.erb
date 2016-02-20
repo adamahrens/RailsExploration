@@ -16,6 +16,11 @@
     <%= form.datetime_select :date_performed %>
   </div>
   <div>
-    <%= form.submit "Create Work" %>
+    <% if @work.new_record? %>
+      <%= form.submit "Create Work" %>
+    <% else %>
+      <%= form.submit "Update Work" %>
+    <% end %>
+  </div>
   </div>
 <% end %>

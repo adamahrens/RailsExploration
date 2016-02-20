@@ -9,6 +9,8 @@
 #
 
 class CompaniesController < ApplicationController
+	before_action :find_company, only: [:show, :edit, :update]
+	
 	def index
 		@companies = Company.all
 		respond_to do |format|
@@ -18,7 +20,7 @@ class CompaniesController < ApplicationController
 	end
 
 	def show
-		@company = Company.find(params[:id])
+		# before_action handles finding the company
 	end
 
 	def new
@@ -34,6 +36,24 @@ class CompaniesController < ApplicationController
 			# Validation errors, show the form again
 			render 'new'
 		end
+	end
+
+	def edit
+		# before_action handles finding the company
+	end
+
+	def update
+		# before_action handles finding the company
+		if @company.update(company_params)
+			flash[:notice] = "#{@company.name} updated successfully"
+			redirect_to @company
+		else
+			render 'edit'
+		end
+	end
+
+	def find_company
+		@company = Company.find(params[:id])
 	end
 
 	private
