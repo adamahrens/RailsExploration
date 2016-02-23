@@ -16,8 +16,12 @@ bruce:
   first_name: Bruce
   last_name: Wayne
   company: google
+  email: bruce.wayne@gmail.com
+  encrypted_password: <%= User.new.send(:password_digest, 'password123') %>
 
 tony:
   first_name: Tony
   last_name: Stark
   company: apple
+  email: tony.stark@gmail.com
+  encrypted_password: <%= User.new.send(:password_digest, 'password123') %>

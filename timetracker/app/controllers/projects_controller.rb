@@ -13,6 +13,7 @@
 
 class ProjectsController < ApplicationController
 	before_action :find_project, only: [:edit, :update]
+	before_filter :authenticate_user!
 
 	def index
 		@projects = Project.all.includes(:company)

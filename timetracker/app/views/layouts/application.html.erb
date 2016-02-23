@@ -16,15 +16,21 @@
 				<% navbar_items.each do |item| %>
 					<%= display_navbar_item(item[:displayText], item[:controller], item[:link]) %>
 				<% end %>
+        <% if user_signed_in? %>
+          <li>Logged In As <%= current_user %> <span><%= link_to "Log Out", destroy_user_session_path, method: :delete %></span></li>
+        <% else %>
+          <li><%= link_to "Log In", new_user_session_path %> | <%= link_to "Register", new_user_registration_path %></li>
+        <% end %>
 			</ul>
 		</nav>
 	</header>
 	<section id="main">
 		<article>
       <% if flash[:notice] %>
-        <div class="notice">
-          <%= flash[:notice] %>
-        </div>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <% if flash[:alert] %>
+        <p class="alert"><%= alert %></p>
       <% end %>
 			<%= yield %>
 		</article>
