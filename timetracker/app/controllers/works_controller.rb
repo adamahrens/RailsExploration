@@ -41,6 +41,17 @@ class WorksController < ApplicationController
 
 	def create
 		@work = Work.new(work_params)
+
+		# upload document. While this saves to a public folder
+		# could use cloud storage, etc
+		file_to_upload = params[:document]
+		if file_to_upload
+			File.open(Rails.root.join('public', 'uploads', file_to_upload.original_filename), 'wb') do |file|
+				file.write(file_to_upload.read)
+				@work.document = file_to_upload.original_filename
+			end
+		end
+
 		if @work.save
 			flash[:notice] = "Work created successfully"
 			redirect_to @work

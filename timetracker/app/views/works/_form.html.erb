@@ -1,4 +1,4 @@
-<%= form_for @work do |form| %>
+<%= form_for @work, html: { multipart: true } do |form| %>
   <div>
     <%= form.label :project_id %>
     <%= form.collection_select :project_id, @projects, :id, :name, prompt: true %>
@@ -14,6 +14,10 @@
   <div>
     <%= form.label :date_performed %>
     <%= form.datetime_select :date_performed %>
+  </div>
+  <div>
+    <%= label_tag :document, 'Notes (Optional)' %>
+    <%= file_field_tag :document %>
   </div>
   <div>
     <% if @work.new_record? %>
