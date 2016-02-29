@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
 		respond_to do |format|
 			format.html
 			format.json { render json: @projects }
+			format.csv { send_data Project.export_csv(@projects), type: 'text/csv; charset=utf-8; header=present', disposition: 'attachment; filename=contacts.csv' }
 		end
 	end
 
