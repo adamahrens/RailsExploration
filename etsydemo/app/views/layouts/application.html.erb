@@ -7,8 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= render "layouts/navbar" %>
 
-<%= yield %>
-<p>Copyright <%= DateTime.now.year %> | <span><%= link_to "Contact", pages_contact_path %> | <span><%= link_to "About", pages_about_path %></span></p>
+  <div class="container">
+    <%= yield %>
+    <%= render "layouts/footer" %>
+  </div>
+
 </body>
 </html>
