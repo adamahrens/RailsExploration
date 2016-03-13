@@ -47,3 +47,7 @@ encodings.xml
 .generators
 timetracker/rails_best_practices_output.html
 etsydemo/public/system/listings/images/
+Development__raceday.xml
+Production__raceday.xml
+spec__raceday.xml
+test__raceday.xml
