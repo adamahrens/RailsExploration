@@ -10,14 +10,12 @@
   <%= render "layouts/navbar" %>
 
   <div class="container">
-    <% unless flash.empty? %>
-      <% if flash[:notice] %>
-        <div class="alert alert-success"><%= notice %></div>
-      <% end %>
+    <% if flash[:notice] %>
+      <div class="alert alert-success"><%= notice %></div>
+    <% end %>
 
-      <% if flash[:alert] %>
-        <div class="alert alert-danger"><%= alert %></div>
-      <% end %>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger"><%= alert %></div>
     <% end %>
 
     <%= yield %>
