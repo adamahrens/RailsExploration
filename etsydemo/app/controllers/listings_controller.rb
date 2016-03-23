@@ -1,6 +1,12 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
+  # Restrict the ability to edit/delete/update/create Listings unless logged in
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
+
+  # Restrict the ability to update, edit, destroy for listings belonging to current_user
+  before_action :check_user_permission, only: [:edit, :update, :destroy]
+
   # GET /listings
   # GET /listings.json
   def index
@@ -71,5 +77,12 @@ class ListingsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
       params.require(:listing).permit(:name, :description, :price, :image)
+    end
+
+    def check_user_permission
+      if current_user != @listing.user
+        flash[:alert] = "This is not the item you are looking for"
+        redirect_to root_path
+      end
     end
 end
