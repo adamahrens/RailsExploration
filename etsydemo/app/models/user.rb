@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
          :trackable,
          :validatable
   validates :name, presence: true
+
+  has_many :listings, dependent: :destroy
 end
