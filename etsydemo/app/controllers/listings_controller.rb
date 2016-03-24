@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
   # Restrict the ability to edit/delete/update/create Listings unless logged in
-  before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create, :seller]
 
   # Restrict the ability to update, edit, destroy for listings belonging to current_user
   before_action :check_user_permission, only: [:edit, :update, :destroy]
@@ -11,6 +11,12 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     @listings = Listing.all
+  end
+
+  # GET /seller
+  def seller
+    @listings = Listing.where(user: current_user).order("created_at DESC")
+    @total_listings = @listings.sum(:price)
   end
 
   # GET /listings/1
