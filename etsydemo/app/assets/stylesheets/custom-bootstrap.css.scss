@@ -1,5 +1,14 @@
 @import 'bootstrap';
 
+$etsy-color: #F56400;
+
+@mixin etsy-font-style {
+  font-weight: 400;
+  font-size: 36px;
+  font-family: 'Graphik Web', Georgia, serif;
+  word-spacing: 5px;
+}
+
 .listing-price {
   font-weight: bold;
 }
@@ -18,11 +27,8 @@ body {
   background-color: #EFEFEB;
 
   .navbar-brand {
-    color: #F56400;
-    font-weight: 400;
-    font-size: 36px;
-    font-family: 'Graphik Web', Georgia, serif;
-    word-spacing: 5px;
+    color: $etsy-color;
+    @include etsy-font-style;
   }
 }
 
@@ -41,5 +47,14 @@ body {
 
   p {
     font-size: 18px;
+  }
+}
+
+.jumbotron {
+  background-image: url('jumbotron-header.jpg');
+  color: #FFFFFF;
+  @include etsy-font-style;
+  .logo-copy {
+    color: $etsy-color;
   }
 }
