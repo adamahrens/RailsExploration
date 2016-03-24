@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   resources :listings
 
   get 'seller', to: 'listings#seller'
-  
-  get 'pages/about'
 
-  get 'pages/contact'
+  get 'about', to: 'pages#about'
+
+  get 'contact', to: 'pages#contact'
 
   root 'listings#index'
 
