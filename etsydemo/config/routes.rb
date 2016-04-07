@@ -31,11 +31,11 @@
 #
 
 Rails.application.routes.draw do
-  
+
   devise_for :users
 
   resources :listings do
-    resources :orders
+    resources :orders, only: [:new, :create]
   end
 
   get 'seller', to: 'listings#seller'
@@ -43,6 +43,10 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
 
   get 'contact', to: 'pages#contact'
+
+  get 'sales', to: 'orders#sales'
+
+  get 'purchases', to: 'orders#purchases'
 
   root 'listings#index'
 

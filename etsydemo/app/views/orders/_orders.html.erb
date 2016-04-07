@@ -1,0 +1,30 @@
+<div class="center">
+  <h2><%= page_name %></h2>
+</div>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Price</th>
+      <th>Transaction</th>
+      <th>Date Sold</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.listing.name %></td>
+        <td><%= order.address %></td>
+        <td><%= order.city %></td>
+        <td><%= order.state %></td>
+        <td><%= number_to_currency(order.listing.price) %></td>
+        <td>Sold By <%= order.seller.name %> To <%= order.buyer.name %></td>
+        <td><%= order.created_at.strftime("%b %-d, %Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
