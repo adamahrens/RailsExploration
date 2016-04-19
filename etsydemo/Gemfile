@@ -25,6 +25,10 @@ gem 'paperclip'
 gem "figaro"
 # for Adding Users
 gem 'devise'
+# support for font-awesome
+gem 'font-awesome-rails'
+# for accepting payments
+gem 'stripe'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
