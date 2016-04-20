@@ -20,6 +20,14 @@
         </div>
       <% end %>
 
+      <div id="stripe-success" class="alert alert-success" style="display:none">
+      </div>
+
+      <div id="stripe-errors" class="alert alert-danger" style="display:none">
+      </div>
+      <div class="form-group">
+        <input id="stripe-token" type="hidden" name="stripeToken" />
+      </div>
       <div class="form-group">
         <%= f.label :address %>
         <%= f.text_field :address, class: 'form-control' %>

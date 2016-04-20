@@ -30,14 +30,25 @@ class OrdersController < ApplicationController
     @order.seller_id = @seller.id
     @order.listing_id = @listing.id
 
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to root_path, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+    Stripe.api_key = Rails.application.secrets.stripe_api_key
+    token = params[:stripeToken]
+
+    begin
+      charge = Stripe::Charge.create(amount: (@listing.price * 100).floor, currency: 'usd', card: token)
+      flash[:notice] = 'Thanks for ordering'
+
+      respond_to do |format|
+        if @order.save
+          format.html { redirect_to root_path }
+          format.json { render :show, status: :created, location: @order }
+        else
+          format.html { render :new }
+          format.json { render json: @order.errors, status: :unprocessable_entity }
+        end
       end
+    rescue Stripe::InvalidRequestError => e
+      flash[:alert] = e.message
+      redirect_to new_listing_order_path
     end
   end
 
