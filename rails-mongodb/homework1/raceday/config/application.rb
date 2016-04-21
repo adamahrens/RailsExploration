@@ -22,5 +22,11 @@ module Raceday
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Load up Mongoid
+    Mongoid.load!('./config/mongoid.yml')
+
+    # Mongoid for generators to use Mongo for ORM in ActiveRecord
+    config.generators { |generator| generator.orm :mongoid }
   end
 end
