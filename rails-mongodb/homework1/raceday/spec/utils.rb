@@ -55,7 +55,7 @@ module Utils
         content = IO.readlines(file_name)
         content.each do | line |
             if line.match /text/ 
-                retrun true
+                return true
             end
         end
         return false

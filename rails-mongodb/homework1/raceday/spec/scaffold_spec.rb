@@ -104,7 +104,7 @@ feature "Module 1 Scaffolding Tests", :type => :routing do
             fill_in 'racer_group', with: new_racer.group
             fill_in 'racer_secs', with: new_racer.secs
             click_button('Create Racer')
-            #expect(page.status_code).to eq(200)
+            expect(page.status_code).to eq(200).or eq(201)
             db_racer = Racer.collection.find(last_name: new_racer.last_name, first_name: new_racer.first_name).first
             expect(db_racer).to_not be_nil
             local_id = db_racer[:_id].to_s
@@ -119,7 +119,7 @@ feature "Module 1 Scaffolding Tests", :type => :routing do
             fill_in 'racer_first_name', with: "Joe"
             fill_in 'racer_last_name', with: "Pesci"
             click_button('Update Racer')
-            #expect(page.status_code).to eq(200)
+            expect(page.status_code).to eq(200).or eq(201)
             expect(page).to have_content("Racer was successfully updated.")
             expect(page).to have_content("Number: #{db_racer[:number]}")
             up_racer = Racer.find(local_id)

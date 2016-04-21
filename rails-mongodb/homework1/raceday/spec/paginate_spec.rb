@@ -75,6 +75,7 @@ feature "Module 4 Pagination Test", :type => :routing do
             visit("#{racers_path}?page=1&per_page=#{racers_per_page}")
             (1..local_page.total_pages-1).each do |p|
                 expect(page.all('//tbody/tr').count).to be <= racers_per_page
+                expect(page).to have_link("#{p+1}", :href => "/racers?page=#{p+1}&per_page=#{racers_per_page}")
                 click_link("#{p+1}", :href => "/racers?page=#{p+1}&per_page=#{racers_per_page}")
             end
         end

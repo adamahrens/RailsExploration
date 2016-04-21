@@ -66,7 +66,7 @@ feature "Module 1 Summative - CRUD Model Tests" do
 
     context "rq02" do 
         it "Racer has accessors for id, number, first_name, last_name, gender, group and secs" do  
-            racer = Racer.new({number:1, first_name:"Bill", last_name:"Gates", gender:"M", group:"50 to 59", secs:5000})
+            racer = Racer.new
             expect(racer).to respond_to(:id)
             expect(racer).to respond_to(:number)
             expect(racer).to respond_to(:first_name)
@@ -106,6 +106,15 @@ feature "Module 1 Summative - CRUD Model Tests" do
         it "class method find takes a single id parameter" do 
             expect((Racer.method(:find).parameters.flatten - [:opt, :req]).count).to eq 1
             expect(Racer.method(:find).parameters.flatten).to_not include (:opt)
+        end
+
+        it "find method accepts either a BSON::ObjectId or String" do 
+            data_record = Racer.collection.find(number: 300).first
+            idval = data_record[:_id]
+            expect(acc_record = Racer.find(idval)).to_not be_nil
+            expect(acc_record).to be_a(Racer)
+            expect(acc_record2 = Racer.find(idval.to_s)).to_not be_nil
+            expect(acc_record2).to be_a(Racer)
         end
 
         it "find method returns racer document represented by specified id" do 
@@ -167,6 +176,7 @@ feature "Module 1 Summative - CRUD Model Tests" do
 
         it "update method updates object with supplied hash and overwrites other parameters" do 
             old_racer = @racer
+            # first test racer for validity
             @racer.update(first_name:"thing", last_name:"one", group:"15 to 19", number: old_racer.number, secs: old_racer.secs)
             expect(@racer.first_name).to eq "thing"
             expect(@racer.last_name).to eq "one"
@@ -175,14 +185,15 @@ feature "Module 1 Summative - CRUD Model Tests" do
             expect(@racer.gender).to be_nil
             expect(@racer.secs).to eq old_racer.secs
             expect(@racer.number).to eq old_racer.number
+            # now that racer is valid, make sure database is expected to be the same
             db_test_rec = Racer.collection.find(_id: BSON::ObjectId.from_string(@id)).first
             expect(db_test_rec).to_not be_nil
-            expect(@racer.first_name).to eq(db_test_rec[:first_name])
-            expect(@racer.last_name).to eq(db_test_rec[:last_name])
-            expect(@racer.gender).to eq(db_test_rec[:gender])
-            expect(@racer.number).to eq(db_test_rec[:number])
-            expect(@racer.group).to eq(db_test_rec[:group])
-            expect(@racer.secs).to eq(db_test_rec[:secs])
+            expect(db_test_rec[:first_name]).to eq(@racer.first_name)
+            expect(db_test_rec[:last_name]).to eq(@racer.last_name)
+            expect(db_test_rec[:gender]).to eq(@racer.gender)
+            expect(db_test_rec[:number]).to eq(@racer.number)
+            expect(db_test_rec[:group]).to eq(@racer.group)
+            expect(db_test_rec[:secs]).to eq(@racer.secs)
         end
     end
 
