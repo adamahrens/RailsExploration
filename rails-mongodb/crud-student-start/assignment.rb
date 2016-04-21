@@ -63,7 +63,7 @@ class Solution
   end
 
   def find_by_name(fname, lname)
-    @coll.find(first_name: fname, last_name: lname).projection(_id: false, number: true, first_name: true, last_name: true)
+    all(first_name: fname, last_name: lname).projection(_id: false, number: true, first_name: true, last_name: true)
   end
 
   #
@@ -71,7 +71,7 @@ class Solution
   #
 
   def find_group_results(group, offset, limit)
-    @coll.find(group: group).skip(offset).limit(limit).sort(secs: 1).projection(_id: false, group: false)
+    all(group: group).skip(offset).limit(limit).sort(secs: 1).projection(_id: false, group: false)
   end
 
   #
@@ -79,11 +79,11 @@ class Solution
   #
 
   def find_between(min, max)
-    @coll.find(secs: {:$gt => min, :$lt => max})
+    all(secs: {:$gt => min, :$lt => max})
   end
 
   def find_by_letter(letter, offset, limit)
-    @coll.find(last_name: { :$regex => "^#{letter}"}).skip(offset).limit(limit).sort(last_name: 1)
+    all(last_name: { :$regex => "^#{letter}"}).skip(offset).limit(limit).sort(last_name: 1)
   end
 
   #
@@ -91,16 +91,15 @@ class Solution
   #
 
   def update_racer(racer)
-    @coll.find(number: racer[:number]).update_one(:$set => racer)
+    all(number: racer[:number]).update_one(:$set => racer)
   end
 
   def add_time(number, secs)
-    original_seconds = @coll.find(number: number).first[:secs]
+    original_seconds = all(number: number).first[:secs]
     original_seconds += secs
-    @coll.find(number: number).update_one(:$set => {secs: original_seconds})
+    all(number: number).update_one(:$set => {secs: original_seconds})
   end
-
 end
 
-s=Solution.new
-race1=Solution.collection
+s = Solution.new
+race1 = Solution.collection
