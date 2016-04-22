@@ -1,6 +1,8 @@
 class Racer
   include Mongoid::Document
 
+  attr_accessor :id, :number, :first_name, :last_name, :gender, :group, :secs
+
   # class methods
   def self.mongo_client
     Mongoid::Clients.default
@@ -22,5 +24,17 @@ class Racer
     end
   end
 
+  def self.find
+  end
+
   # instance methods
+  def initialize(params={})
+    @id = params[:_id].nil? ? params[:id] : params[:_id].to_s
+    @number = params[:number].to_i
+    @first_name = params[:first_name]
+    @last_name = params[:last_name]
+    @gender = params[:gender]
+    @group = params[:group]
+    @secs = params[:secs].to_i
+  end
 end
