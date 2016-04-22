@@ -1,5 +1,6 @@
 class Racer
   include Mongoid::Document
+  include ActiveModel::Model
 
   attr_accessor :id, :number, :first_name, :last_name, :gender, :group, :secs
 
@@ -24,6 +25,19 @@ class Racer
     end
   end
 
+  # ActiveModel
+  def persisted?
+    !@id.nil?
+  end
+
+  def created_at
+    nil
+  end
+
+  def updated_at
+    nil
+  end
+
   # Could be a string or BSON::ObjectId
   def self.find(id)
     # Find the Racer document if it exists
@@ -32,11 +46,7 @@ class Racer
   end
 
   def self.convert_id_for_find(id)
-    find_id = id
-    if id.is_a? String
-      find_id = BSON::ObjectId.from_string(id)
-    end
-    find_id
+    id.is_a?(String) ? BSON::ObjectId.from_string(id) : id
   end
 
   # instance methods
