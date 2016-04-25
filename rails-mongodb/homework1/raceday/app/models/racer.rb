@@ -32,7 +32,6 @@ class Racer
 
     racers = []
     documents = Racer.collection.find.sort(number: 1).skip(offset).limit(limit)
-    #documents = Racer.collection.find.sort(number: 1)
     documents.each { |document|
       racers << Racer.new(document)
     }
@@ -89,16 +88,16 @@ class Racer
   end
 
   private
-  def racer_hash
-    return { number: @number, first_name: @first_name, last_name: @last_name, gender: @gender, group: @group, secs: @secs }
-  end
+    def racer_hash
+      return { number: @number, first_name: @first_name, last_name: @last_name, gender: @gender, group: @group, secs: @secs }
+    end
 
-  def set_racer(params)
-    @number = params[:number].to_i
-    @first_name = params[:first_name]
-    @last_name = params[:last_name]
-    @gender = params[:gender]
-    @group = params[:group]
-    @secs = params[:secs].to_i
-  end
+    def set_racer(params)
+      @number = params[:number].to_i
+      @first_name = params[:first_name]
+      @last_name = params[:last_name]
+      @gender = params[:gender]
+      @group = params[:group]
+      @secs = params[:secs].to_i
+    end
 end
