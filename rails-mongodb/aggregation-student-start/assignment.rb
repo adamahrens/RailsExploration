@@ -88,13 +88,12 @@ class Solution
   # Lecture 4: $match
   #
   def groups_faster_than criteria_time
-    #place solution here
+    @coll.find.aggregate([{:$match => { secs: { :$lt => criteria_time }}}, {:$group => {:_id => { age: "$group", gender: "$gender"}, :runners => { :$sum => 1 }, :fastest_time => {:$min => "$secs"}}}])
   end
 
   def age_groups_faster_than age_group, criteria_time
-    #place solution here
+    @coll.find.aggregate([{:$match => { secs: { :$lt => criteria_time }}}, {:$group => {:_id => { age: "$group", gender: "$gender"}, :runners => { :$sum => 1 }, :fastest_time => {:$min => "$secs"}}}])
   end
-
 
   #
   # Lecture 5: $unwind
