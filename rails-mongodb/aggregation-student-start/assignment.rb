@@ -92,14 +92,19 @@ class Solution
   end
 
   def age_groups_faster_than age_group, criteria_time
-    @coll.find.aggregate([{:$match => { secs: { :$lt => criteria_time }}}, {:$group => {:_id => { age: "$group", gender: "$gender"}, :runners => { :$sum => 1 }, :fastest_time => {:$min => "$secs"}}}])
+    @coll.find.aggregate([{:$match => {secs: { :$lt => criteria_time }}}, {:$group => {:_id => { age: "$group", gender: "$gender"}, :runners => { :$sum => 1 }, :fastest_time => {:$min => "$secs"}}}, {:$match => {group: age_group}}])
   end
 
   #
   # Lecture 5: $unwind
+  #  * accepts a `last_name`
+  #  * finds the racers having that same last name (Hint: `$match`)
+  #  * determines the average of all their race times (Hint: `$group` and `$avg`)
+  #  * forms an array of numbers for each member of the group (Hint: `$group` and `$push`)
+  #  * returns the Mongo result object for the command
   #
   def avg_family_time last_name
-    #place solution here
+    @coll.find.aggregate([{:$match => {last_name: last_name}}, {:$group => {:_id => '$last_name', :avg_time => {:$avg => '$secs'}, :numbers => {:$push => '$number'}}}])
   end
 
   def number_goal last_name
