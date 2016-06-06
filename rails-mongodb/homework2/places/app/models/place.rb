@@ -21,7 +21,40 @@ class Place
   end
 
   def self.convert_id(id)
-    id.is_a?(String) ? id : id.to_s 
+    id.is_a?(String) ? id : id.to_s
+  end
+
+  def self.find_by_short_name(short_name)
+    Place.collection.find("address_components.short_name" => short_name)
+  end
+
+  def self.to_places(mongo_documents)
+    places = []
+    mongo_documents.each { |document_hash|
+      places << Place.new(document_hash)
+    }
+    places
+  end
+
+  def self.find(id)
+    found_place = Place.collection.find(_id: Place.convert_id_for_find(id)).first
+    found_place.nil? ? nil : Place.new(found_place)
+  end
+
+  def self.convert_id_for_find(id)
+    id.is_a?(String) ? BSON::ObjectId.from_string(id) : id
+  end
+
+  def self.all(offset=0, limit=nil)
+    if limit.nil?
+      return Place.to_places(Place.collection.find.skip(offset))
+    else
+      return Place.to_places(Place.collection.find.skip(offset).limit(limit))
+    end
+  end
+
+  def destroy
+    Place.collection.find(_id: Place.convert_id_for_find(@id)).delete_one()
   end
 
   def initialize(hash)
