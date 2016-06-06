@@ -107,8 +107,16 @@ class Solution
     @coll.find.aggregate([{:$match => {last_name: last_name}}, {:$group => {:_id => '$last_name', :avg_time => {:$avg => '$secs'}, :numbers => {:$push => '$number'}}}])
   end
 
+  # * accepts a `last_name`
+  # * finds the racers having that same last name (Hint: `$match`)
+  # * determines the average of all their race times (Hint: `$group` and `$avg`)
+  # * forms an array of numbers for each member of the group (Hint: `$group` and `$push`)
+  # This is where the difference starts.
+  # * forms a result with `avg_time` for each number (Hint: `$unwind`)
+  # * forms a result with `last_name`, `number`, and `avg_time` for each number in the family
+  # with no `_id` property (Hint: `$project`)
   def number_goal last_name
-    #place solution here
+    @coll.find.aggregate([{:$match => {last_name: last_name}}, {:$group => {:_id => '$last_name', :avg_time => {:$avg => '$secs'}, :numbers => {:$push => '$number'}}}])
   end
 
 end
