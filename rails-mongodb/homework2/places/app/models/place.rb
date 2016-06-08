@@ -36,6 +36,7 @@ class Place
     places
   end
 
+  # Standard Queries
   def self.find(id)
     found_place = Place.collection.find(_id: Place.convert_id_for_find(id)).first
     found_place.nil? ? nil : Place.new(found_place)
@@ -51,6 +52,16 @@ class Place
     else
       return Place.to_places(Place.collection.find.skip(offset).limit(limit))
     end
+  end
+
+  # Aggregation
+  def self.get_address_components(sort=nil, offset=nil, limit=nil)
+    aggregate = [{:$project => {address_components: 1, formatted_address: 1, :"geometry.geolocation" => 1}}, { :$unwind => '$address_components'}]
+    documents = Place.collection.find
+    aggregate << {:$sort => sort} unless sort.nil?
+    aggregate << {:$skip => offset} unless offset.nil?
+    aggregate << {:$limit => limit} unless limit.nil?
+    Place.collection.find.aggregate(aggregate)
   end
 
   def destroy
