@@ -57,11 +57,16 @@ class Place
   # Aggregation
   def self.get_address_components(sort=nil, offset=nil, limit=nil)
     aggregate = [{:$project => {address_components: 1, formatted_address: 1, :"geometry.geolocation" => 1}}, { :$unwind => '$address_components'}]
-    documents = Place.collection.find
-    aggregate << {:$sort => sort} unless sort.nil?
+    aggregate << {:$sort => sort}   unless sort.nil?
     aggregate << {:$skip => offset} unless offset.nil?
     aggregate << {:$limit => limit} unless limit.nil?
     Place.collection.find.aggregate(aggregate)
+  end
+
+  def self.get_country_names
+  end
+
+  def self.find_ids_by_country_code(country_code)
   end
 
   def destroy
