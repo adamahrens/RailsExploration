@@ -76,6 +76,25 @@ class Place
     Place.collection.find.aggregate(aggregate).to_a.map { |document| document[:_id].to_s }
   end
 
+  #Indexes
+  def self.create_indexes
+    Place.collection.indexes.create_one({:"geometry.geolocation" => Mongo::Index::GEO2DSPHERE})
+  end
+
+  def self.remove_indexes
+    Place.collection.indexes.drop_one("geometry.geolocation_2dsphere")
+  end
+
+  def self.near(point, max_meters=nil)
+    near_dictionary = { :$geometry => point.to_hash }
+    near_dictionary[:$maxDistance] = max_meters unless max_meters.nil?
+    Place.collection.find(:"geometry.geolocation" => {:$near => near_dictionary})
+  end
+
+  def near(max_meters=nil)
+    Place.to_places(Place.near(@location, max_meters))
+  end
+
   def destroy
     Place.collection.find(_id: Place.convert_id_for_find(@id)).delete_one()
   end
@@ -83,11 +102,15 @@ class Place
   def initialize(hash)
     @id = Place.convert_id(hash[:_id])
     @formatted_address = hash[:formatted_address]
-    @address_components = []
-    hash[:address_components].each { |address_hash|
-      @address_components << AddressComponent.new(address_hash)
-    }
 
-    @location = Point.new(hash[:geometry][:location])
+    location = hash[:geometry][:location]
+    location = hash[:geometry][:geolocation] if location.nil?
+    @location = Point.new(location)
+    @address_components = []
+    unless hash[:address_components].nil?
+      hash[:address_components].each { |address_hash|
+        @address_components << AddressComponent.new(address_hash)
+      }
+    end
   end
 end
