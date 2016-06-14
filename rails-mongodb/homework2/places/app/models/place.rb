@@ -64,9 +64,16 @@ class Place
   end
 
   def self.get_country_names
+    aggregate = [{:$project => {:"address_components.long_name" => 1, :"address_components.types" => 1}}]
+    aggregate << {:$unwind => '$address_components'}
+    aggregate << {:$match => {:"address_components.types" => {:$in => ["country"]}}}
+    aggregate << {:$group => {:_id => '$address_components.long_name'}}
+    Place.collection.find.aggregate(aggregate).to_a.map { |document| document[:_id] }
   end
 
   def self.find_ids_by_country_code(country_code)
+    aggregate = [{:$match => {:"address_components.short_name" => country_code}}]
+    Place.collection.find.aggregate(aggregate).to_a.map { |document| document[:_id].to_s }
   end
 
   def destroy
