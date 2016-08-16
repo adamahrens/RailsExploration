@@ -41,6 +41,18 @@ class Photo
     !@id.nil?
   end
 
+  def contents
+  end
+
+  def destroy
+    Photo.mongo_client.database.fs.find(_id: Photo.convert_id_for_find(id)).delete_one
+  end
+
+  def find_nearest_place_id(max_meters)
+    point = Photo.find(@id).location
+    place = Place.near(point, max_meters).limit(1).sort({ :location => 1 }).first[:_id]
+  end
+
   def save
     unless persisted?
       gps = EXIFR::JPEG.new(@contents).gps
