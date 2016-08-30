@@ -1,3 +1,8 @@
 <h1>Rationale</h1>
 <p><%= @post.rationale %></p>
 <span>Requested <%= time_ago_in_words(@post.date) %> ago</span>
+
+<%# Adding output if running in Development environment %>
+<% if Rails.env.development? %>
+  <p><%= @post.inspect %></p>
+<% end %>

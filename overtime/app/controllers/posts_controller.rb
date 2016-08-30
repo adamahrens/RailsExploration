@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:show]
   def index
   end
 
@@ -8,16 +9,23 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.save
-    redirect_to @post
+    if @post.save
+      redirect_to @post, notice: 'Post created successfully'
+    else
+      # Otherwise an error occurred
+      render :new
+    end
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   private
-  def post_params
-    params.require(:post).permit(:date, :rationale)
-  end
+    def post_params
+      params.require(:post).permit(:date, :rationale)
+    end
+
+    def set_post
+      @post = Post.find(params[:id])
+    end
 end
