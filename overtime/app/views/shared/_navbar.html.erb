@@ -1,0 +1,29 @@
+<div>
+  <h1>Overtime</h1>
+</div>
+
+<ul class="overtime-nav nav nav-tabs">
+  <li class="<%= active?(root_path) %>">
+    <%= link_to "Home", root_path %>
+  </li>
+  <li class="<%= active?(posts_path) %>">
+    <%= link_to "Posts", posts_path %>
+  </li>
+  <li class="dropdown pull-right">
+     <a href="#" data-toggle="dropdown" class="dropdown-toggle">Account<strong class="caret"></strong></a>
+    <ul class="dropdown-menu">
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "Sign In", new_user_session_path %>
+        </li>
+        <li>
+          <%= link_to "Sign Up", new_user_registration_path %>
+        </li>
+      <% end %>
+    </ul>
+  </li>
+</ul>
