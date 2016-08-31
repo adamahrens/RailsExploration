@@ -1,0 +1,5 @@
+<tr>
+  <td><%= truncate(post.rationale) %></td>
+  <td><%= time_ago_in_words(post.date) %></td>
+  <td><%= post.user.last_name %>, <%= post.user.first_name %> </td>
+</tr>
