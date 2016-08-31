@@ -14,7 +14,7 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   describe 'creation' do
     before do
-      @post = Post.create!(date: DateTime.now, rationale: "This should be a valid rationale")
+      @post = FactoryGirl.create(:first_post)
     end
 
     it 'can be created' do
