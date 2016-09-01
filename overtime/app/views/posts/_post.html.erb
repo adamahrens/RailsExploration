@@ -2,4 +2,5 @@
   <td><%= truncate(post.rationale) %></td>
   <td><%= time_ago_in_words(post.date) %></td>
   <td><%= post.user.full_name %></td>
+  <td><%= link_to 'Edit', edit_post_path(post), id: "edit_#{ post.id }" %></td>
 </tr>
