@@ -53,7 +53,6 @@ describe 'navigate' do
   describe 'editing' do
     before do
       @post = FactoryGirl.create(:first_post)
-
     end
 
     it 'can be reached by clicking edit on index path' do
@@ -68,6 +67,18 @@ describe 'navigate' do
       fill_in 'post[rationale]', with: 'I need to visit the vet'
       click_on 'Save'
       expect(User.last.posts.last.rationale).to eq('I need to visit the vet')
+    end
+  end
+
+  describe 'deleting' do
+    before do
+      @post = FactoryGirl.create(:first_post)
+      visit posts_path
+    end
+
+    it 'can be deleted from index page' do
+      click_link "delete_#{ @post.id }"
+      expect(page.status_code).to eq(200)
     end
   end
 end
