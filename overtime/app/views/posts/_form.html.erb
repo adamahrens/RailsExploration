@@ -15,22 +15,9 @@
     <%= form.text_area :rationale, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
-    <label class='radio-inline'>
-      <%= form.radio_button :status, 'submitted', class: 'radio' %>
-      Submitted
-    </label>
-
-    <label class='radio-inline'>
-      <%= form.radio_button :status, 'approved', class: 'radio' %>
-      Approved
-    </label>
-
-    <label class='radio-inline'>
-      <%= form.radio_button :status, 'rejected', class: 'radio' %>
-      Rejected
-    </label>
-  </div>
+  <% if current_user.admin? %>
+    <%= render partial: 'status', locals: { form: form } %>
+  <% end %>
 
   <%= form.submit 'Save', class: 'btn btn-primary' %>
 <% end %>
