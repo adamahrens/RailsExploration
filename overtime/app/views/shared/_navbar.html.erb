@@ -16,6 +16,11 @@
      <a href="#" data-toggle="dropdown" class="dropdown-toggle">Account<strong class="caret"></strong></a>
     <ul class="dropdown-menu">
       <% if user_signed_in? %>
+        <% if current_user.admin? %>
+          <li>
+            <%= link_to "Admin Dashboard", admin_root_path %>
+          </li>
+        <% end %>
         <li>
           <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
         </li>
