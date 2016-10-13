@@ -24,6 +24,8 @@ class PostsController < ApplicationController
   end
 
   def edit
+    # Uses the PostPolicy to validate
+    authorize @post
   end
 
   def destroy
@@ -35,6 +37,8 @@ class PostsController < ApplicationController
   end
 
   def update
+    # Uses the PostPolicy to validate
+    authorize @post
     if @post.update(post_params)
       redirect_to @post, notice: 'Post created successfully'
     else
