@@ -15,6 +15,10 @@
       </div>
     </div>
   </div>
-  <%= js add_gritter(flash[:notice], title: "Overtime App Notification", sticky: false, time: 5000) %>
+
+  <% flash.each do |key, msg| %>
+    <%= js add_gritter(msg, title: "Overtime #{key.capitalize}", sticky: false, time: 5000) %>
+  <% end %>
+
 </body>
 </html>
