@@ -52,21 +52,31 @@ describe 'navigate' do
 
   describe 'editing' do
     before do
-      @post = FactoryGirl.create(:first_post)
+      @edit_user = User.create(first_name: "first", last_name: "last", email: "first@last.com", password: "password123", password_confirmation: "password123")
+      login_as(@edit_user, scope: :user)
+      @edit_post = Post.create(date: Date.today, rationale: "Day off", user_id: @edit_user.id)
     end
 
     it 'can be reached by clicking edit on index path' do
       visit posts_path
-      click_link "edit_#{ @post.id }"
+      click_link "edit_#{ @edit_post.id }"
       expect(page.status_code).to eq(200)
     end
 
     it 'can be edited' do
-      visit edit_post_path(@post)
+      visit edit_post_path(@edit_post)
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: 'I need to visit the vet'
       click_on 'Save'
       expect(User.last.posts.last.rationale).to eq('I need to visit the vet')
+    end
+
+    it 'can not be edited by non admin user' do
+      logout(:user)
+      user_other = FactoryGirl.create(:user_other)
+      login_as(user_other, scope: :user)
+      visit edit_post_path(@edit_post)
+      expect(current_path).to eq(root_path)
     end
   end
 

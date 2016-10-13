@@ -33,6 +33,14 @@ FactoryGirl.define do
     email
   end
 
+  factory :user_other, class: User do
+    first_name "Jane"
+    last_name  "Smith"
+    password   "password123!"
+    password_confirmation "password123!"
+    email
+  end
+
   factory :admin_user, class: AdminUser do
     first_name "Bruce"
     last_name  "Wayne"
