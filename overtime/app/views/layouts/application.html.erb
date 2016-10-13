@@ -16,9 +16,6 @@
     </div>
   </div>
 
-  <% flash.each do |key, msg| %>
-    <%= js add_gritter(msg, title: "Overtime #{key.capitalize}", sticky: false, time: 5000) %>
-  <% end %>
-
+  <%= render "shared/flash_notifications" %>
 </body>
 </html>
