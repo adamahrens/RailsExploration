@@ -22,4 +22,6 @@ class Post < ActiveRecord::Base
   # Can even Query then
   # e.g. Post.approved.count
   enum status: { submitted: 0, approved: 1, rejected: 2 }
+
+  scope :created_by, -> (user) { where(user_id: user.id) }
 end
