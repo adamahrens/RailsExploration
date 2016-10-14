@@ -10,6 +10,10 @@ describe 'navigate' do
     before do
       @post1 = FactoryGirl.create(:first_post)
       @post2 = FactoryGirl.create(:second_post)
+
+      # FactoryGirl creates a new User for each post that had a different id
+      @post1.update(user_id: @user.id)
+      @post2.update(user_id: @user.id)
       visit posts_path
     end
 
@@ -23,6 +27,21 @@ describe 'navigate' do
 
     it 'has a list of Posts' do
       expect(page).to have_content(/#{@post1.rationale}|#{@post2.rationale}/)
+    end
+
+    it 'has a scope to only the current Users Posts appear' do
+      # Two posts for the First User
+      first_post = Post.create(date: Date.today, rationale: "Heading North", user_id: @user.id)
+      second_post = Post.create(date: Date.today, rationale: "Heading South", user_id: @user.id)
+
+      # One Post for Second User
+      other_user = FactoryGirl.create(:user_other)
+      other_user_post = Post.create(date: Date.tomorrow, rationale: "Blah Blah Blah", user_id: other_user.id)
+
+      # Ensure First User Can't See Second User Posts
+      visit posts_path
+      expect(page).to have_content(/#{first_post.rationale}|#{second_post.rationale}/)
+      expect(page).not_to have_content(/#{other_user_post.rationale}/)
     end
   end
 
@@ -82,7 +101,7 @@ describe 'navigate' do
 
   describe 'deleting' do
     before do
-      @post = FactoryGirl.create(:first_post)
+      @post = Post.create(date: Date.today, rationale: 'Fixing tests', user_id: @user.id)
       visit posts_path
     end
 
