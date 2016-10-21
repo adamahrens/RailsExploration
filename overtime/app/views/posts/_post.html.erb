@@ -2,6 +2,7 @@
   <td><%= truncate(post.rationale) %></td>
   <td><%= time_ago_in_words(post.date) %></td>
   <td><%= post.user.full_name %></td>
+  <td><%= post.status %></td>
   <td><%= link_to '', edit_post_path(post), id: "edit_#{ post.id }", class: "glyphicon glyphicon-wrench" %></td>
   <td><%= link_to '', post_path(post), method: :delete, id: "delete_#{ post.id }", class: "glyphicon glyphicon-remove" %></td>
 </tr>
