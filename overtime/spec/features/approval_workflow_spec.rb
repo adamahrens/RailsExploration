@@ -29,5 +29,17 @@ describe 'navigate' do
       expect(page).to_not have_content('Submitted')
       expect(page).to_not have_content('Rejected')
     end
+
+    it 'should not be editable by the post User if status is approved' do
+      logout(:user)
+      regular_user = FactoryGirl.create(:user)
+      login_as(regular_user, scope: :user)
+
+      @post1.update(user_id: regular_user.id, status: 'approved')
+
+      # User should be redirected
+      visit edit_post_path(@post1)
+      expect(current_path).to eq(root_path)
+    end
   end
 end
