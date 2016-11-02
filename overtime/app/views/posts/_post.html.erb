@@ -2,6 +2,7 @@
   <td><%= truncate(post.rationale) %></td>
   <td><%= time_ago_in_words(post.date) %></td>
   <td><%= post.user.full_name %></td>
+  <td><%= post.overtime %></td>
   <td><%= span_for_status(post.status) %></td>
   <% if post.submitted? %>
     <td><%= link_to '', edit_post_path(post), id: "edit_#{ post.id }", class: "glyphicon glyphicon-wrench" %></td>
