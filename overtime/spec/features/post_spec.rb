@@ -31,12 +31,12 @@ describe 'navigate' do
 
     it 'has a scope to only the current Users Posts appear' do
       # Two posts for the First User
-      first_post = Post.create(date: Date.today, rationale: "Heading North", user_id: @user.id)
-      second_post = Post.create(date: Date.today, rationale: "Heading South", user_id: @user.id)
+      first_post = Post.create(date: Date.today, rationale: "Heading North", user_id: @user.id, overtime: 8.0)
+      second_post = Post.create(date: Date.today, rationale: "Heading South", user_id: @user.id, overtime: 8.0)
 
       # One Post for Second User
       other_user = FactoryGirl.create(:user_other)
-      other_user_post = Post.create(date: Date.tomorrow, rationale: "Blah Blah Blah", user_id: other_user.id)
+      other_user_post = Post.create(date: Date.tomorrow, rationale: "Blah Blah Blah", user_id: other_user.id, overtime: 8.0)
 
       # Ensure First User Can't See Second User Posts
       visit posts_path
@@ -57,12 +57,14 @@ describe 'navigate' do
     it 'can be created from new form page' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: 'I need time off'
-      click_on 'Save'
+      fill_in 'post[overtime]', with: 8.0
+      expect { click_on 'Save' }.to change(Post, :count).by(1)
       expect(page).to have_content('I need time off')
     end
 
     it 'will have a user associated with it' do
       fill_in 'post[date]', with: Date.today
+      fill_in 'post[overtime]', with: 8.0
       fill_in 'post[rationale]', with: 'User_Association'
       click_on 'Save'
       expect(User.last.posts.last.rationale).to eq('User_Association')
@@ -73,7 +75,7 @@ describe 'navigate' do
     before do
       @edit_user = User.create(first_name: "first", last_name: "last", email: "first@last.com", password: "password123", password_confirmation: "password123")
       login_as(@edit_user, scope: :user)
-      @edit_post = Post.create(date: Date.today, rationale: "Day off", user_id: @edit_user.id)
+      @edit_post = Post.create(date: Date.today, rationale: "Day off", user_id: @edit_user.id, overtime: 8.0)
     end
 
     it 'can be reached by clicking edit on index path' do
@@ -101,7 +103,7 @@ describe 'navigate' do
 
   describe 'deleting' do
     before do
-      @post = Post.create(date: Date.today, rationale: 'Fixing tests', user_id: @user.id)
+      @post = Post.create(date: Date.today, rationale: 'Fixing tests', user_id: @user.id, overtime: 8.0)
       visit posts_path
     end
 

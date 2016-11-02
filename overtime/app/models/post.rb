@@ -8,12 +8,15 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :integer
-#  status     :integer
+#  status     :integer          default(0)
+#  overtime   :decimal(, )      default(0.0)
 #
 
 class Post < ActiveRecord::Base
   validates :date, presence: true
   validates :rationale, presence: true
+  validates :overtime, presence: true
+  validates :overtime, numericality: { greater_than: 0.0 }
 
   belongs_to :user
 
