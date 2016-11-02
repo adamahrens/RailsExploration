@@ -1,6 +1,16 @@
-<h1>Rationale</h1>
-<p><%= @post.rationale %></p>
-<span>Requested <%= time_ago_in_words(@post.date) %> ago</span>
+<div>
+  <h4>Reason for Overtime</h4>
+  <p><%= @post.rationale %></p>
+</div>
+
+<div class='well'>
+  <div>
+    <span>Requested <%= @post.overtime %> hours by <%= @post.user.full_name %></span>
+  </div>
+  <div>
+    <span>Sent <%= time_ago_in_words(@post.date) %> ago</span>
+  </div>
+</div>
 
 <%# Adding output if running in Development environment %>
 <% if Rails.env.development? %>
