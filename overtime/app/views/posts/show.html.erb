@@ -12,7 +12,15 @@
   </div>
 </div>
 
+<div>
+  <% if policy(@post).update? %>
+    <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
 <%# Adding output if running in Development environment %>
-<% if Rails.env.development? %>
-  <p><%= @post.inspect %></p>
-<% end %>
+<div class="well development">
+  <% if Rails.env.development? %>
+    <p><%= @post.inspect %></p>
+  <% end %>
+</div>
