@@ -12,6 +12,7 @@ class PostDashboard < Administrate::BaseDashboard
     id: Field::Number.with_options(searchable: false),
     date: Field::DateTime.with_options(searchable: false),
     rationale: Field::Text.with_options(searchable: true),
+    overtime: Field::Text.with_options(searchable: false),
     created_at: Field::DateTime.with_options(searchable: false),
     updated_at: Field::DateTime.with_options(searchable: false),
     status: Field::Text.with_options(searchable: false),
@@ -27,6 +28,7 @@ class PostDashboard < Administrate::BaseDashboard
     :id,
     :date,
     :rationale,
+    :overtime,
     :status,
   ].freeze
 
@@ -37,6 +39,7 @@ class PostDashboard < Administrate::BaseDashboard
     :id,
     :date,
     :rationale,
+    :overtime,
     :status,
     :created_at,
     :updated_at,
@@ -49,6 +52,7 @@ class PostDashboard < Administrate::BaseDashboard
     :user,
     :date,
     :rationale,
+    :overtime,
   ].freeze
 
   # Overwrite this method to customize how posts are displayed
