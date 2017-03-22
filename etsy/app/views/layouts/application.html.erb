@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Etsy</title>
-    <%= csrf_meta_tags %>
+    <head>
+        <title>Etsy</title>
+        <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
 
-  <body>
-    <%= yield %>
-  </body>
+    <body>
+        <header>
+            <%= link_to "About", pages_about_path %>
+            <%= link_to "Contact", pages_contact_path %>
+        </header>
+        <%= yield %>
+        <footer>
+            <p>Copyright
+                <%= Date.today.year %></p>
+        </footer>
+    </body>
 </html>
