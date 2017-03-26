@@ -10,7 +10,9 @@
 
     <body>
         <%= render "partials/header" %>
-        <%= yield %>
-        <%= render "partials/footer" %>
+        <div class="container">
+            <%= yield %>
+            <%= render "partials/footer" %>
+        </div>
     </body>
 </html>
