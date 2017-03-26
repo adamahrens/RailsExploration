@@ -9,14 +9,8 @@
     </head>
 
     <body>
-        <header>
-            <%= link_to "About", about_path %>
-            <%= link_to "Contact", contact_path %>
-        </header>
+        <%= render "partials/header" %>
         <%= yield %>
-        <footer>
-            <p>Copyright
-                <%= Date.today.year %></p>
-        </footer>
+        <%= render "partials/footer" %>
     </body>
 </html>
