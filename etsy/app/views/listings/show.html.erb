@@ -15,6 +15,10 @@
     <%= @listing.price %>
 </p>
 
+<p>
+  <%= image_tag @listing.avatar.url(:thumb) %>
+</p>
+
 <%= link_to 'Edit', edit_listing_path(@listing), class: 'btn btn-link' %>
 |
 <%= link_to 'Back', listings_path, class: 'btn btn-link' %>
