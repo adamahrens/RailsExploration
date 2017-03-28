@@ -1,29 +1,30 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listings</h1>
-
-<div class="row">
-    <% @listings.each do |listing| %>
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <%= image_tag listing.avatar.url(:thumb) %>
-            <div class="caption">
-                <h3><%= listing.name %></h3>
-                <%= listing.description %>
-                <br>
-                <%= number_to_currency(listing.price) %>
-                <br>
-                <span>
-                    <%= link_to 'Show', listing, class: 'btn btn-link' %>
-                    |
-                    <%= link_to 'Edit', edit_listing_path(listing), class: 'btn btn-link' %>
-                    |
-                    <%= link_to 'Destroy', listing, class: 'btn btn-link', method: :delete, data: { confirm: 'Are you sure?' } %>
-                </span>
+<div class="center">
+    <div class="row">
+        <% @listings.each do |listing| %>
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <%= image_tag listing.avatar.url(:thumb) %>
+                <div class="caption">
+                    <h3><%= listing.name %></h3>
+                    <%= listing.description %>
+                    <br>
+                    <%= number_to_currency(listing.price) %>
+                    <br>
+                    <span>
+                        <%= link_to 'Show', listing, class: 'btn btn-link' %>
+                        |
+                        <%= link_to 'Edit', edit_listing_path(listing), class: 'btn btn-link' %>
+                        |
+                        <%= link_to 'Destroy', listing, class: 'btn btn-link', method: :delete, data: { confirm: 'Are you sure?' } %>
+                    </span>
+                </div>
             </div>
         </div>
+        <% end %>
     </div>
-    <% end %>
 </div>
 
 <br>
