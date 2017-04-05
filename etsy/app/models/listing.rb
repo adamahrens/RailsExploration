@@ -23,6 +23,10 @@ class Listing < ApplicationRecord
                     path: "images/#{Time.now.to_s}",
                     s3_credentials: proc { |a| a.instance.s3_credentials }
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+  validates :avatar, attachment_presence: { message: "Attach item image" }
+
+  validates :name, :description, :price, presence: true
+  validates :price, numericality: { greater_than: 0 }
 
   def s3_credentials
     { bucket: Rails.application.secrets.aws_bucket,
