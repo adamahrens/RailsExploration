@@ -1,0 +1,13 @@
+<% flash.each do |key, value| %>
+<% if value.is_a?(String) %>
+
+<div class="alert alert-<%= key == 'notice' ? 'success' : 'danger' %>">
+    <a href="#" data-dismiss="alert" class="close">×</a>
+    <ul>
+        <li>
+            <%= content_tag :div, value, id: key %>
+        </li>
+    </ul>
+</div>
+<% end %>
+<% end %>
