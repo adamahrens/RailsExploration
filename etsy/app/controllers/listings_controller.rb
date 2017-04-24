@@ -1,11 +1,18 @@
 class ListingsController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update, :destroy, :create]
+  before_filter :authenticate_user!, except: [:index, :show, :update, :destroy, :seller]
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :check_same_user, only: [:edit, :update, :destroy]
 
   # GET /listings
   # GET /listings.json
   def index
     @listings = Listing.all
+  end
+
+  # GET /seller
+  def seller
+    @listings = Listing.where(user: current_user).order("created_at DESC")
+    @total = @listings.sum(:price)
   end
 
   # GET /listings/1
@@ -72,5 +79,11 @@ class ListingsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
       params.require(:listing).permit(:name, :description, :price, :avatar)
+    end
+
+    def check_same_user
+      if current_user != @listing.user
+        redirect_to root_path, alert: "Only Listing's User can modify"
+      end
     end
 end

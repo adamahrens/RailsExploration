@@ -65,3 +65,13 @@ p#notice {
     font-weight: 300;
     color: #0192B5;
 }
+
+.jumbotron {
+    background-image: url('jumbotron.jpg');
+    color: #EFEFEB;
+
+    h1,
+    h2 {
+        font-family: guardian-egypt, georgia, serif;
+    }
+}

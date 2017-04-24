@@ -1,10 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<div class="jumbotron">
-    <h1>Handcrafted items from unemployed artists</h1>
-    <h2>Discover dumpster diving at its finest</h2>
-</div>
-
+<h1>My Items (<%= number_to_currency(@total) %>)</h1>
 <div class="center">
     <div class="row">
         <% @listings.each do |listing| %>
@@ -20,6 +16,11 @@
                     <span class="seller">Sold by
                         <%= listing.user.name %></span>
                     <br/>
+                    <span>
+                        <% if user_signed_in? && current_user == listing.user %>
+                        <%= link_to 'Destroy', listing, class: 'btn btn-link', method: :delete, data: { confirm: 'Are you sure?' } %>
+                        <% end %>
+                    </span>
                 </div>
             </div>
         </div>

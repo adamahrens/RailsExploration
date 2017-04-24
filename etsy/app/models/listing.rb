@@ -14,6 +14,8 @@
 #  avatar_updated_at   :datetime
 #
 
+require 'securerandom'
+
 class Listing < ApplicationRecord
 
   belongs_to :user
@@ -23,7 +25,7 @@ class Listing < ApplicationRecord
                     s3_region: Rails.application.secrets.aws_region,
                     s3_host_name: "s3.amazonaws.com",
                     url: ":s3_host_name",
-                    path: "images/#{Time.now.to_s}",
+                    path: "images/:id/:filename",
                     s3_credentials: proc { |a| a.instance.s3_credentials }
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   validates :avatar, attachment_presence: { message: "Attach item image" }
