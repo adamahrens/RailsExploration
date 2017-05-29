@@ -17,8 +17,8 @@
 require 'securerandom'
 
 class Listing < ApplicationRecord
-
   belongs_to :user
+  has_many :orders
 
   has_attached_file :avatar, styles: { medium: "400x400>", thumb: "400x400>" }, default_url: "Missing.png",
                     storage: :s3,

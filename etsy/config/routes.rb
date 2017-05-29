@@ -16,7 +16,12 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  resources :listings
+
+  # Need to include listing_id for creating orders
+  resources :listings do
+    resources :orders
+  end
+  
   root 'listings#index'
   get 'about', to: 'pages#about'
   get 'contact', to: 'pages#contact'
