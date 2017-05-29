@@ -1,0 +1,49 @@
+<h1>My Sales</h1>
+<% if @orders.empty? %>
+<p>
+  You have no sales
+</p>
+<% else %>
+<h4>
+  Total Sold
+  <%= number_to_currency(@total) %>
+</h4>
+<table class="table table-striped table-bordered">
+  <tr>
+    <th class="center">
+      Image
+    </th>
+    <th class="center">
+      Item
+    </th>
+    <th class="center">
+      Price
+    </th>
+    <th class="center">
+      Customer
+    </th>
+    <th class="center">
+      Date Sold
+    </th>
+  </tr>
+  <% @orders.each do |order| %>
+  <tr>
+    <td>
+      <%= image_tag order.listing.avatar.url(:thumb) %>
+    </td>
+    <td>
+      <%= order.listing.name %>
+    </td>
+    <td>
+      <%= number_to_currency(order.listing.price) %>
+    </td>
+    <td>
+      <%= order.buyer.name %>
+    </td>
+    <td>
+      <%= time_ago_in_words(order.created_at) %>
+    </td>
+  </tr>
+  <% end %>
+</table>
+<% end %>

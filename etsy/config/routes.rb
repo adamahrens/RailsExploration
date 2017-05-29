@@ -19,11 +19,13 @@ Rails.application.routes.draw do
 
   # Need to include listing_id for creating orders
   resources :listings do
-    resources :orders
+    resources :orders, only: [:new, :create]
   end
-  
+
   root 'listings#index'
   get 'about', to: 'pages#about'
   get 'contact', to: 'pages#contact'
   get 'seller', to: 'listings#seller'
+  get 'sales', to: 'orders#sales'
+  get 'purchases', to: 'orders#purchases'
 end
