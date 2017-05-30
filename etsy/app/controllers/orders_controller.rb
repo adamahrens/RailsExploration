@@ -17,7 +17,6 @@ class OrdersController < ApplicationController
     @order.seller_id = @seller.id
     @order.listing_id = @listing.id
 
-
     respond_to do |format|
       if @order.save
         format.html { redirect_to root_path, notice: 'Order was successfully created.' }
@@ -40,6 +39,7 @@ class OrdersController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])
