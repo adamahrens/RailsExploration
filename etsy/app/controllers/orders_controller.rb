@@ -1,3 +1,5 @@
+require 'stripe'
+
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_order, only: [:show, :edit, :update, :destroy]
@@ -17,9 +19,19 @@ class OrdersController < ApplicationController
     @order.seller_id = @seller.id
     @order.listing_id = @listing.id
 
+    Stripe.api_key = Rails.application.secrets.stripe_secret_key
+    begin
+      Stripe::Charge.create(amount: (@listing.price * 100).floor,
+                          currency: 'usd',
+                            source: params[:stripe_token],
+                       description: "Charge for #{@listing.description}")
+      flash[:notice] = 'Thanks for your order!'
+    rescue Stripe::CardError => error
+      flash[:danger] = error.message
+    end
     respond_to do |format|
       if @order.save
-        format.html { redirect_to root_path, notice: 'Order was successfully created.' }
+        format.html { redirect_to root_path }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
