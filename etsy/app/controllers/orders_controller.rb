@@ -2,7 +2,6 @@ require 'stripe'
 
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_listing, only: [:new, :create]
 
   # GET /orders/new
@@ -29,6 +28,7 @@ class OrdersController < ApplicationController
     rescue Stripe::CardError => error
       flash[:danger] = error.message
     end
+
     respond_to do |format|
       if @order.save
         format.html { redirect_to root_path }
