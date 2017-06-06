@@ -6,7 +6,7 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+    @listings = Listing.where.not(user: current_user).order('created_at DESC')
   end
 
   # GET /seller
