@@ -41,7 +41,10 @@ class OrdersController < ApplicationController
   end
 
   def sales
-    @orders = Order.all.where(seller: current_user).order('created_at DESC')
+    orders = Order.all
+    @orders = orders.where(seller: current_user).order('created_at DESC')
+    @unpaid = orders.where(seller: current_user, paid: false).order('created_at DESC')
+    @unpaid_total = @unpaid.inject(0) { |running_total, order| order.listing.price + running_total }
     @total = @orders.inject(0) { |running_total, order| order.listing.price + running_total }
   end
 
