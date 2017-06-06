@@ -48,4 +48,18 @@
 </table>
 <h3>Unpaid Amount
   <%= @unpaid_total %></h3>
+<p>
+  <%= form_tag transfer_path, method: :post, class: 'form-inline' do %>
+  <div class="form-group">
+    <%= label_tag :account_number, nil, class: 'sr-only', for: 'accountNumber' %>
+    <%= text_field_tag :account_number, '', { id: 'accountNumber', placeholder: 'Account Number', name: 'account_number', 'date-stripe': 'number', class: 'form-control' } %>
+  </div>
+  <div class="form-group">
+    <%= label_tag :routing_number, nil, class: 'sr-only', for: 'routingNumber' %>
+    <%= text_field_tag :routing_number, '', { id: 'routingNumber', placeholder: 'Routing Number', name: 'routing_number', 'date-stripe': 'number', class: 'form-control' } %>
+  </div>
+  <div class="form-group"></div>
+  <%= submit_tag 'Transfer', class: 'btn btn-primary' %>
+  <% end %>
+</p>
 <% end %>

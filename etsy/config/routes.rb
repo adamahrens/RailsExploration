@@ -48,4 +48,5 @@ Rails.application.routes.draw do
   get 'seller', to: 'listings#seller'
   get 'sales', to: 'orders#sales'
   get 'purchases', to: 'orders#purchases'
+  post 'transfer', to: 'orders#transfer'
 end

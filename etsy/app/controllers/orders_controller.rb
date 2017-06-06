@@ -53,6 +53,14 @@ class OrdersController < ApplicationController
     @total = @orders.inject(0) { |running_total, order| order.listing.price + running_total }
   end
 
+  def transfer
+    logger.debug 'Attempting to Transfer'
+    logger.debug "Params are #{params}"
+    logger.debug "Account #{params[:account_number]}"
+    logger.debug "Routing #{params[:routing_number]}"
+    redirect_to sales_path
+  end
+
   private
 
     # Use callbacks to share common setup or constraints between actions.
