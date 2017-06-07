@@ -54,3 +54,9 @@ test__raceday.xml
 raceday.zip
 /etsy/app/assets/.DS_Store
 /etsy/config/secrets.yml
+.DS_Store
+.keep
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
