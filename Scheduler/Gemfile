@@ -21,6 +21,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'hirb'
 end
 
 group :development do
