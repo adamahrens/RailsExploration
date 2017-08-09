@@ -5,6 +5,7 @@ RSpec.describe TimeOff, type: :model do
     before do
       @timeoff = TimeOff.create(date: Date.today, rationale: 'Vacation')
     end
+
     it 'can create a TimeOff request' do
       expect(@timeoff).to be_valid
     end
