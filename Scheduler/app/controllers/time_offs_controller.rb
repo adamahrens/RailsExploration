@@ -12,7 +12,7 @@ class TimeOffsController < ApplicationController
     if @timeoff.save
       redirect_to time_off_path(@timeoff), notice: 'Time Off Request saved'
     else
-      render :new
+      redirect_to new_time_off_path
     end
   end
 
