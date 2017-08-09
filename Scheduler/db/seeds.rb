@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+100.times do |index|
+  now = Date.today
+  time_ago = now - index
+  TimeOff.create(date: time_ago, rationale: "#{index} Going on vacation")
+end
