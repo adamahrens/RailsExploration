@@ -9,6 +9,8 @@ class TimeOffsController < ApplicationController
 
   def create
     @timeoff = TimeOff.create(time_off_params)
+    @timeoff.user = current_user
+
     if @timeoff.save
       redirect_to time_off_path(@timeoff), notice: 'Time Off Request saved'
     else

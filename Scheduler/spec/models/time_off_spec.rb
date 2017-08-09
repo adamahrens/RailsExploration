@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe TimeOff, type: :model do
   describe 'creation' do
     before do
-      @timeoff = TimeOff.create(date: Date.today, rationale: 'Vacation')
+      @user = User.create(email: 'first@last.com', first_name: 'First', last_name: 'Last', password: 'password123', password_confirmation: 'password123')
+      @timeoff = TimeOff.create(date: Date.today, rationale: 'Vacation', user_id: @user.id)
     end
 
     it 'can create a TimeOff request' do
