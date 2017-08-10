@@ -3,10 +3,10 @@
 </div>
 
 <ul class="custom-navigation-bar nav nav-tabs">
-  <li class="active">
+  <li class="<%= navigation_active?(root_path) %>">
     <%= link_to 'Home', root_path %>
   </li>
-  <li>
+  <li class="<%= navigation_active?(time_offs_path) %>">
     <%= link_to 'Requests', time_offs_path %>
   </li>
   <li class="dropdown pull-right">
