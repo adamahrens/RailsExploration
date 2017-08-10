@@ -1,30 +1,33 @@
+<div class="logo">
+  <h1>TimeTracker</h1>
+</div>
+
 <ul class="custom-navigation-bar nav nav-tabs">
   <li class="active">
-    <a href="#">Home</a>
+    <%= link_to 'Home', root_path %>
   </li>
   <li>
-    <a href="#">Profile</a>
-  </li>
-  <li class="disabled">
-    <a href="#">Messages</a>
+    <%= link_to 'Requests', time_offs_path %>
   </li>
   <li class="dropdown pull-right">
-    <a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown<strong class="caret"></strong>
+    <a href="#" data-toggle="dropdown" class="dropdown-toggle">Account<strong class="caret"></strong>
     </a>
     <ul class="dropdown-menu">
-      <li>
-        <a href="#">Action</a>
+      <% if user_signed_in? %>
+      <li class="dropdown-header">
+        Hello <%= "#{current_user.first_name} #{current_user.last_name}" %>
       </li>
       <li>
-        <a href="#">Another action</a>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      </li>
+      <% else %>
+      <li>
+        <%= link_to "Login", new_user_session_path %>
       </li>
       <li>
-        <a href="#">Something else here</a>
+        <%= link_to "Sign Up", new_user_registration_path %>
       </li>
-      <li class="divider"></li>
-      <li>
-        <a href="#">Separated link</a>
-      </li>
+      <% end %>
     </ul>
   </li>
 </ul>
