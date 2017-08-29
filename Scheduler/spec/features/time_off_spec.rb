@@ -1,13 +1,14 @@
 require 'rails_helper'
 
 describe 'navigation' do
-  describe 'index page' do
-    before do
-      user = FactoryGirl.create(:user)
-      login_as(user, scope: :user)
-      @user = user
-    end
+  before do
+    user = FactoryGirl.create(:user)
+    login_as(user, scope: :user)
+    @post1 = FactoryGirl.create(:time_off1)
+    @user = user
+  end
 
+  describe 'index page' do
     it 'can be reached successfully' do
       visit time_offs_path
       expect(page.status_code).to eq(200)
@@ -19,10 +20,17 @@ describe 'navigation' do
     end
 
     it 'has a list of time of requests' do
-      post1 = FactoryGirl.create(:time_off1)
       post2 = FactoryGirl.create(:time_off2)
       visit time_offs_path
-      expect(page).to have_content(/#{post1.rationale}|#{post2.rationale}/)
+      expect(page).to have_content(/#{@post1.rationale}|#{post2.rationale}/)
+    end
+  end
+
+  describe 'deletion' do
+    it 'can be deleted' do
+      visit time_offs_path
+      click_link "delete_#{@post1.id}"
+      expect(page).to_not have_content(/#{@post1.rationale}/)
     end
   end
 
@@ -58,6 +66,25 @@ describe 'navigation' do
       fill_in 'time_off[date]', with: now
       click_on 'Save'
       expect(User.last.time_offs.last.rationale).to eq(rationale)
+    end
+  end
+
+  describe 'edit' do
+    before do
+      visit time_offs_path
+      click_link "edit_#{@post1.id}"
+    end
+    it 'can be reached from clicking Edit on Index page' do
+      expect(page.status_code).to eq(200)
+    end
+
+    it 'can be updated with new information' do
+      yesterday = Date.yesterday
+      rationale = 'Just kidding, Im heading to the beach'
+      fill_in 'time_off[rationale]', with: rationale
+      fill_in 'time_off[date]', with: yesterday
+      click_on 'Save'
+      expect(page).to have_content(rationale)
     end
   end
 end

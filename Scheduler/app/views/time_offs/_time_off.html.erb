@@ -12,4 +12,8 @@
   <td>
     <%= time_off.rationale %>
   </td>
+  <td>
+    <%= link_to 'Edit', edit_time_off_path(time_off), class: 'btn btn-info', id: "edit_#{time_off.id}" %>
+    <%= link_to 'Delete', time_off_path(time_off), class: 'btn btn-danger', id: "delete_#{time_off.id}", method: :delete %>
+  </td>
 </tr>

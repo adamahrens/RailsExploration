@@ -1,12 +1,31 @@
 class TimeOffsController < ApplicationController
-  before_action :find_time_off, only: [:show]
+  before_action :find_time_off, only: [:show, :edit, :update, :destroy]
 
   def index
-    @timeoff = TimeOff.all
+    @timeoff = TimeOff.all.order(:created_at)
   end
 
   def new
     @timeoff = TimeOff.new
+  end
+
+  def show
+  end
+
+  def edit
+  end
+
+  def destroy
+    @timeoff.delete
+    redirect_to time_offs_path, notice: 'Time off has been deleted'
+  end
+
+  def update
+    if @timeoff.update(time_off_params)
+      redirect_to @timeoff, notice: 'Time Off has been updated'
+    else
+      render :edit
+    end
   end
 
   def create
@@ -19,8 +38,6 @@ class TimeOffsController < ApplicationController
       redirect_to new_time_off_path
     end
   end
-
-  def show; end
 
   private
 

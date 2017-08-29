@@ -1,0 +1,7 @@
+<%= form_for(@timeoff) do |form| %>
+<%= form.label :date %>
+<%= form.date_field :date%>
+<%= form.label :rationale%>
+<%= form.text_field :rationale %>
+<%= form.submit 'Save' %>
+<% end %>
