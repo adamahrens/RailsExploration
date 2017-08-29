@@ -1,0 +1,17 @@
+<%# class="success" %>
+<tr>
+  <td>
+    <%= time_off.id %>
+  </td>
+  <td>
+    <%= time_ago_in_words(time_off.date) %>
+  </td>
+  <td>
+    <%= time_off.user.last_name %>
+    ,
+    <%= time_off.user.first_name %>
+  </td>
+  <td>
+    <%= time_off.rationale %>
+  </td>
+</tr>

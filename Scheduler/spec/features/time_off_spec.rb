@@ -3,14 +3,26 @@ require 'rails_helper'
 describe 'navigation' do
   describe 'index page' do
     before do
-      visit time_offs_path
+      user = User.create(email: 'first@last.com', first_name: 'First', last_name: 'Last', password: 'password123', password_confirmation: 'password123')
+      login_as(user, scope: :user)
+      @user = user
     end
+
     it 'can be reached successfully' do
+      visit time_offs_path
       expect(page.status_code).to eq(200)
     end
 
     it 'has a heading of Time Off Requests' do
+      visit time_offs_path
       expect page.has_content?('Time Off Requests')
+    end
+
+    it 'has a list of time of requests' do
+      post1 = TimeOff.create(date: Date.today, rationale: 'Vacation1', user_id: @user.id)
+      post2 = TimeOff.create(date: Date.today, rationale: 'Vacation2', user_id: @user.id)
+      visit time_offs_path
+      expect(page).to have_content(/#{post1.rationale}|#{post2.rationale}/)
     end
   end
 

@@ -1,7 +1,9 @@
 class TimeOffsController < ApplicationController
   before_action :find_time_off, only: [:show]
 
-  def index; end
+  def index
+    @timeoff = TimeOff.all
+  end
 
   def new
     @timeoff = TimeOff.new
