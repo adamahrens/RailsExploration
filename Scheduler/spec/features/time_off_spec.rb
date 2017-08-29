@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'navigation' do
   describe 'index page' do
     before do
-      user = User.create(email: 'first@last.com', first_name: 'First', last_name: 'Last', password: 'password123', password_confirmation: 'password123')
+      user = FactoryGirl.create(:user)
       login_as(user, scope: :user)
       @user = user
     end
@@ -19,8 +19,8 @@ describe 'navigation' do
     end
 
     it 'has a list of time of requests' do
-      post1 = TimeOff.create(date: Date.today, rationale: 'Vacation1', user_id: @user.id)
-      post2 = TimeOff.create(date: Date.today, rationale: 'Vacation2', user_id: @user.id)
+      post1 = FactoryGirl.create(:time_off1)
+      post2 = FactoryGirl.create(:time_off2)
       visit time_offs_path
       expect(page).to have_content(/#{post1.rationale}|#{post2.rationale}/)
     end
@@ -28,7 +28,7 @@ describe 'navigation' do
 
   describe 'creation' do
     before do
-      user = User.create(email: 'first@last.com', first_name: 'First', last_name: 'Last', password: 'password123', password_confirmation: 'password123')
+      user = FactoryGirl.create(:user)
       login_as(user, scope: :user)
       visit new_time_off_path
     end

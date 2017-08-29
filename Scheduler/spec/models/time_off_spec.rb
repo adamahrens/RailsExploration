@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe TimeOff, type: :model do
   before do
-    @user = User.create(email: 'first@last.com', first_name: 'First', last_name: 'Last', password: 'password123', password_confirmation: 'password123')
-    @timeoff = TimeOff.create(date: Date.today, rationale: 'Vacation', user_id: @user.id)
+    @user = FactoryGirl.create(:user)
+    @timeoff = FactoryGirl.create(:time_off1)
   end
 
   describe 'creation' do
