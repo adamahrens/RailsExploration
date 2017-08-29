@@ -7,9 +7,7 @@
     <%= time_ago_in_words(time_off.date) %>
   </td>
   <td>
-    <%= time_off.user.last_name %>
-    ,
-    <%= time_off.user.first_name %>
+    <%= time_off.user.full_name %>
   </td>
   <td>
     <%= time_off.rationale %>
