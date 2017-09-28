@@ -56,7 +56,7 @@ describe 'navigation' do
 
     it 'redirects to form if invalid' do
       click_on 'Save'
-      expect(current_path).to eq(new_time_off_path)
+      expect(page).to have_content('New')
     end
 
     it 'will have an associated User' do
