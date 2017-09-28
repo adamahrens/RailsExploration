@@ -18,12 +18,12 @@ class OrdersController < ApplicationController
     @order.seller_id = @seller.id
     @order.listing_id = @listing.id
 
-    Stripe.api_key = Rails.application.secrets.stripe_secret_key
+    Stripe.api_key = Rails.application.secrets.stripe_api_key
     begin
       Stripe::Charge.create(amount: (@listing.price * 100).floor,
-                          currency: 'usd',
-                            source: params[:stripe_token],
-                       description: "Charge for #{@listing.description}")
+        currency: 'usd',
+        source: params[:stripe_token],
+      description: "Charge for #{@listing.description}")
       flash[:notice] = 'Thanks for your order!'
     rescue Stripe::CardError => error
       flash[:danger] = error.message
@@ -63,17 +63,17 @@ class OrdersController < ApplicationController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_order
-      @order = Order.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_order
+    @order = Order.find(params[:id])
+  end
 
-    def set_listing
-      @listing = Listing.find(params[:listing_id])
-    end
+  def set_listing
+    @listing = Listing.find(params[:listing_id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def order_params
-      params.require(:order).permit(:address, :city, :state, :stripe_token)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def order_params
+    params.require(:order).permit(:address, :city, :state, :stripe_token)
+  end
 end

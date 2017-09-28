@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show, :update, :destroy, :seller]
+  before_action :authenticate_user!, except: [:index, :show, :update, :destroy, :seller]
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
   before_action :check_same_user, only: [:edit, :update, :destroy]
 
@@ -71,19 +71,19 @@ class ListingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_listing
-      @listing = Listing.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_listing
+    @listing = Listing.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def listing_params
-      params.require(:listing).permit(:name, :description, :price, :avatar)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def listing_params
+    params.require(:listing).permit(:name, :description, :price, :avatar)
+  end
 
-    def check_same_user
-      if current_user != @listing.user
-        redirect_to root_path, alert: "Only Listing's User can modify"
-      end
+  def check_same_user
+    if current_user != @listing.user
+      redirect_to root_path, alert: "Only Listing's User can modify"
     end
+  end
 end
