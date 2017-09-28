@@ -1,7 +1,23 @@
 <%= form_for(@timeoff) do |form| %>
-<%= form.label :date %>
-<%= form.date_field :date%>
-<%= form.label :rationale%>
-<%= form.text_field :rationale %>
-<%= form.submit 'Save' %>
+
+<% if @timeoff.errors.any? %>
+<% @timeoff.errors.full_messages.each do |message| %>
+<%= js add_gritter(message, title: 'Time Off Error', sticky: false, time: 3000) %>
+<% end %>
+<% end %>
+
+<div class="form-group">
+  <%= form.label :date %>
+  <%= form.date_field :date, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+  <%= form.label :rationale%>
+  <%= form.text_field :rationale, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+  <%= form.submit 'Save', class: 'btn btn-default' %>
+</div>
+
 <% end %>

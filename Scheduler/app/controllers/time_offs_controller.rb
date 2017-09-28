@@ -2,7 +2,7 @@ class TimeOffsController < ApplicationController
   before_action :find_time_off, only: [:show, :edit, :update, :destroy]
 
   def index
-    @timeoff = TimeOff.all.order(:created_at)
+    @timeoff = TimeOff.all.order(created_at: :desc)
   end
 
   def new
@@ -35,7 +35,7 @@ class TimeOffsController < ApplicationController
     if @timeoff.save
       redirect_to time_off_path(@timeoff), notice: 'Time Off Request saved'
     else
-      redirect_to new_time_off_path
+      render :new
     end
   end
 
