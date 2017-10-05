@@ -12,9 +12,11 @@
   <li class="<%= navigation_active?(new_time_off_path) %>">
     <%= link_to 'New Time Off', new_time_off_path %>
   </li>
+  <% if user_signed_in? && is_admin?(current_user) %>
   <li class="<%= navigation_active?(user_index_path) %>">
     <%= link_to 'Employees', user_index_path %>
   </li>
+  <% end %>
   <li class="dropdown pull-right">
     <a href="#" data-toggle="dropdown" class="dropdown-toggle">Account<strong class="caret"></strong>
     </a>
@@ -24,6 +26,11 @@
         Hello
         <%= "#{current_user.first_name} #{current_user.last_name}" %>
       </li>
+      <% if user_signed_in? && is_admin?(current_user) %>
+      <li class="<%= navigation_active?(user_index_path) %>">
+        <%= link_to 'Admin', admin_root_path %>
+      </li>
+      <% end %>
       <li>
         <%= link_to "Logout", destroy_user_session_path, method: :delete %>
       </li>

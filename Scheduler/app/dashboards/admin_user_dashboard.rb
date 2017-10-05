@@ -35,9 +35,9 @@ class AdminUserDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :time_offs,
-    :id,
+    :first_name,
+    :last_name,
     :email,
-    :encrypted_password,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
