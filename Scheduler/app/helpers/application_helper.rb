@@ -3,8 +3,8 @@ module ApplicationHelper
     "active" if current_page?(path)
   end
 
-  def is_admin?(user)
-    #!user.type.nil?
+  def admin?(user)
+    # !user.type.nil?
     user.type == 'AdminUser'
   end
 end

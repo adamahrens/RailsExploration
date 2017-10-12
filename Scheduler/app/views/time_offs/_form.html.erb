@@ -16,7 +16,7 @@
   <%= form.text_field :rationale, class: 'form-control' %>
 </div>
 
-<%= render partial: 'status', locals: { form: form } if is_admin?(current_user) %>
+<%= render partial: 'status', locals: { form: form } if admin?(current_user) %>
 
 <div class="form-group">
   <%= form.submit 'Save', class: 'btn btn-default' %>

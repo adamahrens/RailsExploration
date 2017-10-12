@@ -52,7 +52,7 @@ Rails.application.routes.draw do
     resources :users
     resources :time_offs
     resources :admin_users
-    root to: "users#index"
+    root to: 'users#index'
   end
 
   get 'user/index'
