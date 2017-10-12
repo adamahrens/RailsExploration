@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: time_offs
+#
+#  id         :integer          not null, primary key
+#  date       :date
+#  rationale  :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  user_id    :integer
+#  status     :integer          default("submitted")
+#
+
 require 'rails_helper'
 
 RSpec.describe TimeOff, type: :model do
