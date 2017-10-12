@@ -10,6 +10,7 @@ class TimeOffDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
     id: Field::Number,
+    status: Field::Text,
     date: Field::DateTime,
     rationale: Field::Text,
     created_at: Field::DateTime,
@@ -23,7 +24,7 @@ class TimeOffDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :user,
-    :id,
+    :status,
     :date,
     :rationale,
   ].freeze
@@ -33,6 +34,7 @@ class TimeOffDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :user,
     :id,
+    :status,
     :date,
     :rationale,
     :created_at,

@@ -26,8 +26,8 @@
         Hello
         <%= "#{current_user.first_name} #{current_user.last_name}" %>
       </li>
-      <% if user_signed_in? && is_admin?(current_user) %>
-      <li class="<%= navigation_active?(user_index_path) %>">
+      <% if is_admin?(current_user) %>
+      <li>
         <%= link_to 'Admin', admin_root_path %>
       </li>
       <% end %>

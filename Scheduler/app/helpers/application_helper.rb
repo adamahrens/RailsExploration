@@ -4,6 +4,7 @@ module ApplicationHelper
   end
 
   def is_admin?(user)
-    !user.type.nil?
+    #!user.type.nil?
+    user.type == 'AdminUser'
   end
 end
