@@ -2,8 +2,9 @@ class TimeOffsController < ApplicationController
   before_action :find_time_off, only: [:show, :edit, :update, :destroy]
 
   def index
-    hash = { user_id: current_user.id } unless current_user.admin?
-    @timeoff = TimeOff.all.where(hash).order(created_at: :desc)
+    # hash = { user_id: current_user.id } unless current_user.admin?
+    # @timeoff = TimeOff.all.where(hash).order(created_at: :desc)
+    @timeoff = TimeOff.time_off_by(current_user).order(created_at: :desc)
   end
 
   def new

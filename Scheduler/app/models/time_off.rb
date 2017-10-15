@@ -15,4 +15,5 @@ class TimeOff < ApplicationRecord
   enum status: { submitted: 0, approved: 1, rejected: 2 }
   belongs_to :user
   validates :date, :rationale, presence: true
+  scope :time_off_by, ->(user) { where(user_id: user.id) unless user.admin? }
 end
