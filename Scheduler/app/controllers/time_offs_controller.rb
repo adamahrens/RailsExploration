@@ -2,7 +2,8 @@ class TimeOffsController < ApplicationController
   before_action :find_time_off, only: [:show, :edit, :update, :destroy]
 
   def index
-    @timeoff = TimeOff.all.order(created_at: :desc)
+    hash = { user_id: current_user.id } unless current_user.admin?
+    @timeoff = TimeOff.all.where(hash).order(created_at: :desc)
   end
 
   def new
@@ -13,6 +14,8 @@ class TimeOffsController < ApplicationController
   end
 
   def edit
+    # Pundit
+    authorize @timeoff
   end
 
   def destroy
@@ -21,6 +24,8 @@ class TimeOffsController < ApplicationController
   end
 
   def update
+    # Pundit
+    authorize @timeoff
     if @timeoff.update(time_off_params)
       redirect_to @timeoff, notice: 'Time Off has been updated'
     else

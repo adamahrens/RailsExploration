@@ -20,7 +20,7 @@ describe 'admin workflow' do
     end
 
     it 'cant be changed by regular user' do
-      logout(:user)
+      logout(@admin_user)
       user = FactoryGirl.create(:user)
       login_as(user, scope: :user)
       visit edit_time_off_path(@timeoff)

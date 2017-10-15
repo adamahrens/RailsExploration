@@ -4,7 +4,7 @@ describe 'navigation' do
   before do
     user = FactoryGirl.create(:user)
     login_as(user, scope: :user)
-    @post1 = FactoryGirl.create(:time_off1)
+    @post1 = TimeOff.create(date: Date.today, rationale: 'Vacation', user_id: user.id)
     @user = user
   end
 
@@ -22,7 +22,24 @@ describe 'navigation' do
     it 'has a list of time of requests' do
       post2 = FactoryGirl.create(:time_off2)
       visit time_offs_path
-      expect(page).to have_content(/#{@post1.rationale}|#{post2.rationale}/)
+      expect(page).to have_content(/#{@post1.rationale}/)
+    end
+
+    it 'has a scope of requests to only user' do
+      other_user = FactoryGirl.create(:user_two)
+      other_post = TimeOff.create(date: Date.today, rationale: 'Boom', user_id: other_user.id)
+      visit time_offs_path
+      expect(page).to_not have_content(/#{other_post.rationale}/)
+    end
+
+    it 'shows all requests for admin user' do
+      other_user = FactoryGirl.create(:user_two)
+      other_post = TimeOff.create(date: Date.today, rationale: 'Boom', user_id: other_user.id)
+      logout(@user)
+      admin_user = FactoryGirl.create(:admin_user)
+      login_as(admin_user, scope: :user)
+      visit time_offs_path
+      expect(page).to have_content(/#{@post1.rationale}|#{other_post.rationale}/)
     end
   end
 
@@ -71,8 +88,12 @@ describe 'navigation' do
 
   describe 'edit' do
     before do
+      logout(@user)
+      @other_user = User.create(first_name: 'Leroy', last_name: 'Jenkins', email: 'b@b.com', password: 'password123', password_confirmation: 'password123')
+      @other_time_off = TimeOff.create(date: Date.today, rationale: 'Gone', user_id: @other_user.id)
+      login_as(@other_user, scope: :user)
       visit time_offs_path
-      click_link "edit_#{@post1.id}"
+      click_link "edit_#{@other_time_off.id}"
     end
     it 'can be reached from clicking Edit on Index page' do
       expect(page.status_code).to eq(200)
@@ -85,6 +106,14 @@ describe 'navigation' do
       fill_in 'time_off[date]', with: yesterday
       click_on 'Save'
       expect(page).to have_content(rationale)
+    end
+
+    it 'can not be updated by a non authorized user' do
+      logout(@user)
+      wrong_user = FactoryGirl.create(:user_two)
+      login_as(wrong_user, scope: :user)
+      visit edit_time_off_path(@post1)
+      expect(current_path).to eq(root_path)
     end
   end
 end
