@@ -4,7 +4,7 @@
     <%= time_off.id %>
   </td>
   <td>
-    <%= time_off.status %>
+    <%= status_span(time_off) %>
   </td>
   <td>
     <%= time_ago_in_words(time_off.date) %>
@@ -16,7 +16,9 @@
     <%= time_off.rationale %>
   </td>
   <td>
+    <% if policy(time_off).update? %>
     <%= link_to 'Edit', edit_time_off_path(time_off), class: 'btn btn-info', id: "edit_#{time_off.id}" %>
     <%= link_to 'Delete', time_off_path(time_off), class: 'btn btn-danger', id: "delete_#{time_off.id}", method: :delete %>
+    <% end %>
   </td>
 </tr>
