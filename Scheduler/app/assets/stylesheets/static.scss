@@ -17,8 +17,8 @@
 .glyphicon {
   padding-left: 8px;
   padding-right: 8px;
-}
 
-.glyphicon:hover {
-  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
 }
