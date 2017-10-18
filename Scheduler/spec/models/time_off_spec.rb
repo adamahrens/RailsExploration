@@ -24,9 +24,15 @@ RSpec.describe TimeOff, type: :model do
       expect(@timeoff).to be_valid
     end
 
-    it 'cant be created without a date and rationale' do
+    it 'cant be created without a date, overtime_request, and rationale' do
       @timeoff.date = nil
       @timeoff.rationale = nil
+      @timeoff.overtime_request = nil
+      expect(@timeoff).to_not be_valid
+    end
+
+    it 'must have a value for overtime_request greater than 0.0' do
+      @timeoff.overtime_request = 0.0
       expect(@timeoff).to_not be_valid
     end
   end

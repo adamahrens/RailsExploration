@@ -11,5 +11,5 @@ user = User.create(email: 'first@last.com', first_name: 'First', last_name: 'Las
 100.times do |index|
   now = Date.today
   time_ago = now - index
-  TimeOff.create(date: time_ago, rationale: "#{index} Going on vacation", user_id: user.id)
+  TimeOff.create(date: time_ago, rationale: "#{index} Going on vacation", overtime_request: 0.5, user_id: user.id)
 end
