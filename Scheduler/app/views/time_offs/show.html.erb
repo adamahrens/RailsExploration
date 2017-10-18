@@ -16,5 +16,5 @@
 
 <h4>Hours</h4>
 <p>
-  <%= @timeoff.overtime_request %>
+  <%= number_with_precision(@timeoff.overtime_request, precision: 2) %>
 </p>
