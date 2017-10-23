@@ -9,6 +9,9 @@
   </head>
 
   <body>
+    <% if Rails.env.development? %>
+    <%= render 'peek/bar' %>
+    <% end %>
     <div class="container">
       <div class="row">
         <div class="col-md-12">

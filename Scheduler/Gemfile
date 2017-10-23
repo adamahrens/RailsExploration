@@ -31,6 +31,9 @@ group :development, :test do
   gem 'hirb'
   gem 'meta_request'
   gem 'bullet'
+  gem 'peek'
+  gem 'peek-pg'
+  gem 'peek-performance_bar'
 end
 
 group :development do

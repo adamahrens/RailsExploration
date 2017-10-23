@@ -48,6 +48,8 @@
 #
 
 Rails.application.routes.draw do
+  mount Peek::Railtie => '/peek'
+
   namespace :admin do
     resources :users
     resources :time_offs
