@@ -46,6 +46,26 @@ RSpec.describe User, type: :model do
       @user.phoneNumber = nil
       expect(@user).to_not be_valid
     end
+
+    it 'must have a valid phoneNumber of 10 digits with no dashes' do
+      @user.phoneNumber = '651-408-5143'
+      expect(@user).to_not be_valid
+
+      @user.phoneNumber = 'Im not a number'
+      expect(@user).to_not be_valid
+
+      @user.phoneNumber = '+1 (319) 622-3922'
+      expect(@user).to_not be_valid
+
+      @user.phoneNumber = 'aBcDeFgHiJ'
+      expect(@user).to_not be_valid
+
+      @user.phoneNumber = 'boom 6514085143'
+      expect(@user).to_not be_valid
+
+      @user.phoneNumber = '6514085143'
+      expect(@user).to be_valid
+    end
   end
 
   describe 'custom full name method' do
