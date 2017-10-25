@@ -6,7 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.create(email: 'first@last.com', first_name: 'First', last_name: 'Last', password: 'password123', password_confirmation: 'password123')
+user = User.create(email: 'first@last.com',
+  first_name: 'First',
+  last_name: 'Last',
+  password: 'password123',
+  password_confirmation: 'password123',
+phoneNumber: '6514085145')
 
 100.times do |index|
   now = Date.today

@@ -27,7 +27,7 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :trackable, :validatable
 
   has_many :time_offs
-  validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, :phoneNumber, presence: true
 
   def full_name
     "#{first_name} #{last_name}"
