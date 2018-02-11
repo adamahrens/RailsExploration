@@ -1,9 +1,0 @@
-<div>
-	<h2>Work for <%= work.project.name %></h2>
-	<p>Total hours logged <%= work.hours %></p>
-	<p>Active Developer is <%= work.user.last_name %>, <%= work.user.first_name %></p>
-	<p>Started on <%= work.date_performed  %></p>
-	<% if work.document %>
-		<%= link_to work.document, "/uploads/#{work.document}", target: "_blank" %>
-	<% end %>
-</div>
