@@ -18,3 +18,7 @@ phoneNumber: '6514085145')
   time_ago = now - index
   TimeOff.create(date: time_ago, rationale: "#{index} Going on vacation", overtime_request: 0.5, user_id: user.id)
 end
+
+100.times do |index|
+  AuditLog.create(user_id: user.id, status: 0, start_date: (Date.today - 6.days))
+end
