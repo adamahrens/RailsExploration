@@ -18,6 +18,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  type                   :string
+#  phoneNumber            :string
 #
 
 class AdminUser < User

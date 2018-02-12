@@ -13,12 +13,12 @@ user = User.create(email: 'first@last.com',
   password_confirmation: 'password123',
 phoneNumber: '6514085145')
 
-100.times do |index|
+10.times do |index|
   now = Date.today
   time_ago = now - index
   TimeOff.create(date: time_ago, rationale: "#{index} Going on vacation", overtime_request: 0.5, user_id: user.id)
 end
 
-100.times do |index|
+10.times do |index|
   AuditLog.create(user_id: user.id, status: 0, start_date: (Date.today - 6.days))
 end
