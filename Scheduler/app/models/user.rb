@@ -29,6 +29,8 @@ class User < ApplicationRecord
   has_many :time_offs
   validates :first_name, :last_name, :phoneNumber, presence: true
 
+  has_many :audit_logs
+
   # regex means 10 digits only allowed at the beginning
   validates :phoneNumber, format: { with: /\A\d{10}/, message: 'only 10 digits allowed' }
 

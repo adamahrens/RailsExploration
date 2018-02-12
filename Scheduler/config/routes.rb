@@ -48,6 +48,7 @@
 #
 
 Rails.application.routes.draw do
+  resources :audit_logs
   mount Peek::Railtie => '/peek'
 
   namespace :admin do
