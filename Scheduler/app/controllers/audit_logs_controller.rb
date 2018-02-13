@@ -1,6 +1,6 @@
 class AuditLogsController < ApplicationController
   def index
-    @audit_logs = AuditLog.all
+    @audit_logs = AuditLog.all.includes(:user)
 
     # Uses Pundit to validate against audit_log_policy
     authorize @audit_logs
