@@ -9,35 +9,40 @@
   <li class="<%= navigation_active?(time_offs_path) %>">
     <%= link_to 'Requests', time_offs_path %>
   </li>
+  <% if user_signed_in? && policy(AuditLog).index? %>
+    <li class="<%= navigation_active?(audit_logs_path) %>">
+      <%= link_to 'Audit Log', audit_logs_path %>
+    </li>
+  <% end %>
   <li class="<%= navigation_active?(new_time_off_path) %>">
     <%= link_to 'New Time Off', new_time_off_path %>
   </li>
   <% if user_signed_in? && admin?(current_user) %>
-  <li class="<%= navigation_active?(user_index_path) %>">
-    <%= link_to 'Employees', user_index_path %>
-  </li>
+    <li class="<%= navigation_active?(user_index_path) %>">
+      <%= link_to 'Employees', user_index_path %>
+    </li>
   <% end %>
   <li class="dropdown pull-right">
     <a href="#" data-toggle="dropdown" class="dropdown-toggle">Account<strong class="caret"></strong>
     </a>
     <ul class="dropdown-menu">
       <% if user_signed_in? %>
-      <li class="dropdown-header">
-        Hello
-        <%= "#{current_user.first_name} #{current_user.last_name}" %>
-      </li>
-      <% if admin?(current_user) %>
-      <li>
-        <%= link_to 'Admin', admin_root_path %>
-      </li>
-      <% end %>
-      <li>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "Login", new_user_session_path %>
-      </li>
+        <li class="dropdown-header">
+          Hello
+          <%= "#{current_user.first_name} #{current_user.last_name}" %>
+        </li>
+        <% if admin?(current_user) %>
+          <li>
+            <%= link_to 'Admin', admin_root_path %>
+          </li>
+        <% end %>
+        <li>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "Login", new_user_session_path %>
+        </li>
       <% end %>
     </ul>
   </li>
