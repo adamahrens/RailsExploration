@@ -1,0 +1,10 @@
+<tr>
+  <td>
+    <%= audit_log.user.full_name %>
+  </td>
+  <td>
+    <% if policy(audit_log).index? %>
+      <%= link_to '', root_path, class: 'glyphicon glyphicon-pencil', id: "edit_#{audit_log.id}" %>
+    <% end %>
+  </td>
+</tr>
