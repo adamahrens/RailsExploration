@@ -4,7 +4,7 @@ class TimeOffsController < ApplicationController
   def index
     # hash = { user_id: current_user.id } unless current_user.admin?
     # @timeoff = TimeOff.all.where(hash).order(created_at: :desc)
-    @timeoff = TimeOff.time_off_by(current_user).order(created_at: :desc).includes([:user])
+    @timeoff = TimeOff.time_off_by(current_user).order(created_at: :desc).includes([:user]).page params[:page]
   end
 
   def new
