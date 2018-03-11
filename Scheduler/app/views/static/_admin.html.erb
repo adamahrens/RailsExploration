@@ -7,8 +7,9 @@
   </div>
 
   <div class="pending-submissions row">
-    <div class="homepage-block col-md-3">
-      <h3>Submissions</h3>
-    </div>
+    <h3>Confirmation Log</h3>
+    <% @recents.each do |recent| %>
+      <%= render partial: 'recent_audit', locals: { recent: recent } %>
+    <% end %>
   </div>
 </div>

@@ -1,0 +1,19 @@
+<div class="homepage-block col-md-3">
+  <h4><%= recent.user.full_name %></h4>
+  <p>
+    <span>
+      Week Starting:
+      <%= recent.start_date %></span>
+  </p>
+  <% if recent.end_date %>
+    <p>
+      <span>Confirmed at:
+        <%= recent.end_date %></span>
+    </p>
+  <% end %>
+
+  <p>
+    <span>Status:
+      <%= audit_status_span(recent) %></span>
+  </p>
+</div>
