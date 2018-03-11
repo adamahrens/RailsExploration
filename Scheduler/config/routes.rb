@@ -60,7 +60,11 @@ Rails.application.routes.draw do
 
   get 'user/index'
   get 'static/homepage'
-  resources :time_offs
+  resources :time_offs do
+    member do
+      get :approve
+    end
+  end
   devise_for :users, skip: [:registrations]
   root to: 'static#homepage'
 end

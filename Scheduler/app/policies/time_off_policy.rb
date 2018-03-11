@@ -5,4 +5,8 @@ class TimeOffPolicy < ApplicationPolicy
     # Otherwise Admin Users should be allowed to edit
     (record.user_id == user.id && record.approved? == false) || user.admin?
   end
+
+  def approve?
+    user.admin?
+  end
 end

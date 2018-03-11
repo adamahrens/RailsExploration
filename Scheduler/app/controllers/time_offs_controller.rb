@@ -1,5 +1,5 @@
 class TimeOffsController < ApplicationController
-  before_action :find_time_off, only: [:show, :edit, :update, :destroy]
+  before_action :find_time_off, only: [:show, :edit, :update, :destroy, :approve]
 
   def index
     # hash = { user_id: current_user.id } unless current_user.admin?
@@ -8,6 +8,12 @@ class TimeOffsController < ApplicationController
     .order(created_at: :desc)
     .includes([:user])
     .page(params[:page])
+  end
+
+  def approve
+    @timeoff.approved!
+    flash[:notice] = "Time off has been approved"
+    redirect_to root_path
   end
 
   def new

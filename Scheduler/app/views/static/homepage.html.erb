@@ -9,3 +9,11 @@
     <a class="btn btn-primary btn-large" href="#">Learn more</a>
   </p>
 </div>
+
+<div>
+  <% if user_signed_in? && admin?(current_user) %>
+    <%= render "static/admin" %>
+    <% elsif user_signed_in? %>
+      <%= render "static/employee" %>
+    <% end %>
+  </div>

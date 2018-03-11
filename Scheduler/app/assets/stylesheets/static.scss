@@ -22,3 +22,32 @@
     text-decoration: none;
   }
 }
+$border-radius-default: #E3E3E3;
+@mixin radius {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border-color: $border-radius-default;
+  border: 2px solid $border-radius-default;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.homepage-block {
+  margin: 20px;
+  padding: 15px;
+  background-color: #1D3C91;
+  color: white;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.pending-overtime-approvals {
+  @include radius;
+}
+
+.pending-submissions {
+  @include radius;
+}

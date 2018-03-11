@@ -1,0 +1,20 @@
+<div class="homepage-block col-md-3">
+  <h4><%= pending.user.full_name %></h4>
+  <p>
+    <span>
+      Date Submitted:
+      <%= pending.date %></span>
+  </p>
+  <p>
+    <span>Reason:
+      <%= pending.rationale %></span>
+  </p>
+  <div class="row">
+    <div class="col-md-6 column" %="%">
+      <%= link_to 'Approve', approve_time_off_path(pending), class: 'btn btn-success btn-block', id:"approved_#{pending.id}" %>
+    </div>
+    <div class="col-md-6 column" %="%">
+      <%= link_to 'Review', edit_time_off_path(pending), class: 'btn btn-warning btn-block' %>
+    </div>
+  </div>
+</div>
