@@ -11,8 +11,9 @@ class TimeOffsController < ApplicationController
   end
 
   def approve
+    authorize @timeoff
     @timeoff.approved!
-    flash[:notice] = "Time off has been approved"
+    flash[:notice] = 'Time off has been approved'
     redirect_to root_path
   end
 
