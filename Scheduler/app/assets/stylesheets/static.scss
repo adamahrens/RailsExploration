@@ -55,3 +55,12 @@ $border-radius-default: #E3E3E3;
 .pending-submissions {
   @include radius;
 }
+
+.employee-blocks {
+  margin: 20px;
+}
+
+.pending-employee {
+  padding-bottom: 30px;
+  border-bottom: 2px solid $border-radius-default;
+}

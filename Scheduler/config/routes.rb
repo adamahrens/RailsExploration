@@ -48,7 +48,11 @@
 #
 
 Rails.application.routes.draw do
-  resources :audit_logs, only: [:show, :index, :create, :update]
+  resources :audit_logs, only: [:show, :index, :create, :update] do
+    member do
+      get :confirm
+    end
+  end
   mount Peek::Railtie => '/peek'
 
   namespace :admin do

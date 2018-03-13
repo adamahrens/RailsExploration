@@ -1,0 +1,8 @@
+<div class="pending-employee">
+  <h3>Week of
+    <%= audit.start_date%></h3>
+  <p>
+    Confirm that no overtime was performed for this week
+  </p>
+  <%= link_to "Confirm", confirm_audit_log_path(audit), id: "approve_#{audit.id}", class: 'btn btn-primary btn-lg', data: { confirm: 'Are you sure?' } %>
+</div>

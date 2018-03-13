@@ -1,1 +1,13 @@
-<h1>Employee</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-5 column jumbotron employee-blocks">
+      <h3>New Time Off</h3>
+    </div>
+    <div class="col-md-5 column jumbotron employee-blocks">
+      <h3>Pending Confirmation</h3>
+      <% @pending_audit_confirmations.each do |audit| %>
+        <%= render partial: 'pending_employee_audit', locals: { audit: audit } %>
+      <% end %>
+    </div>
+  </div>
+</div>
