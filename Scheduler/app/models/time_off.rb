@@ -18,4 +18,12 @@ class TimeOff < ApplicationRecord
   validates :date, :rationale, :overtime_request, presence: true
   validates :overtime_request, numericality: { greater_than: 0.0 }
   scope :time_off_by, ->(user) { where(user_id: user.id) unless user.admin? }
+
+  after_save :update_audit_logs
+
+  private
+  def update_audit_logs
+    audit_log = AuditLog.where(user_id: user_id, start_date: (date - 7.days..date)).last
+    audit_log.cofirmed!
+  end
 end

@@ -2,12 +2,16 @@
   <div class="row">
     <div class="col-md-5 column jumbotron employee-blocks">
       <h3>New Time Off</h3>
+      <%= link_to 'Request Overtime', new_time_off_path, class: 'btn btn-primary btn-lg' %>
     </div>
-    <div class="col-md-5 column jumbotron employee-blocks">
-      <h3>Pending Confirmation</h3>
-      <% @pending_audit_confirmations.each do |audit| %>
-        <%= render partial: 'pending_employee_audit', locals: { audit: audit } %>
-      <% end %>
-    </div>
+
+    <% unless @pending_audit_confirmations.count == 0 %>
+      <div class="col-md-5 column jumbotron employee-blocks">
+        <h3>Pending Confirmation (<%= @pending_audit_confirmations.count %>)</h3>
+        <% @pending_audit_confirmations.each do |audit| %>
+          <%= render partial: 'pending_employee_audit', locals: { audit: audit } %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
