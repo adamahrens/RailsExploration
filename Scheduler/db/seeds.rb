@@ -6,14 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-adam = User.create(email: 'a@a.com',
+adam = Employee.create(email: 'a@a.com',
   first_name: 'Adam',
   last_name: 'Ahrens',
   password: 'password123',
   password_confirmation: 'password123',
 phoneNumber: '9119112222')
 
-claudia = User.create(email: 'b@b.com',
+claudia = Employee.create(email: 'b@b.com',
   first_name: 'Claudia',
   last_name: 'Ahrens',
   password: 'password123',
@@ -30,13 +30,13 @@ phoneNumber: '9119114444')
 5.times do |index|
   now = Date.today
   time_ago = now - index
-  TimeOff.create(date: time_ago, rationale: "#{index} Going on vacation", overtime_request: 0.5, user_id: adam.id)
+  TimeOff.create(date: time_ago, rationale: "#{index} Going on vacation", overtime_request: 0.5, employee_id: adam.id)
 end
 
 5.times do |index|
   now = Date.today
   time_ago = now - index
-  TimeOff.create(date: time_ago, rationale: "#{index} Going on vacation", overtime_request: 0.5, user_id: claudia.id)
+  TimeOff.create(date: time_ago, rationale: "#{index} Going on vacation", overtime_request: 0.5, employee_id: claudia.id)
 end
 
 5.times do |index|

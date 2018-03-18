@@ -5,14 +5,20 @@ namespace :notification do
     # Schedule to run every Sunday
     # Iterate over all Employees (skip AdminUsers)
     # Send message with instructions & link to log time
-    User.all.each do |user|
-      SmsTool.send_sms(number: user.phoneNumber, message: 'Hello')
+    # Use Heroku Scheduler to daily but restrict it to be weekly executed
+    if Time.now.sunday?
+      employees = Employee.all
+      message = "Log in to Overtime"
+      employees.each do |employee|
+        SmsTool.send_sms(number: employee.phoneNumber, message: message)
+      end
     end
   end
 
   desc 'Sends Mail notification to Managers(AdminUsers) each day to inform of pending approvals'
   task manager_mail: :environment do
     puts 'Manager Mailer Rake Task'
+
     # Iterate over list of pending overtime requests
     overtime = TimeOff.all.where(status: 0)
     admins = AdminUsers.all

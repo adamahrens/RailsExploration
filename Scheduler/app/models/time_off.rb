@@ -27,7 +27,7 @@ class TimeOff < ApplicationRecord
 
     unless audit_log.nil?
       audit_log.status = 1
-      audit_log.save
+      audit_log.save!
     end
   end
 end
