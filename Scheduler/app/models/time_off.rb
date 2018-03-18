@@ -24,6 +24,10 @@ class TimeOff < ApplicationRecord
   private
   def update_audit_logs
     audit_log = AuditLog.where(user_id: user_id, start_date: (date - 7.days..date)).last
-    audit_log.cofirmed!
+
+    unless audit_log.nil?
+      audit_log.status = 1
+      audit_log.save
+    end
   end
 end
