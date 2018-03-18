@@ -9,4 +9,18 @@ namespace :notification do
       SmsTool.send_sms(number: user.phoneNumber, message: 'Hello')
     end
   end
+
+  desc 'Sends Mail notification to Managers(AdminUsers) each day to inform of pending approvals'
+  task manager_mail: :environment do
+    puts 'Manager Mailer Rake Task'
+    # Iterate over list of pending overtime requests
+    overtime = TimeOff.all.where(status: 0)
+    admins = AdminUsers.all
+
+    if overtime.count > 0
+      admins.each do |manager|
+        ManagerMailer.email(manager).deliver_later
+      end
+    end
+  end
 end
