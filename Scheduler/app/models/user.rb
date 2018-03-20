@@ -27,7 +27,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable
 
-  validates :first_name, :last_name, :phoneNumber, presence: true
+  validates :first_name, :last_name, :phoneNumber, :ssn, :company, presence: true
 
   has_many :time_offs
   has_many :audit_logs
@@ -36,6 +36,8 @@ class User < ApplicationRecord
 
   # regex means 10 digits only allowed at the beginning
   validates :phoneNumber, format: { with: /\A\d{10}/, message: 'only 10 digits allowed' }
+  validates :ssn, numericality: { only_integer: true }
+  validates :ssn, length: { is: 4 }
 
   def full_name
     "#{first_name} #{last_name}"

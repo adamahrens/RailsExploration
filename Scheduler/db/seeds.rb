@@ -11,21 +11,21 @@ adam = Employee.create(email: 'a@a.com',
   last_name: 'Ahrens',
   password: 'password123',
   password_confirmation: 'password123',
-phoneNumber: '9119112222')
+phoneNumber: '9119112222', ssn: 1234, company: 'ABC Company')
 
 claudia = Employee.create(email: 'b@b.com',
   first_name: 'Claudia',
   last_name: 'Ahrens',
   password: 'password123',
   password_confirmation: 'password123',
-phoneNumber: '9119113333')
+phoneNumber: '9119113333', ssn: 2244, company: 'ABC Company')
 
 admin = AdminUser.create(email: 'admin@admin.com',
   first_name: 'Admin',
   last_name: 'Ahrens',
   password: 'password123',
   password_confirmation: 'password123',
-phoneNumber: '9119114444')
+phoneNumber: '9119114444', ssn: 5556, company: 'ABC Company')
 
 5.times do |index|
   now = Date.today

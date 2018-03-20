@@ -66,6 +66,16 @@ RSpec.describe User, type: :model do
       @user.phoneNumber = '6514085143'
       expect(@user).to be_valid
     end
+
+    it 'must have an ssn' do
+      @user.ssn = nil
+      expect(@user).to_not be_valid
+    end
+
+    it 'must have a company' do
+      @user.company = nil
+      expect(@user).to_not be_valid
+    end
   end
 
   describe 'custom full name method' do

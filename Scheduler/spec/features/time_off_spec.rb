@@ -93,7 +93,7 @@ describe 'navigation' do
   describe 'edit' do
     before do
       logout(@user)
-      @other_user = User.create(first_name: 'Leroy', last_name: 'Jenkins', email: 'b@b.com', password: 'password123', password_confirmation: 'password123', phoneNumber: '6513331111')
+      @other_user = User.create(first_name: 'Leroy', last_name: 'Jenkins', email: 'b@b.com', password: 'password123', password_confirmation: 'password123', phoneNumber: '6513331111', ssn: 1234, company: 'ABC Company')
       @other_time_off = TimeOff.create(date: Date.today, rationale: 'Gone', overtime_request: 0.35, user_id: @other_user.id)
       login_as(@other_user, scope: :user)
       visit time_offs_path

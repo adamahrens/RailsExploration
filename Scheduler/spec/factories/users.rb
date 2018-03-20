@@ -34,6 +34,8 @@ FactoryGirl.define do
     password 'hello1234'
     password_confirmation 'hello1234'
     phoneNumber '6513331112'
+    ssn 1234
+    company 'When I Work'
   end
 
   factory :user_two, class: 'User' do
@@ -43,6 +45,8 @@ FactoryGirl.define do
     password 'hello1234'
     password_confirmation 'hello1234'
     phoneNumber '6513331113'
+    ssn 4567
+    company 'When I Work'
   end
 
   factory :admin_user, class: 'AdminUser' do
@@ -52,5 +56,7 @@ FactoryGirl.define do
     password 'hello1234'
     password_confirmation 'hello1234'
     phoneNumber '6513331114'
+    ssn 9999
+    company 'When I Work'
   end
 end
