@@ -63,3 +63,5 @@ raceday.zip
 .env
 *.log
 cache
+pids
+restart.txt

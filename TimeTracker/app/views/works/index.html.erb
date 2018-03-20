@@ -1,0 +1,17 @@
+<h1>All Works</h1>
+<p>
+  <%= @works.inspect %>
+</p>
+
+<div>
+  <ul>
+    <% @works.each do |work| %>
+      <li>
+        Work for
+        <%= work.project.company.name %>
+        |
+        <span><%= link_to 'Show', work_path(work) %></span>
+      </li>
+    <% end %>
+  </ul>
+</div>

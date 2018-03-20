@@ -1,0 +1,13 @@
+<h1>Work for
+  <%= @work.project.company.name %></h1>
+<p>
+  Project name:
+  <%= @work.project.name %>
+  performed by
+  <%= @work.user.full_name %>
+  total time spent
+  <%= @work.hours %>
+</p>
+<p>
+  <%= @work.inspect %>
+</p>
