@@ -14,9 +14,17 @@ class Project < ApplicationRecord
   has_many :works
   has_many :users, through: :works
 
-  validates :name, length: { minimum: 5 }
+  validates :slug, length: { minimum: 3 }
+  validates :slug, uniqueness: true
+  validates :name, length: { minimum: 3 }
   validates :company, presence: true
-  validates :default_rate, numericality: { only_integer: true,
-    greater_than: 49,
+  validates :default_rate, numericality: { greater_than: 49,
   less_than: 10000}
+
+  before_validation :generate_slug
+
+  private
+  def generate_slug
+    self.slug = name.downcase.tr(' ', '-')
+  end
 end

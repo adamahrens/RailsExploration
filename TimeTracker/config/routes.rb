@@ -30,6 +30,7 @@
 Rails.application.routes.draw do
   root 'companies#index'
   get 'recentworks/:days', to: 'works#index'
+  get 'venture/:slug', to: 'projects#show'
   resources :companies
   resources :projects
   resources :works

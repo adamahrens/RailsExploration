@@ -20,6 +20,6 @@ p1.save
 p2.save
 
 work = Work.create(date_performed: Date.today,
-  hours: 9,
+  hours: 7,
   user_id: user.id,
 project_id: p1.id)
