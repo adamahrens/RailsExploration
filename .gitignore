@@ -61,3 +61,4 @@ raceday.zip
 !/log/.keep
 !/tmp/.keep
 .env
+*.log
