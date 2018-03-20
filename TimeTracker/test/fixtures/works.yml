@@ -9,5 +9,13 @@ one:
 two:
   date_performed: 2018-03-19 20:06:33
   hours: 11
-  project: onboaring
+  project: onboarding
   user: claudia
+
+<% 20.times do |number| %>
+work_<%= number %>:
+  date_performed: <%= Time.now - number.days %>
+  hours: <%= number % 8 + 1 %>
+  project: <%= number % 2 == 0 ? 'onboarding' : 'tasks' %>
+  user: <%= number % 2 == 0 ? 'adam' : 'claudia' %>
+<% end %>
