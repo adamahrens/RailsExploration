@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+adam:
+  first_name: Adam
+  last_name: Ahrens
+  company: wheniwork
+
+claudia:
+  first_name: Claudia
+  last_name: Ahrens
+  company: smartthings
+
+kevin:
+  first_name: Kevin
+  last_name: Ahrens
+  company: thomson

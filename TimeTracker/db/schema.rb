@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320001837) do
+ActiveRecord::Schema.define(version: 20180320010633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,4 +21,37 @@ ActiveRecord::Schema.define(version: 20180320001837) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "projects", force: :cascade do |t|
+    t.string "name"
+    t.decimal "default_rate"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_projects_on_company_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_users_on_company_id"
+  end
+
+  create_table "works", force: :cascade do |t|
+    t.datetime "date_performed"
+    t.decimal "hours", precision: 5, scale: 2
+    t.bigint "project_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_works_on_project_id"
+    t.index ["user_id"], name: "index_works_on_user_id"
+  end
+
+  add_foreign_key "projects", "companies"
+  add_foreign_key "users", "companies"
+  add_foreign_key "works", "projects"
+  add_foreign_key "works", "users"
 end

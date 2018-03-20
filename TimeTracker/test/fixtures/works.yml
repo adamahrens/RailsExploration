@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_performed: 2018-03-19 20:06:33
+  hours: 8
+  project: tasks
+  user: adam
+
+two:
+  date_performed: 2018-03-19 20:06:33
+  hours: 11
+  project: onboaring
+  user: claudia

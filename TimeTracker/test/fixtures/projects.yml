@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+tasks:
+  name: Tasks
+  default_rate: 60.0
+  company: wheniwork
+
+orion:
+  name: Orion
+  default_rate: 9.99
+  company: thomson
+
+onboarding:
+  name: Onboarding
+  default_rate: 19.85
+  company: smartthings
