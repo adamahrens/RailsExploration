@@ -1,0 +1,16 @@
+<h1>All Companies</h1>
+<p>
+  <%= @companies.inspect %>
+</p>
+
+<div>
+  <ul>
+    <% @companies.each do |company| %>
+      <li>
+        <%= company.name %>
+        |
+        <span><%= link_to 'Show', company_path(company) %></span>
+      </li>
+    <% end %>
+  </ul>
+</div>
