@@ -1,5 +1,5 @@
 class UserController < ApplicationController
   def index
-    @users = User.where('type IS NULL')
+    @users = Employee.all
   end
 end

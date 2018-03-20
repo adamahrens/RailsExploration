@@ -16,10 +16,15 @@ class AuditLog < ApplicationRecord
   validates :user_id, :status, :start_date, presence: true
   enum status: { pending: 0, confirmed: 1 }
   after_initialize :set_defaults
+  before_update :set_end_date, if: :confirmed?
 
   private
   def set_defaults
     # If start date passed in use it, otherwise use default
     self.start_date ||= Date.today - 6.days
+  end
+
+  def set_end_date
+    self.end_date = Date.today
   end
 end

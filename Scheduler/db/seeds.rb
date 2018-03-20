@@ -30,19 +30,19 @@ phoneNumber: '9119114444')
 5.times do |index|
   now = Date.today
   time_ago = now - index
-  TimeOff.create(date: time_ago, rationale: "#{index} Going on vacation", overtime_request: 0.5, employee_id: adam.id)
+  TimeOff.create(date: time_ago, rationale: "#{index} Going on vacation", overtime_request: 0.5, user_id: adam.id)
 end
 
 5.times do |index|
   now = Date.today
   time_ago = now - index
-  TimeOff.create(date: time_ago, rationale: "#{index} Going on vacation", overtime_request: 0.5, employee_id: claudia.id)
+  TimeOff.create(date: time_ago, rationale: "#{index} Going on vacation", overtime_request: 0.5, user_id: claudia.id)
 end
 
-5.times do |index|
-  AuditLog.create(user_id: adam.id)
+3.times do |index|
+  AuditLog.create(user_id: adam.id, start_date: Date.today - index.weeks)
 end
 
-5.times do |index|
-  AuditLog.create(user_id: claudia.id)
+3.times do |index|
+  AuditLog.create(user_id: claudia.id, start_date: Date.today - index.weeks)
 end
