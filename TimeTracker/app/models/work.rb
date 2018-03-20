@@ -17,8 +17,7 @@ class Work < ApplicationRecord
   scope :overtime, -> { where('hours > 8') }
   scope :recent, -> { where("date_performed > '#{Time.now - 4.days}'") }
 
-  validates :project, presence: true
-  validates :user, presence: true
+  validates :project, :user, presence: true
   validates :date_performed, presence: true
   validate :date_performed_cant_be_in_future
   validates :hours, numericality: { only_integer: true, greater_than: 0, less_than: 9 }

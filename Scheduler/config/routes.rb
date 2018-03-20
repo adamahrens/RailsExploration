@@ -57,6 +57,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
+    resources :employees
     resources :time_offs
     resources :admin_users
     root to: 'users#index'
