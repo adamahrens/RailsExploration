@@ -19,14 +19,24 @@ class TimeOff < ApplicationRecord
   validates :overtime_request, numericality: { greater_than: 0.0 }
   scope :time_off_by, ->(user) { where(user_id: user.id) unless user.admin? }
 
-  after_save :update_audit_logs
+  after_save :confirm_audit_logs, if: :submitted?
+  after_save :unconfirm_audit_logs, if: :rejected?
 
   private
-  def update_audit_logs
+  def confirm_audit_logs
     audit_log = AuditLog.where(user_id: user_id, start_date: (date - 7.days..date)).last
 
     unless audit_log.nil?
       audit_log.status = 1
+      audit_log.save!
+    end
+  end
+
+  def unconfirm_audit_logs
+    audit_log = AuditLog.where(user_id: user_id, start_date: (date - 7.days..date)).last
+
+    unless audit_log.nil?
+      audit_log.status = 0
       audit_log.save!
     end
   end
