@@ -1,6 +1,8 @@
 class WorksController < ApplicationController
   def index
-    @works = Work.all.order(created_at: :desc)
+    recents = Work.recentdays(params[:days]).order(date_performed: :desc)
+    all = Work.all.order(date_performed: :desc)
+    @works = params[:days] ? recents : all
   end
 
   def show

@@ -25,9 +25,11 @@
 #              PATCH  /works/:id(.:format)          works#update
 #              PUT    /works/:id(.:format)          works#update
 #              DELETE /works/:id(.:format)          works#destroy
-# 
+#
 
 Rails.application.routes.draw do
+  root 'companies#index'
+  get 'recentworks/:days', to: 'works#index'
   resources :companies
   resources :projects
   resources :works

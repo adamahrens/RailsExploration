@@ -9,6 +9,8 @@
       <li>
         Work for
         <%= work.project.company.name %>
+        Performed on
+        <%= work.date_performed.to_formatted_s(:long) %>
         |
         <span><%= link_to 'Show', work_path(work) %></span>
       </li>
