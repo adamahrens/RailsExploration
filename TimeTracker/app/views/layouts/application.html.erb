@@ -2,13 +2,45 @@
 <html>
   <head>
     <title>TimeTracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <header>
+        <%= link_to content_tag('canvas', 'Time Tracker', id: 'logo-canvas'), root_path %>
+        <nav>
+          <ul>
+            <!-- <li <%= controller_name == 'compaines' ? raw('class="active"') : '' %>> <%= link_to 'Companies', companies_path %> </li> <li <%= controller_name == 'projects' ? raw('class="active"') : '' %>> <%= link_to 'Projects', projects_path %> </li> <li
+            <%= controller_name == 'works' ? raw('class="active"') : '' %>> <%= link_to 'Works', works_path %> </li> -->
+
+            <!-- <%= display_nav_item('Companies', 'companies', companies_path) %> <%= display_nav_item('Projects', 'projects', projects_path) %> <%= display_nav_item('Works', 'works', works_path) %> -->
+
+            <% nav_items.each do |item| %>
+              <%= display_nav_item(item[:display_text], item[:controller_name], item[:path]) %>
+            <% end %>
+          </ul>
+        </nav>
+      </header>
+      <section id="main">
+        <article>
+          <%= yield %>
+        </article>
+        <aside>
+          <%= yield :aside %>
+        </aside>
+      </section>
+      <footer>
+        <p>
+          TimeTracker is a
+          <em>Business</em>
+          App ©
+          <%= Date.today.year %>
+        </p>
+      </footer>
+    </div>
   </body>
 </html>
