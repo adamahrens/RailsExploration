@@ -5,5 +5,9 @@ class ProjectsController < ApplicationController
 
   def show
     @project = params[:slug] ? Project.find_by(slug: params[:slug]) : Project.find(params[:id])
+    respond_to do |format|
+      format.html # defaults to show.html.erb
+      format.json { render json: @project }
+    end
   end
 end

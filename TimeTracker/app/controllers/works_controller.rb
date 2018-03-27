@@ -7,5 +7,9 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find(params[:id])
+    respond_to do |format|
+      format.html # defaults to show.html.erb
+      format.json { render json: @work }
+    end
   end
 end
