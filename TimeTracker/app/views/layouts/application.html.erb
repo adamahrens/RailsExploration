@@ -11,7 +11,7 @@
   <body>
     <div class="container">
       <header>
-        <%= link_to content_tag('canvas', 'Time Tracker', id: 'logo-canvas'), root_path %>
+
         <nav>
           <ul>
             <!-- <li <%= controller_name == 'compaines' ? raw('class="active"') : '' %>> <%= link_to 'Companies', companies_path %> </li> <li <%= controller_name == 'projects' ? raw('class="active"') : '' %>> <%= link_to 'Projects', projects_path %> </li> <li
@@ -23,6 +23,7 @@
               <%= display_nav_item(item[:display_text], item[:controller_name], item[:path]) %>
             <% end %>
           </ul>
+          <%= link_to content_tag('canvas', 'Time Tracker', id: 'logo-canvas'), root_path %>
         </nav>
       </header>
       <section id="main">
