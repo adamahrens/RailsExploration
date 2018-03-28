@@ -20,7 +20,7 @@
             <span><%= link_to "#{ company.name }", company_path(company) %></span>
           </td>
           <td>
-            <span><%= link_to "Projects (#{company.projects.count})", projects_path %></span>
+            <span><%= "Projects (#{company.projects.count})" %></span>
           </td>
           <td>
             <span><%= "Employees (#{company.users.count})" %></span>

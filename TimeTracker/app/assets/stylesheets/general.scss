@@ -1,5 +1,6 @@
 $default_white: #FFF;
 $default_blue: #3498DB;
+$default_purple: #6c7ae0;
 
 body {
   border: 20px solid #BDC3C7;
@@ -12,7 +13,7 @@ body {
 }
 
 header {
-  background-color: #2C3E50;
+  background-color: #C5D4F5;
   padding: 2% 2% 1%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -25,7 +26,7 @@ header {
   }
 
   .active {
-    border-bottom: 2px solid $default_blue;
+    border-bottom: 2px solid $default_purple;
   }
 
   ul {
@@ -37,10 +38,11 @@ header {
 
       a {
         text-decoration: none;
-        color: #3B8686;
+        color: $default_white;
+        font-size: 30px;
 
         &:hover {
-          color: $default_white;
+          color: $default_purple;
         }
       }
     }
@@ -71,7 +73,7 @@ table {
 }
 
 thead {
-  background-color: #6c7ae0;
+  background-color: $default_purple;
   color: $default_white;
   font-size: 18px;
 

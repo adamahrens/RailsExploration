@@ -23,6 +23,14 @@ class Project < ApplicationRecord
 
   before_validation :generate_slug
 
+  def hours_worked
+    works.map { |w| w.hours }.reduce(:+)
+  end
+
+  def to_s
+    "#{name} #{company}"
+  end
+
   private
   def generate_slug
     self.slug = name.downcase.tr(' ', '-')

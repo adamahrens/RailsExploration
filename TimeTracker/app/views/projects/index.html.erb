@@ -9,10 +9,7 @@
           Company
         </td>
         <td>
-          # Works
-        </td>
-        <td>
-          # Employees
+          Hours Worked
         </td>
       </tr>
     </thead>
@@ -26,10 +23,7 @@
             <span><%= link_to "#{project.company.name}", company_path(project.company) %></span>
           </td>
           <td>
-            <span><%= "Projects (#{project.works.count})" %></span>
-          </td>
-          <td>
-            <span><%= "Employees (#{project.users.count})" %></span>
+            <span><%= pluralize(project.hours_worked, 'hour') %></span>
           </td>
         </tr>
       <% end %>

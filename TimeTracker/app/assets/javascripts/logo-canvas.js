@@ -20,7 +20,7 @@ function drawPath() {
     context.fill();
 
     context.fillStyle = "#FFF"
-    context.font = "small-caps bold 37pt 'Georgia'";
+    context.font = "50pt 'Source Sans Pro'";
     context.textAlign = "left";
     context.fillText("Time", 100, 50);
     context.fillText("Tracker", 100, 100);

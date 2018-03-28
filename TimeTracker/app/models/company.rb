@@ -12,4 +12,8 @@ class Company < ApplicationRecord
   has_many :users
 
   validates :name, length: { minimum: 5 }
+
+  def to_s
+    name
+  end
 end

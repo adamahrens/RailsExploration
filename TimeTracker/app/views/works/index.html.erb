@@ -6,6 +6,9 @@
           Work For
         </td>
         <td>
+          At Company
+        </td>
+        <td>
           Performed By
         </td>
         <td>
@@ -24,7 +27,10 @@
             <span><%= link_to "#{ work.project.name }", project_path(work.project) %></span>
           </td>
           <td>
-            <span><%= work.user.full_name %></span>
+            <%= link_to work.project.company, company_path(work.project.company) %>
+          </td>
+          <td>
+            <span><%= work.user %></span>
           </td>
           <td>
             <span><%= work.date_performed.to_formatted_s(:long_ordinal) %></span>

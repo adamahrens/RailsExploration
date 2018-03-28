@@ -1,13 +1,54 @@
 <h1><%= @project.name %></h1>
 <p>
-  Belongs to
-  <%= @project.company.name %>
-</p>
-<p>
-  <%= @project.inspect %>
-</p>
-<p>
   Codename
   <%= @project.slug %>
 </p>
-<%= link_to 'All Projects', projects_path %>
+<p>
+  Total Time Spent
+  <%= pluralize(@project.hours_worked, 'hour') %>
+</p>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <td>
+          Work For
+        </td>
+        <td>
+          Performed By
+        </td>
+        <td>
+          Completed On
+        </td>
+        <td>
+          Time Spent
+        </td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @project.works.each do |work| %>
+        <tr>
+          <td>
+            <span>
+              <%= link_to work.project.company, work.project.company %></span>
+          </td>
+          <td>
+            <span><%= work.user %></span>
+          </td>
+          <td>
+            <span><%= work.date_performed.to_formatted_s(:long_ordinal) %></span>
+          </td>
+          <td>
+            <span><%= pluralize(work.hours, 'hour') %>
+            </span>
+          </td>
+          <td>
+            <%= link_to 'View', work_path(work) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
