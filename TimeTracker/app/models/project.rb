@@ -24,7 +24,17 @@ class Project < ApplicationRecord
   before_validation :generate_slug
 
   def hours_worked
-    works.map { |w| w.hours }.reduce(:+)
+    total = works.map { |w| w.hours }.reduce(:+)
+
+    unless total
+      total = 0
+    end
+
+    total
+  end
+
+  def total_cost
+    hours_worked * default_rate
   end
 
   def to_s

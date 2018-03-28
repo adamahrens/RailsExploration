@@ -20,9 +20,9 @@ function drawPath() {
     context.fill();
 
     context.fillStyle = "#FFF"
-    context.font = "50pt 'Source Sans Pro'";
+    context.font = "40pt Source Sans Pro";
     context.textAlign = "left";
     context.fillText("Time", 100, 50);
-    context.fillText("Tracker", 100, 100);
+    context.fillText("Tracker", 105, 120);
   }
 }

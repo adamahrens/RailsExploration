@@ -8,17 +8,31 @@
   <%= pluralize(@project.hours_worked, 'hour') %>
 </p>
 
-<div>
-  <table>
-    <thead>
-      <%= render 'works/work-table-header' %>
-    </thead>
-    <tbody>
-      <%= render partial: 'works/work', collection: @project.works %>
-    </tbody>
-  </table>
+<p >
+  Project Cost:
+  <span class="price">
+    <%= number_to_currency(@project.total_cost, precision: 2) %>
+  </span>
+</p>
 
-  <!-- provide content from application.html.erb -->
-  <% content_for :aside do %>
-    <% render 'sidebar' %><% end %>
+<% if @project.works.count > 0 %>
+  <div>
+    <table>
+      <thead>
+        <%= render 'works/work-table-header' %>
+      </thead>
+      <tbody>
+        <%= render partial: 'works/work', collection: @project.works %>
+      </tbody>
+    </table>
+
   </div>
+<% else %>
+  <p>
+    No work has been completed for this project.
+  </p>
+<% end %>
+
+<!-- provide content from application.html.erb -->
+<% content_for :aside do %>
+  <% render 'sidebar' %><% end %>
