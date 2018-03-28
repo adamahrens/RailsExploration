@@ -1,6 +1,10 @@
 class ProjectsController < ApplicationController
   def index
     @projects = Project.all.order(created_at: :desc)
+    respond_to do |format|
+      format.html # defaults to show.html.erb
+      format.json { render json: @projects }
+    end
   end
 
   def show
