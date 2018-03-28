@@ -12,7 +12,6 @@
   <body>
     <div class="container">
       <header>
-
         <nav>
           <ul>
             <!-- <li <%= controller_name == 'compaines' ? raw('class="active"') : '' %>> <%= link_to 'Companies', companies_path %> </li> <li <%= controller_name == 'projects' ? raw('class="active"') : '' %>> <%= link_to 'Projects', projects_path %> </li> <li
@@ -27,14 +26,14 @@
           <%= link_to content_tag('canvas', 'Time Tracker', id: 'logo-canvas'), root_path %>
         </nav>
       </header>
-      <section id="main">
-        <article>
+      <div class="group-container">
+        <section id="main">
           <%= yield %>
-        </article>
+        </section>
         <aside>
           <%= yield :aside %>
         </aside>
-      </section>
+      </div>
       <footer>
         <p>
           TimeTracker is a

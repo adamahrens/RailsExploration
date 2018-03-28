@@ -14,19 +14,10 @@
       </tr>
     </thead>
     <tbody>
-      <% @projects.each do |project| %>
-        <tr>
-          <td>
-            <span><%= link_to "#{ project.name }", project_path(project) %></span>
-          </td>
-          <td>
-            <span><%= link_to "#{project.company.name}", company_path(project.company) %></span>
-          </td>
-          <td>
-            <span><%= pluralize(project.hours_worked, 'hour') %></span>
-          </td>
-        </tr>
-      <% end %>
+      <%= render partial: 'project', collection: @projects %>
     </tbody>
   </table>
-</div>
+  <!-- provide content from application.html.erb -->
+  <% content_for :aside do %>
+    <% render 'sidebar' %><% end %>
+  </div>

@@ -1,0 +1,11 @@
+<tr>
+  <td>
+    <span><%= link_to "#{ project.name }", project_path(project) %></span>
+  </td>
+  <td>
+    <span><%= link_to "#{project.company.name}", company_path(project.company) %></span>
+  </td>
+  <td>
+    <span><%= pluralize(project.hours_worked, 'hour') %></span>
+  </td>
+</tr>

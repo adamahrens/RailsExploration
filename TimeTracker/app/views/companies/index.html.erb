@@ -14,19 +14,11 @@
       </tr>
     </thead>
     <tbody>
-      <% @companies.each do |company| %>
-        <tr>
-          <td>
-            <span><%= link_to "#{ company.name }", company_path(company) %></span>
-          </td>
-          <td>
-            <span><%= "Projects (#{company.projects.count})" %></span>
-          </td>
-          <td>
-            <span><%= "Employees (#{company.users.count})" %></span>
-          </td>
-        </tr>
-      <% end %>
+      <%= render partial: 'company', collection: @companies %>
     </tbody>
   </table>
-</div>
+
+  <!-- provide content from application.html.erb -->
+  <% content_for :aside do %>
+    <% render 'sidebar' %><% end %>
+  </div>

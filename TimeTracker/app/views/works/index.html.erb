@@ -1,49 +1,14 @@
 <div>
   <table>
     <thead>
-      <tr>
-        <td>
-          Work For
-        </td>
-        <td>
-          At Company
-        </td>
-        <td>
-          Performed By
-        </td>
-        <td>
-          Completed On
-        </td>
-        <td>
-          Time Spent
-        </td>
-        <td></td>
-      </tr>
+      <%= render 'work-table-header' %>
     </thead>
     <tbody>
-      <% @works.each do |work| %>
-        <tr>
-          <td>
-            <span><%= link_to "#{ work.project.name }", project_path(work.project) %></span>
-          </td>
-          <td>
-            <%= link_to work.project.company, company_path(work.project.company) %>
-          </td>
-          <td>
-            <span><%= work.user %></span>
-          </td>
-          <td>
-            <span><%= work.date_performed.to_formatted_s(:long_ordinal) %></span>
-          </td>
-          <td>
-            <span><%= pluralize(work.hours, 'hour') %>
-            </span>
-          </td>
-          <td>
-            <%= link_to 'View', work_path(work) %>
-          </td>
-        </tr>
-      <% end %>
+      <%= render partial: 'work', collection: @works %>
     </tbody>
   </table>
-</div>
+
+  <!-- provide content from application.html.erb -->
+  <% content_for :aside do %>
+    <% render 'sidebar' %><% end %>
+  </div>

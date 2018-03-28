@@ -1,6 +1,7 @@
 $default_white: #FFF;
 $default_blue: #3498DB;
 $default_purple: #6c7ae0;
+$default_aside: #CEC5D5;
 
 body {
   border: 20px solid #BDC3C7;
@@ -12,11 +13,55 @@ body {
   background-color: #BDC3C7;
 }
 
+.container,
+.group-container {
+  background-color: $default_white;
+}
+
+section {
+  float: left;
+  max-width: 1200px;
+  width: 70%;
+}
+
+aside {
+  float: right;
+  width: 20%;
+  border: 2px solid $default_aside;
+  height: 200px;
+  background-color: $default_white;
+  padding: 10px;
+  margin-top: 20px;
+  margin-right: 10px;
+  border-radius: 5px;
+
+  h3 {
+    color: #2db34a;
+  }
+
+  ul {
+    list-style-type: circle;
+  }
+
+  li {
+    margin-top: 10px;
+
+    &:before {
+      color: $default_aside;
+    }
+  }
+
+  a {
+    border-bottom: 1px solid $default_aside;
+    color: #0087cc;
+    text-decoration: none;
+    font-size: 24px;
+  }
+}
+
 header {
   background-color: #C5D4F5;
   padding: 2% 2% 1%;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
   height: 90px;
 
   #logo-canvas {
@@ -61,6 +106,7 @@ footer {
   color: $default_white;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  clear: both;
 }
 
 table {
