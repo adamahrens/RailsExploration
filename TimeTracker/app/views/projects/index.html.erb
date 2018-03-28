@@ -1,16 +1,38 @@
-<h1>All Projects</h1>
-<p>
-  <%= @projects.inspect %>
-</p>
-
 <div>
-  <ul>
-    <% @projects.each do |project| %>
-      <li>
-        <%= project.name %>
-        |
-        <span><%= link_to 'Show', project_path(project) %></span>
-      </li>
-    <% end %>
-  </ul>
+  <table>
+    <thead>
+      <tr>
+        <td>
+          Name
+        </td>
+        <td>
+          Company
+        </td>
+        <td>
+          # Works
+        </td>
+        <td>
+          # Employees
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @projects.each do |project| %>
+        <tr>
+          <td>
+            <span><%= link_to "#{ project.name }", project_path(project) %></span>
+          </td>
+          <td>
+            <span><%= link_to "#{project.company.name}", company_path(project.company) %></span>
+          </td>
+          <td>
+            <span><%= "Projects (#{project.works.count})" %></span>
+          </td>
+          <td>
+            <span><%= "Employees (#{project.users.count})" %></span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

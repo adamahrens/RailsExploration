@@ -1,19 +1,43 @@
-<h1>All Works</h1>
-<p>
-  <%= @works.inspect %>
-</p>
-
 <div>
-  <ul>
-    <% @works.each do |work| %>
-      <li>
-        Work for
-        <%= work.project.company.name %>
-        Performed on
-        <%= work.date_performed.to_formatted_s(:long) %>
-        |
-        <span><%= link_to 'Show', work_path(work) %></span>
-      </li>
-    <% end %>
-  </ul>
+  <table>
+    <thead>
+      <tr>
+        <td>
+          Work For
+        </td>
+        <td>
+          Performed By
+        </td>
+        <td>
+          Completed On
+        </td>
+        <td>
+          Time Spent
+        </td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% @works.each do |work| %>
+        <tr>
+          <td>
+            <span><%= link_to "#{ work.project.name }", project_path(work.project) %></span>
+          </td>
+          <td>
+            <span><%= work.user.full_name %></span>
+          </td>
+          <td>
+            <span><%= work.date_performed.to_formatted_s(:long_ordinal) %></span>
+          </td>
+          <td>
+            <span><%= pluralize(work.hours, 'hour') %>
+            </span>
+          </td>
+          <td>
+            <%= link_to 'View', work_path(work) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

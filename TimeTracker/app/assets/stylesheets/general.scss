@@ -60,3 +60,43 @@ footer {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
+table {
+  text-align: center;
+  border-collapse: collapse;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+thead {
+  background-color: #6c7ae0;
+  color: $default_white;
+  font-size: 18px;
+
+  td {
+    padding: 30px;
+  }
+}
+
+tr {
+  display: table-row;
+}
+
+tbody {
+  tr {
+    &:hover {
+      background-color: #ECECFE;
+    }
+  }
+
+  td {
+    color: #666666;
+    line-height: 1.2em;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f2f2f2;
+    font-size: 15px;
+  }
+}
