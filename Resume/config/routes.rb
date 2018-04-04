@@ -9,7 +9,7 @@
 #           PATCH  /blogs/:id(.:format)      blogs#update
 #           PUT    /blogs/:id(.:format)      blogs#update
 #           DELETE /blogs/:id(.:format)      blogs#destroy
-# 
+#
 
 Rails.application.routes.draw do
   resources :blogs
