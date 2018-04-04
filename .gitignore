@@ -67,3 +67,4 @@ pids
 restart.txt
 log
 tmp
+/Resume/config/secrets.yml
