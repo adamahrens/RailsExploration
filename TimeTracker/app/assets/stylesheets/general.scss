@@ -18,6 +18,17 @@ body {
   background-color: $default_white;
 }
 
+form {
+  label {
+    font-style: italic;
+    color: $default_aside
+  }
+
+  div {
+    padding-bottom: 5px;
+  }
+}
+
 section {
   float: left;
   max-width: 1200px;

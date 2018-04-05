@@ -1,0 +1,26 @@
+<%= form_with model: work, local: true, class: 'pure-form pure-form-stacked' do |f| %>
+  <fieldset>
+    <legend>Create Work</legend>
+    <div class="pure-control-group">
+      <%= f.label :project_id, 'Project' %>
+      <!-- Map project_id to id from Project display name of Project -->
+      <%= f.collection_select :project_id, Project.all, :id, :name, id: :company_project_id, prompt: true, class: 'pure-input-1-2' %>
+    </div>
+    <div class="pure-control-group">
+      <%= f.label :user_id, 'User' %>
+      <!-- Map user_id to id from User display full_name -->
+      <%= f.collection_select :user_id, User.all, :id, :full_name, id: :company_user_id, prompt: true, class: 'pure-input-1-2' %>
+    </div>
+    <div class="pure-control-group">
+      <%= f.label :hours %>
+      <%= f.select :hours, [1,2,3,4,5,6,7,8], id: :work_hours, prompt: true, class: 'pure-input-1-2' %>
+    </div>
+    <div class="pure-control-group">
+      <%= f.label :date_performed %>
+      <%= f.date_select :date_performed, id: :company_date_performed, class: 'pure-input-1-2', placeholder: 'Date Worked' %>
+    </div>
+    <div class="pure-control-group">
+      <%= f.submit 'Create Work', class: 'pure-button pure-button-primary' %>
+    </div>
+  </fieldset>
+<% end %>

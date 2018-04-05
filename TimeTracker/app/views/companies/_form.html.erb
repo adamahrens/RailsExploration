@@ -1,0 +1,12 @@
+<%= form_with model: company, local: true, class: 'pure-form pure-form-stacked' do |f| %>
+  <fieldset>
+    <legend>Create Company</legend>
+    <div class="pure-control-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, id: :company_title, class: 'pure-input-1-2', placeholder: 'Company Title' %>
+    </div>
+    <div class="pure-control-group">
+      <%= f.submit 'Create Company', class: 'pure-button pure-button-primary' %>
+    </div>
+  </fieldset>
+<% end %>

@@ -25,12 +25,7 @@ class Project < ApplicationRecord
 
   def hours_worked
     total = works.map { |w| w.hours }.reduce(:+)
-
-    unless total
-      total = 0
-    end
-
-    total
+    total ||= 0
   end
 
   def total_cost
@@ -42,6 +37,7 @@ class Project < ApplicationRecord
   end
 
   private
+
   def generate_slug
     self.slug = name.downcase.tr(' ', '-')
   end

@@ -14,4 +14,8 @@ class ProjectsController < ApplicationController
       format.json { render json: @project }
     end
   end
+
+  def new
+    @project = Project.new
+  end
 end

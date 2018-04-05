@@ -17,4 +17,8 @@ class WorksController < ApplicationController
       format.json { render json: @work }
     end
   end
+
+  def new
+    @work = Work.new
+  end
 end

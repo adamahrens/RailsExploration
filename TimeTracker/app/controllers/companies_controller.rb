@@ -14,4 +14,8 @@ class CompaniesController < ApplicationController
       format.json { render json: @company }
     end
   end
+
+  def new
+    @company = Company.new
+  end
 end
