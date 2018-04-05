@@ -11,12 +11,8 @@
       <%= f.text_field :name, id: :project_name, class: 'pure-input-1-2', placeholder: 'Project Name' %>
     </div>
     <div class="pure-control-group">
-      <%= f.label :slug %>
-      <%= f.text_field :slug, id: :project_slug, class: 'pure-input-1-2', placeholder: 'Project Slug' %>
-    </div>
-    <div class="pure-control-group">
       <%= f.label :default_rate, 'Rate' %>
-      <%= f.number_field :default_rate, id: :project_default_rate, min: 1.0,  class: 'pure-input-1-2' %>
+      <%= f.number_field :default_rate, id: :project_default_rate, step: :any,  class: 'pure-input-1-2' %>
     </div>
     <div class="pure-control-group">
       <%= f.submit 'Create Project', class: 'pure-button pure-button-primary' %>

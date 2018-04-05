@@ -18,7 +18,7 @@ class Project < ApplicationRecord
   validates :slug, uniqueness: true
   validates :name, length: { minimum: 3 }
   validates :company, presence: true
-  validates :default_rate, numericality: { greater_than: 49,
+  validates :default_rate, numericality: { greater_than: 10,
   less_than: 10000}
 
   before_validation :generate_slug
@@ -26,6 +26,7 @@ class Project < ApplicationRecord
   def hours_worked
     total = works.map { |w| w.hours }.reduce(:+)
     total ||= 0
+    total
   end
 
   def total_cost

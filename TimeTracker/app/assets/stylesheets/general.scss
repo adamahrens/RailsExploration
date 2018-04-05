@@ -18,6 +18,13 @@ body {
   background-color: $default_white;
 }
 
+.flash-notice {
+  background-color: $default_purple;
+  color: $default_white;
+  padding: 20px;
+  height: 15px;
+}
+
 form {
   label {
     font-style: italic;
@@ -121,8 +128,6 @@ footer {
   background-color: $default_blue;
   text-decoration: underline;
   color: $default_white;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
   clear: both;
 }
 

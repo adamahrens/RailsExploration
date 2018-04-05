@@ -21,4 +21,16 @@ class WorksController < ApplicationController
   def new
     @work = Work.new
   end
+
+  def create
+    @work = Work.new(work_params)
+    flash[:notice] = 'Work successfully created'
+    redirect_to @work if @work.save
+  end
+
+  private
+
+  def work_params
+    params[:work].permit(:project_id, :user_id, :hours, :date_performed)
+  end
 end
