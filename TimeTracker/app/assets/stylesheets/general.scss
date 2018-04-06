@@ -2,6 +2,7 @@ $default_white: #FFF;
 $default_blue: #3498DB;
 $default_purple: #6c7ae0;
 $default_aside: #CEC5D5;
+$default_red: #ED4337;
 
 body {
   border: 20px solid #BDC3C7;
@@ -23,6 +24,29 @@ body {
   color: $default_white;
   padding: 20px;
   height: 15px;
+}
+
+.error-list {
+  padding-top: 2px;
+}
+
+
+.field_with_errors {
+  label {
+    color: $default_red;
+  }
+}
+
+#form-errors {
+  color: $default_white;
+  background-color: $default_red;
+  border-radius: 2px;
+  padding: 10px;
+  margin-bottom: 10px;
+
+  p {
+    font-size: 1em;
+  }
 }
 
 form {

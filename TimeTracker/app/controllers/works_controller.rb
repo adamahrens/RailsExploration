@@ -24,8 +24,12 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
-    flash[:notice] = 'Work successfully created'
-    redirect_to @work if @work.save
+    if @work.save
+      flash[:notice] = 'Work successfully created'
+      redirect_to @work
+    else
+      render :new
+    end
   end
 
   private

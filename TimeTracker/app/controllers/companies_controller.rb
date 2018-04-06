@@ -21,8 +21,12 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
-    flash[:notice] = 'Company successfully created'
-    redirect_to @company if @company.save
+    if @company.save
+      flash[:notice] = 'Company successfully created'
+      redirect_to @company
+    else
+      render :new
+    end
   end
 
   private

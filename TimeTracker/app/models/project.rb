@@ -24,7 +24,7 @@ class Project < ApplicationRecord
   before_validation :generate_slug
 
   def hours_worked
-    total = works.map { |w| w.hours }.reduce(:+)
+    total = works.map(&:hours).reduce(:+)
     total ||= 0
     total
   end
