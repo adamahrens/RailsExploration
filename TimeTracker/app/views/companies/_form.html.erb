@@ -1,12 +1,22 @@
 <%= form_with model: company, local: true, class: 'pure-form pure-form-stacked' do |f| %>
   <fieldset>
-    <legend>Create Company</legend>
+
+    <% if company.persisted? %>
+      <legend>Update Company</legend>
+    <% else %>
+      <legend>Create Company</legend>
+    <% end %>
+
     <div class="pure-control-group">
       <%= f.label :name %>
       <%= f.text_field :name, id: :company_name, class: 'pure-input-1-2', placeholder: 'Company Name' %>
     </div>
     <div class="pure-control-group">
-      <%= f.submit 'Create Company', class: 'pure-button pure-button-primary' %>
+      <% if company.persisted? %>
+        <%= f.submit 'Update Company', class: 'pure-button pure-button-primary' %>
+      <% else %>
+        <%= f.submit 'Create Company', class: 'pure-button pure-button-primary' %>
+      <% end %>
     </div>
   </fieldset>
 <% end %>

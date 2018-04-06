@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :set_project, only: %i[edit update]
   def index
     @projects = Project.all.order(created_at: :desc)
     respond_to do |format|
@@ -12,6 +13,18 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html # defaults to show.html.erb
       format.json { render json: @project }
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @project.update(project_params)
+      flash[:notice] = 'Project successfully updated'
+      redirect_to @project
+    else
+      render :edit
     end
   end
 
@@ -33,5 +46,9 @@ class ProjectsController < ApplicationController
 
   def project_params
     params[:project].permit(:company_id, :name, :default_rate)
+  end
+
+  def set_project
+    Project.find(params[:id])
   end
 end

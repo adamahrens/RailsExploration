@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+  before_action :set_company, only: %i[show edit update]
   def index
     @companies = Company.all.order(created_at: :desc)
     respond_to do |format|
@@ -8,10 +9,21 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @company = Company.find(params[:id])
     respond_to do |format|
       format.html # defaults to show.html.erb
       format.json { render json: @company }
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @company.update(company_params)
+      flash[:notice] = 'Company successfully updated'
+      redirect_to @company
+    else
+      render :edit
     end
   end
 
@@ -33,5 +45,9 @@ class CompaniesController < ApplicationController
 
   def company_params
     params[:company].permit(:name)
+  end
+
+  def set_company
+    @company = Company.find(params[:id])
   end
 end

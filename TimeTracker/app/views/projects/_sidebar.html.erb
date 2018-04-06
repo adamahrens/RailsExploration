@@ -6,4 +6,9 @@
   <li>
     <%= link_to 'New Project', new_project_path %>
   </li>
+  <% if local_assigns.has_key? :project %>
+    <li>
+      <%= link_to 'Edit Project', edit_project_path(project) %>
+    </li>
+  <% end %>
 </ul>

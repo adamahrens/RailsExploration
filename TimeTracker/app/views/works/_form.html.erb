@@ -1,6 +1,10 @@
 <%= form_with model: work, local: true, class: 'pure-form pure-form-stacked' do |f| %>
   <fieldset>
-    <legend>Create Work</legend>
+    <% if work.persisted? %>
+      <legend>Update Work</legend>
+    <% else %>
+      <legend>Create Work</legend>
+    <% end %>
     <div class="pure-control-group">
       <%= f.label :project_id, 'Project' %>
       <!-- Map project_id to id from Project display name of Project -->
@@ -20,7 +24,11 @@
       <%= f.date_select :date_performed, id: :company_date_performed, class: 'pure-input-1-2', placeholder: 'Date Worked' %>
     </div>
     <div class="pure-control-group">
-      <%= f.submit 'Create Work', class: 'pure-button pure-button-primary' %>
+      <% if work.persisted? %>
+        <%= f.submit 'Update Work', class: 'pure-button pure-button-primary' %>
+      <% else %>
+        <%= f.submit 'Create Work', class: 'pure-button pure-button-primary' %>
+      <% end %>
     </div>
   </fieldset>
 <% end %>

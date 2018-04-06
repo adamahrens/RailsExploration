@@ -35,4 +35,5 @@
 
 <!-- provide content from application.html.erb -->
 <% content_for :aside do %>
-  <% render 'sidebar' %><% end %>
+  <% render 'sidebar', project: @project %>
+<% end %>

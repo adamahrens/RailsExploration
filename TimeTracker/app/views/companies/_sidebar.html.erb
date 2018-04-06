@@ -6,4 +6,10 @@
   <li>
     <%= link_to 'New Company', new_company_path %>
   </li>
+
+  <% if local_assigns.has_key? :company %>
+    <li>
+      <%= link_to 'Edit Company', edit_company_path(company) %>
+    </li>
+  <% end %>
 </ul>

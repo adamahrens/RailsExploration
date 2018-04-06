@@ -1,6 +1,10 @@
 <%= form_with model: project, local: true, class: 'pure-form pure-form-stacked' do |f| %>
   <fieldset>
-    <legend>Create Project</legend>
+    <% if project.persisted? %>
+      <legend>Update Project</legend>
+    <% else %>
+      <legend>Create Project</legend>
+    <% end %>
     <div class="pure-control-group">
       <%= f.label :company_id, 'Company' %>
       <!-- Map project_id to id from Project display name of Project -->
@@ -15,7 +19,11 @@
       <%= f.number_field :default_rate, id: :project_default_rate, step: :any,  class: 'pure-input-1-2' %>
     </div>
     <div class="pure-control-group">
-      <%= f.submit 'Create Project', class: 'pure-button pure-button-primary' %>
+      <% if project.persisted? %>
+        <%= f.submit 'Update Project', class: 'pure-button pure-button-primary' %>
+      <% else %>
+        <%= f.submit 'Create Project', class: 'pure-button pure-button-primary' %>
+      <% end %>
     </div>
   </fieldset>
 <% end %>
