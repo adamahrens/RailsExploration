@@ -1,5 +1,7 @@
-<% if flash[:notice] %>
-  <div class='flash flash-notice'>
-    <%= flash[:notice] %>
-  </div>
+<% [:notice, :alert].each do |level| %>
+  <% if flash[level] %>
+    <div class="flash flash-<%= level %>">
+      <%= flash[level] %>
+    </div>
+  <% end %>
 <% end %>

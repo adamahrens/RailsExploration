@@ -1,5 +1,7 @@
 class WorksController < ApplicationController
   before_action :set_work, only: %i[show edit update]
+  before_action :authenticate_user!, except: :index
+  
   def index
     recents = Work.recentdays(params[:days]).order(date_performed: :desc)
     all = Work.all.order(date_performed: :desc)

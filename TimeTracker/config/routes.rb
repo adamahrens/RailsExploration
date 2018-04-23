@@ -28,6 +28,7 @@
 #
 
 Rails.application.routes.draw do
+  devise_for :users
   root 'companies#index'
   get 'recentworks/:days', to: 'works#index'
   get 'venture/:slug', to: 'projects#show'

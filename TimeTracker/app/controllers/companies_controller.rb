@@ -1,5 +1,7 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: %i[show edit update]
+  before_action :authenticate_user!, except: :index
+  
   def index
     @companies = Company.all.order(created_at: :desc)
     respond_to do |format|

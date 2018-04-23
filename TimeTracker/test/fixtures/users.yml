@@ -16,13 +16,16 @@ adam:
   first_name: Adam
   last_name: Ahrens
   company: wheniwork
+  email: adam.ahrens@wheniwork.com
 
 claudia:
   first_name: Claudia
   last_name: Ahrens
   company: smartthings
+  email: claudia.ahrens@smartthings.com
 
 kevin:
   first_name: Kevin
   last_name: Ahrens
   company: thomson
+  email: kevin.ahrens@thomson.com

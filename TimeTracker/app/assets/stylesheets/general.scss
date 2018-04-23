@@ -26,6 +26,13 @@ body {
   height: 15px;
 }
 
+.flash-alert {
+  background-color: $default_red;
+  color: $default_white;
+  padding: 20px;
+  height: 15px;
+}
+
 .error-list {
   padding-top: 2px;
 }

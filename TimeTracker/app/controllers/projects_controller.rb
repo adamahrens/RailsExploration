@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: %i[edit update]
+  before_action :set_project, only: %i[show edit update]
+  before_action :authenticate_user!, except: :index
+
   def index
     @projects = Project.all.order(created_at: :desc)
     respond_to do |format|
@@ -9,7 +11,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = params[:slug] ? Project.find_by(slug: params[:slug]) : Project.find(params[:id])
     respond_to do |format|
       format.html # defaults to show.html.erb
       format.json { render json: @project }
@@ -49,6 +50,11 @@ class ProjectsController < ApplicationController
   end
 
   def set_project
-    Project.find(params[:id])
+    slug = params[:slug]
+    if slug
+      @project = Project.find_by(slug: slug)
+    else
+      @project = Project.find(params[:id])
+    end
   end
 end
