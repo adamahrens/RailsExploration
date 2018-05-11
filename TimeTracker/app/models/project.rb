@@ -10,6 +10,8 @@
 #  updated_at   :datetime         not null
 #
 class Project < ApplicationRecord
+  extend CsvModule
+
   belongs_to :company
   has_many :works
   has_many :users, through: :works

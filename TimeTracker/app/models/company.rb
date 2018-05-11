@@ -8,6 +8,8 @@
 #  updated_at :datetime         not null
 #
 class Company < ApplicationRecord
+  extend CsvModule
+  
   has_many :projects
   has_many :users
 

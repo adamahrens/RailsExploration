@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html # defaults to show.html.erb
       format.json { render json: @projects }
+      format.csv { send_data @projects.to_csv }
     end
   end
 

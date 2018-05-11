@@ -10,6 +10,7 @@ class WorksController < ApplicationController
     respond_to do |format|
       format.html # defaults to show.html.erb
       format.json { render json: @works }
+      format.csv { send_data @works.to_csv }
     end
   end
 
@@ -24,6 +25,7 @@ class WorksController < ApplicationController
   end
 
   def update
+    set_document
     if @work.update(work_params)
       flash[:notice] = 'Work successfully updated'
       redirect_to @work
@@ -38,6 +40,7 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
+    set_document
     if @work.save
       flash[:notice] = 'Work successfully created'
       redirect_to @work
@@ -48,8 +51,19 @@ class WorksController < ApplicationController
 
   private
 
+  def set_document
+    unless params[:document].nil?
+      file = params[:document]
+      name = "#{@work.project_id}-#{@work.user_id}-#{file.original_filename}"
+      @work.document = name
+      File.open(Rails.root.join('public', 'documents', name), 'wb') do |f|
+        f.write(file.read)
+      end
+    end
+  end
+
   def work_params
-    params[:work].permit(:project_id, :user_id, :hours, :date_performed)
+    params[:work].permit(:project_id, :user_id, :hours, :date_performed, :document)
   end
 
   def set_work

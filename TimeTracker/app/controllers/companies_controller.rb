@@ -7,6 +7,7 @@ class CompaniesController < ApplicationController
     respond_to do |format|
       format.html # defaults to show.html.erb
       format.json { render json: @companies }
+      format.csv { send_data @companies.to_csv }
     end
   end
 

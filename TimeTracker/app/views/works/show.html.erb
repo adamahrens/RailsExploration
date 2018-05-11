@@ -11,6 +11,13 @@
 <p>
   <%= @work.inspect %>
 </p>
+
+<% if @work.document %>
+  <p>
+    Find document @ <%= link_to 'Uploaded File', "/documents/#{@work.document}", target: '_blank' %>
+  </p>
+<% end %>
+
 <!-- provide content from application.html.erb -->
 <% content_for :aside do %>
   <% render 'sidebar', work: @work  %>

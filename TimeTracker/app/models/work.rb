@@ -12,6 +12,8 @@
 #
 
 class Work < ApplicationRecord
+  extend CsvModule
+  
   belongs_to :project
   belongs_to :user
 
