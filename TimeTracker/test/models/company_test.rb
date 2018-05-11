@@ -11,7 +11,11 @@
 require 'test_helper'
 
 class CompanyTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'company must have a name to be valid' do
+    company = Company.new
+    assert_not company.valid?
+
+    company.name = 'My Company LLC'
+    assert company.valid?
+  end
 end
