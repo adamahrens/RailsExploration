@@ -15,16 +15,15 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   test 'User must belong to a Company' do
     company = Company.create(name: 'Happy LLC')
-    user = User.new(first_name: 'First', last_name: 'MyLastName')
+    user = User.new(first_name: 'First', last_name: 'MyLastName', email: 'first.last@email.com', password: 'password123', password_confirmation: 'password123')
     assert_not user.valid?
-
-    user.company_id = company.id
+    user.company = company
     assert user.valid?
   end
 
   test 'User last name has to be greater than 4 letters' do
     company = Company.create(name: 'Happy LLC')
-    user = User.new(first_name: 'First', last_name: 'aaaa', company_id: company.id)
+    user = User.new(first_name: 'First', last_name: 'aaaa', company: company, email: 'first.last@email.com', password: 'password123', password_confirmation: 'password123')
     assert_not user.valid?
 
     user.last_name = 'aaaaa'
@@ -33,7 +32,7 @@ class UserTest < ActiveSupport::TestCase
 
   test 'User must have a first and last name to be valid' do
     company = Company.create(name: 'Happy LLC')
-    user = User.new
+    user = User.new(company: company, email: 'first.last@email.com', password: 'password123', password_confirmation: 'password123')
     user.company = company
     assert_not user.valid?
 
@@ -41,13 +40,12 @@ class UserTest < ActiveSupport::TestCase
     assert_not user.valid?
 
     user.last_name = 'Last!'
-    user.save
     assert user.valid?
   end
 
   test 'User full name is combination of first and last' do
     company = Company.create(name: 'Happy LLC')
-    user = User.new(first_name: 'First', last_name: 'Last!', company_id: company.id)
+    user = User.new(first_name: 'First', last_name: 'Last!', company: company, email: 'first.last@email.com', password: 'password123', password_confirmation: 'password123')
     assert user.full_name == 'First Last!'
   end
 end
