@@ -1,5 +1,5 @@
 class PortfoliosController < ApplicationController
-  before_action :set_portfolio, only: %i[edit update]
+  before_action :set_portfolio, only: %i[edit update show]
   def index
     @portfolios = Portfolio.all
   end
@@ -21,6 +21,9 @@ class PortfoliosController < ApplicationController
         format.json { render json: @portfolio.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def show
   end
 
   def edit

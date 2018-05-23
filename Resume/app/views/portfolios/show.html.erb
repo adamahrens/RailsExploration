@@ -1,0 +1,14 @@
+<div>
+  <h1><%= @portfolio.title %></h1>
+  <h2><%= @portfolio.subtitle %></h2>
+  <p>
+    <%= @portfolio.body %>
+  </p>
+  <% unless @portfolio.image.nil? %>
+    <%= image_tag(@portfolio.image) %>
+  <% end %>
+  <div>
+    <%= link_to 'Edit', edit_portfolio_path(@portfolio) %>
+  </div>
+  <hr  />
+</div>
