@@ -13,8 +13,12 @@
 
 Rails.application.routes.draw do
   resources :portfolios
-  get 'home' => 'pages#home'
-  get 'about' => 'pages#about'
-  get 'contact' => 'pages#contact'
   resources :blogs
+
+  # controller/action mapping
+  get 'home', to: 'pages#home'
+  get 'about', to: 'pages#about'
+  get 'contact', to: 'pages#contact'
+
+  root to: 'pages#home'
 end
