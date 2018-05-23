@@ -7,7 +7,9 @@
     <p>
       <%= portfolio.body %>
     </p>
-    <%= image_tag(portfolio.thumbnail) %>
+    <% unless portfolio.thumbnail.nil? %>
+      <%= image_tag(portfolio.thumbnail) %>
+    <% end %>
     <hr  />
   </div>
 <% end %>
