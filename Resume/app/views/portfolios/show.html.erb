@@ -9,6 +9,8 @@
   <% end %>
   <div>
     <%= link_to 'Edit', edit_portfolio_path(@portfolio) %>
+    |
+    <%= link_to 'Delete', @portfolio, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
   <hr  />
 </div>
