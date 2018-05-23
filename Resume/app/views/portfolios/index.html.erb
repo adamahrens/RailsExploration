@@ -1,5 +1,7 @@
 <h1>Portfolio</h1>
 
+<%= link_to 'New Portfolio', new_portfolio_path %>
+
 <% @portfolios.each do |portfolio| %>
   <div>
     <h2><%= portfolio.title %></h2>
@@ -10,6 +12,9 @@
     <% unless portfolio.thumbnail.nil? %>
       <%= image_tag(portfolio.thumbnail) %>
     <% end %>
+    <div>
+      <%= link_to 'Edit', edit_portfolio_path(portfolio) %>
+    </div>
     <hr  />
   </div>
 <% end %>
