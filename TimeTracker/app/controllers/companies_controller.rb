@@ -1,7 +1,8 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: %i[show edit update]
   before_action :authenticate_user!, except: :index
-  
+  before_action :check_user_admin, except: %i[index show]
+
   def index
     @companies = Company.all.order(created_at: :desc)
     respond_to do |format|
@@ -45,6 +46,10 @@ class CompaniesController < ApplicationController
   end
 
   private
+
+  def check_user_admin
+    redirect_to companies_path, notice: 'Only Admins can Add/Update Compaines' unless current_user.admin
+  end
 
   def company_params
     params[:company].permit(:name)

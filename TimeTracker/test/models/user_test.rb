@@ -23,7 +23,10 @@ class UserTest < ActiveSupport::TestCase
 
   test 'User last name has to be greater than 4 letters' do
     company = Company.create(name: 'Happy LLC')
-    user = User.new(first_name: 'First', last_name: 'aaaa', company: company, email: 'first.last@email.com', password: 'password123', password_confirmation: 'password123')
+    user = User.new(first_name: 'First',
+                     last_name: 'aaaa',
+        company: company, email: 'first.last@email.com',
+       password: 'password123', password_confirmation: 'password123')
     assert_not user.valid?
 
     user.last_name = 'aaaaa'
