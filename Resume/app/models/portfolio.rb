@@ -11,6 +11,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
 class Portfolio < ApplicationRecord
+  validates :title, :subtitle, :body, presence: true
 end

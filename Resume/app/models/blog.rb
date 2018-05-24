@@ -8,7 +8,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
 class Blog < ApplicationRecord
   validates :title, :body, presence: true
 end
