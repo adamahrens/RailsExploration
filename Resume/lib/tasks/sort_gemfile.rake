@@ -7,7 +7,7 @@ namespace :sort_gemfile do
       begin
         Ordinare::Check.gemfile_sorted?
       rescue SystemExit => e
-        puts "Gemfile was sorted #{e}. Start sort of Gemfile"
+        puts "#{e}. Sorting now...."
         #sh 'ordinare'
         Ordinare::Sort.sort_gemfile
         puts 'Completed sort of Gemfile'
