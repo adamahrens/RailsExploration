@@ -7,7 +7,7 @@ if Rails.env.development?
     # You can override any of these by setting an environment variable of the
     # same name.
     Annotate.set_defaults(
-      'routes'                    => 'false',
+      'routes'                    => 'true',
       'position_in_routes'        => 'before',
       'position_in_class'         => 'before',
       'position_in_test'          => 'before',
@@ -40,7 +40,7 @@ if Rails.env.development?
       'format_bare'               => 'true',
       'format_rdoc'               => 'false',
       'format_markdown'           => 'false',
-      'sort'                      => 'false',
+      'sort'                      => 'true',
       'force'                     => 'false',
       'trace'                     => 'false',
       'wrapper_open'              => nil,
