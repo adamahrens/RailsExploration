@@ -1,10 +1,19 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: %i[show edit update destroy]
+  before_action :set_blog, only: %i[show edit update destroy publicize]
 
   # GET /blogs
   # GET /blogs.json
   def index
     @blogs = Blog.all
+  end
+
+  def publicize
+    if @blog.draft?
+      @blog.published!
+    elsif @blog.published?
+      @blog.draft!
+    end
+    redirect_to blogs_path, notice: 'Blog status was updated'
   end
 
   # GET /blogs/1
