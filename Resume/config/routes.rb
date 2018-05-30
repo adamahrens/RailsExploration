@@ -5,10 +5,10 @@
 #                POST   /portfolios(.:format)          portfolios#create
 #  new_portfolio GET    /portfolios/new(.:format)      portfolios#new
 # edit_portfolio GET    /portfolios/:id/edit(.:format) portfolios#edit
-#      portfolio GET    /portfolios/:id(.:format)      portfolios#show
-#                PATCH  /portfolios/:id(.:format)      portfolios#update
+#      portfolio PATCH  /portfolios/:id(.:format)      portfolios#update
 #                PUT    /portfolios/:id(.:format)      portfolios#update
 #                DELETE /portfolios/:id(.:format)      portfolios#destroy
+# show_portfolio GET    /portfolio/:id(.:format)       portfolios#show
 #          blogs GET    /blogs(.:format)               blogs#index
 #                POST   /blogs(.:format)               blogs#create
 #       new_blog GET    /blogs/new(.:format)           blogs#new
@@ -21,6 +21,7 @@
 #          about GET    /about(.:format)               pages#about
 #        contact GET    /contact(.:format)             pages#contact
 #           root GET    /                              pages#home
+# 
 
 Rails.application.routes.draw do
   resources :portfolios, except: [:show]
