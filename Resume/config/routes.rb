@@ -23,13 +23,15 @@
 #           root GET    /                              pages#home
 
 Rails.application.routes.draw do
-  resources :portfolios
+  resources :portfolios, except: [:show]
+  # adds show_portfolio_path
+  get 'portfolio/:id', to: 'portfolios#show', as: 'show_portfolio'
+
   resources :blogs
 
   # controller/action mapping
   get 'home', to: 'pages#home'
   get 'about', to: 'pages#about'
   get 'contact', to: 'pages#contact'
-
   root to: 'pages#home'
 end
