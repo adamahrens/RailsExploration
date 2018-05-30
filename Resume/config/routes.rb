@@ -9,6 +9,7 @@
 #                PUT    /portfolios/:id(.:format)      portfolios#update
 #                DELETE /portfolios/:id(.:format)      portfolios#destroy
 # show_portfolio GET    /portfolio/:id(.:format)       portfolios#show
+# publicize_blog POST   /blogs/:id/publicize(.:format) blogs#publicize
 #          blogs GET    /blogs(.:format)               blogs#index
 #                POST   /blogs(.:format)               blogs#create
 #       new_blog GET    /blogs/new(.:format)           blogs#new
@@ -21,8 +22,6 @@
 #          about GET    /about(.:format)               pages#about
 #        contact GET    /contact(.:format)             pages#contact
 #           root GET    /                              pages#home
-# 
-
 Rails.application.routes.draw do
   resources :portfolios, except: [:show]
   # adds show_portfolio_path

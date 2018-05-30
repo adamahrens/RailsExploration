@@ -6,7 +6,7 @@
 #  created_at :datetime         not null
 #  id         :integer          not null, primary key
 #  slug       :string
-#  status     :integer          default(0)
+#  status     :integer          default("draft")
 #  title      :string
 #  updated_at :datetime         not null
 #
@@ -14,6 +14,7 @@
 #
 #  index_blogs_on_slug  (slug) UNIQUE
 #
+
 class Blog < ApplicationRecord
   extend FriendlyId
   enum status: { draft: 0, published: 1 }
