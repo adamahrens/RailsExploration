@@ -2,6 +2,8 @@ class PortfoliosController < ApplicationController
   before_action :set_portfolio, only: %i[edit update show destroy]
   def index
     @portfolios = Portfolio.all
+    # Custom scope usage
+    # @portfolios = Portfolio.designers
   end
 
   def new
