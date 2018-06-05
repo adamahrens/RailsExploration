@@ -13,4 +13,10 @@
 #
 class Portfolio < ApplicationRecord
   validates :title, :subtitle, :body, :image, :thumbnail, presence: true
+
+  scope :designers, -> { where(title: 'designer') }
+
+  def self.designer
+    where(title: 'designer')
+  end
 end

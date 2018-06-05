@@ -1,17 +1,24 @@
 require 'faker'
 
-10.times do |number|
-  body = Faker::Lorem.paragraph(2)
-  Blog.create!(title: "Blog Post #{number + 1}", body: body)
+5.times do |topic|
+  title = Faker::Hacker.abbreviation
+  Topic.create!(title: title)
 end
 
-puts 'Blog posts created'
+puts '5 Topics created'
+
+10.times do |number|
+  body = Faker::Lorem.paragraph(2)
+  Blog.create!(title: "Blog Post #{number + 1}", body: body, topic: Topic.last)
+end
+
+puts '10 Blog posts created with Topic associations'
 
 5.times do |number|
   Skill.create(title: "Skill #{number + 1}", proficiency: 95)
 end
 
-puts 'Skills created'
+puts '5 Skills created'
 
 9.times do
   body = Faker::Lorem.paragraph(2)
@@ -26,4 +33,4 @@ puts 'Skills created'
                thumbnail: thumb)
 end
 
-puts 'Portfolio created'
+puts '9 Portfolios created'
