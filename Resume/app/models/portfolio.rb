@@ -14,6 +14,8 @@
 class Portfolio < ApplicationRecord
   include Placeholder
 
+  has_many :technologies
+
   validates :title, :subtitle, :body, :image, :thumbnail, presence: true
 
   # Run after Model.new

@@ -34,3 +34,14 @@ puts '5 Skills created'
 end
 
 puts '9 Portfolios created'
+
+4.times do
+  p1 = Portfolio.last
+  Technology.create(name: Faker::ProgrammingLanguage.name, portfolio: p1)
+
+  # another way
+  p2 = Portfolio.first
+  p2.technologies.create(name: Faker::ProgrammingLanguage.name)
+end
+
+puts '8 Technolgies created'
