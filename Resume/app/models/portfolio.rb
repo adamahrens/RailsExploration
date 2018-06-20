@@ -12,6 +12,8 @@
 #  updated_at :datetime         not null
 #
 class Portfolio < ApplicationRecord
+  include Placeholder
+
   validates :title, :subtitle, :body, :image, :thumbnail, presence: true
 
   # Run after Model.new
@@ -26,7 +28,7 @@ class Portfolio < ApplicationRecord
   def set_defaults
     # set an image if it is null
     # useful if defaults arent set via a migration
-    self.image ||= 'http://via.placeholder.com/300x300'
-    self.thumbnail ||= 'http://via.placeholder.com/140x100'
+    self.image ||= Placeholder.image_generator(height: 300, width: 300)
+    self.thumbnail ||= Placeholder.image_generator(height: 140, width: 100)
   end
 end
