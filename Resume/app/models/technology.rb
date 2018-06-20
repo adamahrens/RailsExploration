@@ -18,6 +18,6 @@
 #
 
 class Technology < ApplicationRecord
-  belongs_to :portfolio
+  belongs_to :portfolio, inverse_of: :technologies
   validates :name, presence: true
 end
