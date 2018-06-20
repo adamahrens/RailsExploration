@@ -1,6 +1,6 @@
 require 'faker'
 
-5.times do |topic|
+5.times do
   title = Faker::Hacker.abbreviation
   Topic.create!(title: title)
 end
