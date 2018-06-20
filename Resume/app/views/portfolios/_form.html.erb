@@ -19,6 +19,19 @@
     <%= form.label :thumbnail %>
     <%= form.text_field :thumbnail, id: :portfolio_thumbnail %>
   </div>
+
+  <% if portfolio.new_record? %>
+    <div class="field">
+      <h3>Technologies</h3>
+      <ul>
+        <%= form.fields_for :technologies do |technology_form| %>
+          <li>
+            Technology: <%= technology_form.text_field :name %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="actions">
     <%= form.submit submit_button %>
   </div>

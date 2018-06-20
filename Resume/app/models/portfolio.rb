@@ -14,9 +14,10 @@
 class Portfolio < ApplicationRecord
   include Placeholder
 
-  has_many :technologies, inverse_of: :portfolio
+  has_many :technologies, inverse_of: :portfolio, dependent: :destroy
   accepts_nested_attributes_for :technologies,
-                       reject_if: lambda { |attr| attr['name'].blank? }
+                       reject_if: lambda { |attr| attr['name'].blank? },
+                       allow_destroy: true
 
   validates :title, :subtitle, :body, :image, :thumbnail, presence: true
 

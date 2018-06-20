@@ -7,6 +7,18 @@
   <% unless @portfolio.image.nil? %>
     <%= image_tag(@portfolio.image) %>
   <% end %>
+
+  <% if @portfolio.technologies.count > 0 %>
+    <h3>Technologies</h3>
+    <ul>
+      <% @portfolio.technologies.each do |tech| %>
+        <li>
+          <%= tech.name %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <div>
     <%= link_to 'Edit', edit_portfolio_path(@portfolio) %>
     |
