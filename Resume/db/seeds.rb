@@ -27,10 +27,10 @@ puts '5 Skills created'
   image = 'http://via.placeholder.com/300x300'
   thumb = 'http://via.placeholder.com/140x100'
   Portfolio.create(title: title,
-                subtitle: name,
-                    body: body,
+                   subtitle: name,
+                   body: body,
                    image: image,
-               thumbnail: thumb)
+                   thumbnail: thumb)
 end
 
 puts '9 Portfolios created'
