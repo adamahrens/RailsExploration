@@ -9,11 +9,11 @@
 #  title       :string
 #  updated_at  :datetime         not null
 #
-
 class Skill < ApplicationRecord
   include Placeholder
   validates :title, :proficiency, presence: true
-  validates :proficiency, numericality: { less_than_or_equal_to: 100, greater_than: 0 }
+  validates :proficiency,
+            numericality: { less_than_or_equal_to: 100, greater_than: 0 }
 
   # Run after Skill.new
   after_initialize :set_defaults

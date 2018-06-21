@@ -16,7 +16,6 @@
 #
 #  fk_rails_...  (portfolio_id => portfolios.id)
 #
-
 class Technology < ApplicationRecord
   belongs_to :portfolio, inverse_of: :technologies
   validates :name, presence: true
