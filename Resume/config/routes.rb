@@ -23,6 +23,7 @@
 #        contact GET    /contact(.:format)             pages#contact
 #           root GET    /                              pages#home
 Rails.application.routes.draw do
+  devise_for :users
   resources :portfolios, except: [:show]
   # adds show_portfolio_path
   get 'portfolio/:id', to: 'portfolios#show', as: 'show_portfolio'
