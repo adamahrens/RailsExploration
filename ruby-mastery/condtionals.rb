@@ -29,6 +29,6 @@ puts other_number if other_number == 3
 
 day = "Saturday"
 working_overtime = false
-if day == "Saturday" || day == "Sunday" && not working_overtime
+if day == "Saturday" || day == "Sunday" && !working_overtime
   puts "Weekend Baby"
 end
