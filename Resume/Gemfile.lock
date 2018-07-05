@@ -211,6 +211,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   awesome_print
+  bcrypt
   byebug
   coffee-rails (~> 4.2)
   devise
