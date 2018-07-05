@@ -1,3 +1,4 @@
+# Concern to create placeholder string
 module Placeholder
   extend ActiveSupport::Concern
 
