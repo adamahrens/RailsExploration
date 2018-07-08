@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @page_title %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'portfolios', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render 'shared/alerts' %>
+
+    <div>
+      <div>
+        <%= link_to 'Home', home_path %>
+      </div>
+      <div>
+        <%= link_to 'About', about_path %>
+      </div>
+      <div>
+        <%= link_to 'Contact', contact_path %>
+      </div>
+      <div>
+        <%= link_to 'Blogs', blogs_path %>
+      </div>
+      <div>
+        <%= link_to 'Portfolio', portfolios_path %>
+      </div>
+      <% if current_user.is_a?(User) && user_signed_in? %>
+        <div>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+        </div>
+      <% else %>
+        <div>
+          <%= link_to 'Login', new_user_session_path %> |
+          <%= link_to 'Register', new_user_registration_path %>
+        </div>
+      <% end %>
+    </div>
+
+    <%= yield %>
+
+    <% if session[:source] %>
+      <hr />
+      <p>
+        Thanks for coming from <%= session[:source] %>
+      </p>
+    <% end %>
+  </body>
+</html>
