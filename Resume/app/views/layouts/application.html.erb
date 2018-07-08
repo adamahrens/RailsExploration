@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Resume</title>
+    <title><%= @page_title %></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,18 +11,41 @@
   <body>
     <%= render 'shared/alerts' %>
 
-    <% if current_user.is_a?(User) && user_signed_in? %>
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Login', new_user_session_path %> |
-      <%= link_to 'Register', new_user_registration_path %>
-    <% end %>
+    <div>
+      <div>
+        <%= link_to 'Home', home_path %>
+      </div>
+      <div>
+        <%= link_to 'About', about_path %>
+      </div>
+      <div>
+        <%= link_to 'Contact', contact_path %>
+      </div>
+      <div>
+        <%= link_to 'Blogs', blogs_path %>
+      </div>
+      <div>
+        <%= link_to 'Portfolio', portfolios_path %>
+      </div>
+      <% if current_user.is_a?(User) && user_signed_in? %>
+        <div>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+        </div>
+      <% else %>
+        <div>
+          <%= link_to 'Login', new_user_session_path %> |
+          <%= link_to 'Register', new_user_registration_path %>
+        </div>
+      <% end %>
+    </div>
 
     <%= yield %>
 
-    <hr />
-    <p>
-      Thanks for coming from <%= session[:source] %>
-    </p>
+    <% if session[:source] %>
+      <hr />
+      <p>
+        Thanks for coming from <%= session[:source] %>
+      </p>
+    <% end %>
   </body>
 </html>
