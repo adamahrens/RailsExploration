@@ -1,3 +1,19 @@
 <div class="container">
   <h1>Welcome to LookBook on Rails</h1>
+
+  <p>
+    Most recent Posts below
+  </p>
+  <% @recent.each do |post| %>
+    <div>
+      <h3><%= post.title %></h3>
+      <p>
+        <%= post.content %>
+      </p>
+      <span><%= post.created_at %></span>
+      <hr />
+    </div>
+  <% end %>
+
+  <%= link_to 'All Posts', posts_path %>
 </div>
