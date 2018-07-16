@@ -69,3 +69,4 @@ log
 tmp
 /Resume/config/secrets.yml
 documents
+secrets.yml
