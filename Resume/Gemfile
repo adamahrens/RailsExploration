@@ -33,6 +33,7 @@ group :development, :test do
   gem 'guard-rake'
   gem 'guard-test'
   gem 'ordinare'
+  gem 'pry-byebug'
 end
 
 group :development do
