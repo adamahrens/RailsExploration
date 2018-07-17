@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180717142448) do
+ActiveRecord::Schema.define(version: 20180717175448) do
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
@@ -37,6 +37,10 @@ ActiveRecord::Schema.define(version: 20180717142448) do
     t.string "uid"
     t.string "oauth_token"
     t.datetime "oauth_expires_at"
+    t.string "nickname"
+    t.text "description"
+    t.string "oauth_secret"
+    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

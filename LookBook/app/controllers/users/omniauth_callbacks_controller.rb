@@ -8,6 +8,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     sign_in_and_redirect @user
   end
 
+  def destroy
+    session[:user_id] = nil
+    flash[:success] = 'Signed Out'
+    redirect_to root_url
+  end
+
   def failure
     flash[:notice] = 'Failed to OAuth with Twitter'
     redirect_to root_path

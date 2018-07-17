@@ -32,6 +32,14 @@ class User < ApplicationRecord
          :omniauthable,
          omniauth_providers: %i[twitter]
 
+  validates :nickname,
+            :name,
+            :oauth_token,
+            :oauth_secret,
+            :description,
+            :image,
+            presence: true
+
   def self.find_or_create_from_auth(auth)
     find_auth(auth) || create_auth(auth)
   end
@@ -44,11 +52,11 @@ class User < ApplicationRecord
     create(provider: auth.provider,
            uid: auth.uid,
            name: auth.info.name,
-           oauth_token: auth.credentials.token)
-  end
-
-  def password_required?
-    (provider.blank? || uid.blank?) && super
+           nickname: auth.info.nickname,
+           description: auth.info.description,
+           image: auth.info.image,
+           oauth_token: auth.credentials.token,
+           oauth_secret: auth.credentials.secret)
   end
 
   def update_with_password(params, *options)
