@@ -21,7 +21,10 @@
           This is an app made with Rails
         </p>
         <% if current_user %>
-          <span>Welcome <%= current_user.email %></span>
+          <span>Welcome <%= current_user.nickname %> <%= image_tag current_user.image %></span>
+          <p>
+            <%= current_user.description %>
+          </p>
         <% end %>
       </div>
     </div>

@@ -15,6 +15,22 @@
   <div class="row main-content">
     <div class="col">
       <p>
+        My recent Tweets
+      </p>
+    </div>
+  </div>
+  <% @tweets.each do |tweet| %>
+    <div class="row">
+      <div class="col">
+        <p>
+          <%= tweet.text %>
+        </p>
+        <hr />
+      </div>
+    </div>
+  <% end %>
+    <div class="col">
+      <p>
         Most recent Posts below
       </p>
     </div>
