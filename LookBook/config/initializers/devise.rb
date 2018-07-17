@@ -258,7 +258,7 @@ Devise.setup do |config|
 
   config.omniauth :twitter,
                   Rails.application.secrets.twitter_key,
-                  Rails.application.secretes.twitter_secret,
+                  Rails.application.secrets.twitter_secret,
                   token_params: { parse: :json },
                   callback_url: "http://localhost:3000/users/auth/twitter/callback"
 

@@ -1,13 +1,11 @@
 # Handle OAuth
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def twitter
+    Rails.logger.info("**************** #{auth_hash.to_yaml} ****************")
     @user = User.find_or_create_from_auth(auth_hash)
-    if @user.persisted?
-      sign_in_and_redirect @user
-    else
-      session['devise.user_attributes'] = @user.attributes
-      redirect_to new_user_registration_path, notice: 'Something blew up'
-    end
+    session[:user_id] = @user.id
+    flash[:success] = "Welcome, #{@user.name}!"
+    sign_in_and_redirect @user
   end
 
   def failure

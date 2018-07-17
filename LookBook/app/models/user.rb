@@ -43,10 +43,8 @@ class User < ApplicationRecord
   def self.create_auth(auth)
     create(provider: auth.provider,
            uid: auth.uid,
-           email: auth.info.email,
            name: auth.info.name,
-           oauth_token: auth.credentials.token,
-           expires_at: Time.at(auth.credentials.expires_at))
+           oauth_token: auth.credentials.token)
   end
 
   def password_required?
