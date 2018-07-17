@@ -15,6 +15,11 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  name                   :string
+#  provider               :string
+#  uid                    :string
+#  oauth_token            :string
+#  oauth_expires_at       :datetime
 #
 
 require 'test_helper'
