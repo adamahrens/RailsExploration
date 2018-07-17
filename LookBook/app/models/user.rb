@@ -21,7 +21,6 @@
 #  oauth_token            :string
 #  oauth_expires_at       :datetime
 #
-
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

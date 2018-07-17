@@ -11,10 +11,10 @@
 #           DELETE /posts/:id(.:format)      posts#destroy
 #      home GET    /home(.:format)           pages#home
 #      root GET    /                         pages#home
-# 
+#
 
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { omniauth: 'users/omniauth_callback' }
   resources :posts
   get 'home', to: 'pages#home'
   root 'pages#home'
