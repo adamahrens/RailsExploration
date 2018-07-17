@@ -1,3 +1,24 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.main-content {
+  padding: 20px 0;
+
+  p {
+    font-weight: 700;
+  }
+}
+
+.links {
+  a {
+    padding-left: 10px;
+    text-align: center;
+    width: 40px;
+
+    &:hover {
+      background-color: #007bff;
+      color: white;
+    }
+  }
+}

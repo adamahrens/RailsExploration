@@ -1,19 +1,44 @@
 <div class="container">
-  <h1>Welcome to LookBook on Rails</h1>
-
-  <p>
-    Most recent Posts below
-  </p>
-  <% @recent.each do |post| %>
-    <div>
-      <h3><%= post.title %></h3>
+  <div class="card text-center">
+    <div class="card-header">
+      Featured
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Special title treatment</h5>
+      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+      <%= link_to 'Get Started', posts_path, class: 'btn btn-primary' %>
+    </div>
+    <div class="card-footer text-muted">
+      2 days ago
+    </div>
+  </div>
+  <div class="row main-content">
+    <div class="col">
       <p>
-        <%= post.content %>
+        Most recent Posts below
       </p>
-      <span><%= post.created_at %></span>
-      <hr />
+    </div>
+  </div>
+  <% @recent.each do |post| %>
+    <div class="row">
+      <div class="col">
+        <h3><%= post.title %></h3>
+        <p>
+          <%= post.content %>
+        </p>
+        <span><%= post.created_at %></span>
+        <hr />
+      </div>
     </div>
   <% end %>
 
-  <%= link_to 'All Posts', posts_path %>
+  <div class="row">
+    <div class="col">
+      <div class="links">
+        <%= link_to 'All Posts', posts_path %>
+        <%= link_to 'Home', root_path %>
+        <%= link_to 'New Post', new_post_path %>
+      </div>
+    </div>
+  </div>
 </div>
