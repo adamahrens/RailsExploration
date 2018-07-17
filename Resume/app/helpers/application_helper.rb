@@ -21,4 +21,8 @@ module ApplicationHelper
       hr + p
     end
   end
+
+  def dynamic_copyright(name, message)
+    "<div>&copy; #{Time.now.year} | <b>#{name}</b> #{message}</div>".html_safe
+  end
 end
