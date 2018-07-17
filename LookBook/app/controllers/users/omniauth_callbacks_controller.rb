@@ -1,5 +1,5 @@
 # Handle OAuth
-class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def twitter
     @user = User.find_or_create_from_auth(auth_hash)
     if @user.persisted?
