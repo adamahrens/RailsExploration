@@ -24,8 +24,13 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :trackable,
+         :omniauthable,
+         omniauth_providers: %i[twitter]
 
   def self.find_or_create_from_auth(auth)
     find_auth(auth) || create_auth(auth)
@@ -45,7 +50,7 @@ class User < ApplicationRecord
   end
 
   def password_required?
-    super && provider.blank?
+    (provider.blank? || uid.blank?) && super
   end
 
   def update_with_password(params, *options)
