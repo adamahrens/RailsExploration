@@ -1,15 +1,15 @@
 # Login logic
 module ApplicationHelper
   def login_links_helper
-    if current_user.is_a?(User) && user_signed_in?
-      logout = link_to 'Logout', destroy_user_session_path, method: :delete
-      content_tag :div, logout
-    else
+    if current_user.is_a?(GuestUser)
       login = link_to 'Login', new_user_session_path
       register = link_to 'Register', new_user_registration_path
       content_tag :div do
         [login, register].join(' | ').html_safe
       end
+    else
+      logout = link_to 'Logout', destroy_user_session_path, method: :delete
+      content_tag :div, logout
     end
   end
 

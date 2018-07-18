@@ -1,6 +1,9 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[show edit update destroy publicize]
   layout 'blog'
+  access all: %i[show index],
+         user: { except: %i[new create update edit destroy] },
+         site_admin: :all
 
   # GET /blogs
   # GET /blogs.json

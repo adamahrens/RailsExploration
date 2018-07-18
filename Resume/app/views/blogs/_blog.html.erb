@@ -4,6 +4,8 @@
   <td><%= time_ago_in_words blog.created_at %></td>
   <td><%= link_to blog.status, publicize_blog_path(blog), method: :post %></td>
   <td><%= link_to 'Show', blog %></td>
-  <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-  <td><%= link_to 'Delete', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <% if logged_in?(:site_admin) %>
+    <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
+    <td><%= link_to 'Delete', blog, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+  <% end %>
 </tr>

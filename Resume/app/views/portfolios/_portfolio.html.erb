@@ -7,10 +7,13 @@
   <% unless portfolio.thumbnail.nil? %>
     <%= image_tag(portfolio.thumbnail) %>
   <% end %>
-  <div>
-    <%= link_to 'Edit', edit_portfolio_path(portfolio) %>
-    |
-    <%= link_to 'Delete', portfolio, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </div>
+
+  <% if logged_in?(:site_admin) %>
+    <div>
+      <%= link_to 'Edit', edit_portfolio_path(portfolio)  %>
+      |
+      <%= link_to 'Delete', portfolio, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  <% end %>
   <hr  />
 </div>
