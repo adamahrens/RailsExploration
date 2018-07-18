@@ -7,9 +7,11 @@ module ActiveUser extend ActiveSupport::Concern
   private
 
   def guest
-    OpenStruct.new(name: 'Guest User',
-                   first_name: 'Guest',
-                   last_name: 'User',
-                   email: 'guest@guest.com')
+    # Need GuestUser that behaves like ActiveRecord vs OpenStruct
+    # for usage with Petergate
+    GuestUser.new(name: 'Guest User',
+                  first_name: 'Guest',
+                  last_name: 'User',
+                  email: 'guest@guest.com')
   end
 end
