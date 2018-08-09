@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><%= @page_title %></title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -8,10 +10,12 @@
   </head>
 
   <body>
-    <%= render 'shared/alerts' %>
-    <%= render 'shared/navigation_bar', location: 'top' %>
-    <%= yield %>
-    <%= dynamic_copyright('Appsbyahrens', 'All Rights Reserved') %>
-    <%= source_helper %>
+    <div class="container">
+      <%= render 'shared/alerts' %>
+      <%= render 'shared/navigation_bar', location: 'top' %>
+      <%= yield %>
+      <%= dynamic_copyright('Appsbyahrens', 'All Rights Reserved') %>
+      <%= source_helper %>
+    </div>
   </body>
 </html>
