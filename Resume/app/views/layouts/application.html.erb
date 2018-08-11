@@ -10,11 +10,11 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column text-center">
       <%= render 'shared/alerts' %>
-      <%= render 'shared/navigation_bar', location: 'top' %>
+      <%= render 'shared/application_navigation' %>
       <%= yield %>
-      <%= dynamic_copyright('Appsbyahrens', 'All Rights Reserved') %>
+      <%= render 'shared/application_footer' %>
       <%= source_helper %>
     </div>
   </body>
