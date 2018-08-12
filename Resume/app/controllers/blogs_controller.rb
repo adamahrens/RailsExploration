@@ -9,6 +9,7 @@ class BlogsController < ApplicationController
   # GET /blogs.json
   def index
     @blogs = Blog.all
+    @featured = @blogs.first
     @page_title += ' | My Blog'
   end
 

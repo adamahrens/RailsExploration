@@ -41,14 +41,16 @@ module ApplicationHelper
   end
 
   def login_helper_blogs
-    login_helper
+    if current_user.is_a?(GuestUser)
+      login = link_to 'Login', new_user_session_path, class: 'p-2 text-muted'
+      register = link_to 'Register', new_user_registration_path, class: 'p-2 text-muted'
+      [login, register].join(' ').html_safe
+    else
+      link_to 'Logout', destroy_user_session_path, method: :delete, class: 'p-2 text-muted'
+    end
   end
 
   def login_helper_portfolio
-    login_helper
-  end
-
-  def login_helper
     if current_user.is_a?(GuestUser)
       login = link_to 'Login', new_user_session_path
       register = link_to 'Register', new_user_registration_path

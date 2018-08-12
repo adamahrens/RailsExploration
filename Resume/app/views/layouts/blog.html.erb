@@ -9,9 +9,15 @@
   </head>
 
   <body>
-    <%= render 'shared/alerts' %>
-    <%= yield %>
-    <%= render 'shared/navigation_bar', location: 'bottom' %>
-    <%= source_helper %>
+    <div class="container">
+      <%= render 'shared/alerts' %>
+      <%= render 'shared/blog_navigation' %>
+      <%= yield %>
+
+      <footer class="blog-footer">
+        <p>Blog from Appsbyahrens with <a href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://twitter.com/adamahrens">@adamahrens</a>.</p>
+      </footer>
+      <%= source_helper %>
+    </div>
   </body>
 </html>

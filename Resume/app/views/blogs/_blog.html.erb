@@ -1,11 +1,21 @@
-<tr>
-  <td><%= blog.title %></td>
-  <td><%= blog.body %></td>
-  <td><%= time_ago_in_words blog.created_at %></td>
-  <td><%= link_to blog.status, publicize_blog_path(blog), method: :post %></td>
-  <td><%= link_to 'Show', blog %></td>
+<div class="blog-post">
+  <h2 class="blog-post-title"><%= blog.title %></h2>
+  <p class="blog-post-meta">
+    <%= time_ago_in_words blog.created_at %>
+  </p>
+  <p>
+    <%= link_to blog.status, publicize_blog_path(blog), method: :post, class: 'btn btn-outline-primary btn-sm' %>
+  </p>
+  <p>
+    <%= truncate(blog.body, length: 65) %>
+  </p>
+  <p>
+    <%= link_to 'Continue reading', blog %>
+  </p>
   <% if logged_in?(:site_admin) %>
-    <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-    <td><%= link_to 'Delete', blog, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+    <p>
+      <%= link_to 'Edit', edit_blog_path(blog) %> |
+      <%= link_to 'Delete', blog, method: :delete, data: { confirm: 'Are you sure?' }  %>
+    </p>
   <% end %>
-</tr>
+</div>
