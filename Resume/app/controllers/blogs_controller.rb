@@ -8,7 +8,7 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.all
+    @blogs = Blog.all.order(created_at: 'desc')
     @featured = @blogs.first
     @page_title += ' | My Blog'
   end
@@ -41,6 +41,7 @@ class BlogsController < ApplicationController
   # POST /blogs.json
   def create
     @blog = Blog.new(blog_params)
+    @blog.topic = Topic.first
 
     respond_to do |format|
       if @blog.save
@@ -87,6 +88,6 @@ class BlogsController < ApplicationController
 
   # Never trust parameters from the internet, only allow the white list through.
   def blog_params
-    params.require(:blog).permit(:title, :body)
+    params.require(:blog).permit(:title, :body, :topic_id)
   end
 end

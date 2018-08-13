@@ -1,6 +1,11 @@
-<h1>Editing Blog</h1>
-
-<%= render 'form', blog: @blog %>
-
-<%= link_to 'Show', @blog %> |
-<%= link_to 'Back', blogs_path %>
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <h3 class="pb-3 mb-4 font-italic border-bottom">Editing Blog</h3>
+      <%= render 'form', blog: @blog %>
+      <%= link_to 'Show', @blog %> |
+      <%= link_to 'Back', blogs_path %>
+    </div>
+    <%= render 'shared/blog_sidebar' %>
+  </div>
+</main>

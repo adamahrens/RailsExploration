@@ -1,6 +1,6 @@
 require 'faker'
 
-5.times do
+10.times do
   title = Faker::Hacker.abbreviation
   Topic.create!(title: title)
 end
@@ -9,7 +9,8 @@ puts '5 Topics created'
 
 10.times do |number|
   body = Faker::Lorem.paragraph(2)
-  Blog.create!(title: "Blog Post #{number + 1}", body: body, topic: Topic.last)
+  topic = Topic.order('RANDOM()').first
+  Blog.create!(title: "Blog Post #{number + 1}", body: body, topic: topic)
 end
 
 puts '10 Blog posts created with Topic associations'

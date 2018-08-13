@@ -1,15 +1,20 @@
-<p>
-  <strong>Title:</strong>
-  <%= @blog.title %>
-</p>
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <h3 class="pb-3 mb-4 font-italic border-bottom"><%= @blog.title %></h3>
+      <p>
+        Topic: <%= @blog.topic.title %>
+      </p>
+      <p>
+        <strong>Body:</strong>
+        <%= @blog.body %>
+      </p>
 
-<p>
-  <strong>Body:</strong>
-  <%= @blog.body %>
-</p>
-
-<% if logged_in?(:site_admin) %>
-  <%= link_to 'Edit', edit_blog_path(@blog) %> |
-<% end %>
-
-<%= link_to 'Back', blogs_path %>
+      <% if logged_in?(:site_admin) %>
+        <%= link_to 'Edit', edit_blog_path(@blog) %> |
+      <% end %>
+      <%= link_to 'Back', blogs_path %>
+    </div>
+    <%= render 'shared/blog_sidebar' %>
+  </div>
+</main>
