@@ -8,8 +8,8 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.all.order(created_at: 'desc')
-    @featured = @blogs.first
+    @blogs = Blog.chapter(params[:chapter]).order(created_at: 'desc')
+    @featured = Blog.last
     @page_title += ' | My Blog'
   end
 
