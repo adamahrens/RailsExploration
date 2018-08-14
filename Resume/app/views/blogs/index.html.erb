@@ -11,7 +11,7 @@
     <div class="col-md-8 blog-main">
       <h3 class="pb-3 mb-4 font-italic border-bottom">From the Firehose</h3>
       <%= link_to 'New Blog', new_blog_path, class: 'btn btn-primary' if logged_in?(:site_admin) %>
-      <%= render @blogs %>
+      <%= render partial: @blogs, spacer_template: 'blog_spacer' %>
     </div>
 
     <%= render 'shared/blog_sidebar' %>

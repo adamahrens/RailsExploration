@@ -11,6 +11,14 @@ $blog-color: #e5e5e5;
   border-bottom: 1px solid $blog-color;
 }
 
+.blog-footer {
+  text-align: center;
+  color: #999;
+  background-color: #f9f9f9;
+  height: 5.0em;
+  padding-top: 1.2em;
+}
+
 .blog-header-logo {
   font-family: "Playfair Display", Georgia, "Times New Roman", serif;
   font-size: 2.25rem;
@@ -94,9 +102,17 @@ h1, h2, h3, h4, h5, h6 {
 
 .blog-post {
   padding-top: 2%;
+}
+
+.blog-spacer {
   border-bottom: 1px solid $blog-color;
 }
 
 .active {
   border-bottom: 5px solid #6C757D;
+}
+
+.social-link {
+  font-size: 1.1em;
+  margin: 5px;
 }

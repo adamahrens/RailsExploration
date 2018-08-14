@@ -15,10 +15,26 @@
 
   <div class="p-3">
     <h4 class="font-italic">Elsewhere</h4>
-    <ol class="list-unstyled">
-      <li><%= fa_icon 'github', class: "fa-2x" %></li>
-      <li><%= fa_icon 'twitter', class: "fa-2x" %></li>
-      <li><%= fa_icon 'facebook-f', class: "fa-2x" %></li>
-    </ol>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <%= content_tag :a, href: 'https://www.github.com', class: 'social-link' do %>
+            <%= fa_icon 'github', class: "fa-2x" %>
+          <% end %>
+          <%= content_tag :a, href: 'https://www.instagram.com', class: 'social-link' do %>
+            <%= fa_icon 'instagram', class: "fa-2x" %>
+          <% end %>
+        </div>
+        <div class="col-sm-12">
+          <%= content_tag :a, href: 'https://www.twitter.com', class: 'social-link' do %>
+            <%= fa_icon 'twitter', class: "fa-2x" %>
+          <% end %>
+          <%= content_tag :a, href: 'https://www.facebook.com', class: 'social-link' do %>
+            <%= fa_icon 'facebook-f', class: "fa-2x" %>
+          <% end %>
+
+        </div>
+      </div>
+    </div>
   </div>
 </aside>
