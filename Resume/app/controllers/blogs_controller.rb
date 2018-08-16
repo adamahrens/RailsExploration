@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[show edit update destroy publicize]
+  before_action :set_topics, only: %i[new edit]
   layout 'blog'
   access all: %i[show index],
          user: { except: %i[new create update edit destroy] },
@@ -84,6 +85,10 @@ class BlogsController < ApplicationController
   def set_blog
     # @blog = Blog.find(params[:id])
     @blog = Blog.friendly.find(params[:id])
+  end
+
+  def set_topics
+    @topics = Topic.all
   end
 
   # Never trust parameters from the internet, only allow the white list through.
