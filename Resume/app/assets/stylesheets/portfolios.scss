@@ -3,6 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "bootstrap";
 
+.list-unstyled {
+  a {
+    color: white;
+  }
+}
+
 :root {
   --jumbotron-padding-y: 3rem;
 }
