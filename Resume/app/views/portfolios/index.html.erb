@@ -1,5 +1,20 @@
-<h1>Portfolio</h1>
+<main role="main">
 
-<%= link_to 'New Portfolio', new_portfolio_path if logged_in?(:site_admin) %>
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Appsbyahrens Portfolio</h1>
+      <p class="lead text-muted">A showcase for all projects that Appsbyahrens has been apart of and successfully launched.</p>
+      <p>
+        <%= link_to 'New Portfolio', new_portfolio_path, class: 'btn btn-primary my-2' if logged_in?(:site_admin) %>
+      </p>
+    </div>
+  </section>
 
-<%= render @portfolios %>
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <%= render @portfolios %>
+      </div>
+    </div>
+  </div>
+</main>

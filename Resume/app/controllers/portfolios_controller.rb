@@ -6,7 +6,7 @@ class PortfoliosController < ApplicationController
          site_admin: :all
 
   def index
-    @portfolios = Portfolio.all
+    @portfolios = Portfolio.all.order(created_at: 'desc')
     @page_title += ' | My Portfolio'
     # Custom scope usage
     # @portfolios = Portfolio.designers
