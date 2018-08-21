@@ -1,0 +1,21 @@
+<div class="callout">
+  <h1>
+    Cards Against Humanity Tester
+  </h1>
+  <p>
+    Try entering a Black Card Idea to test out how it flows
+  </p>
+</div>
+
+<h5>Whites</h5>
+<div class="row">
+  <% @whites.each do |white| %>
+  <div class="col-md-3 card-container">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= white.title %></h5>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
