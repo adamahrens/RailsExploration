@@ -5,15 +5,50 @@
   <p>
     Try entering a Black Card Idea to test out how it flows
   </p>
+  <p>
+    Use a * to indicate where your blank is. "Where in the world is * ?", "Last time I ended up in Mexico I wound up buying a *"
+  </p>
+  <p>
+    Add a white card text to try against all blacks
+  </p>
+
+  <div class="search">
+    <h5>Try making a White card to test against all Blacks</h5>
+    <%= form_with url: home_index_path, local: true, method: :get, class: 'form-inline' do |form| %>
+      <%= form.text_field :white, class: 'form-control mr-sm-2', placeholder: params[:white] %>
+      <%= form.submit 'Search', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+  <div class="search">
+    <h5>Try making a Black card to test against all Whites</h5>
+    <%= form_with url: home_index_path, local: true, method: :get, class: 'form-inline' do |form| %>
+      <%= form.text_field :black, class: 'form-control mr-sm-2', placeholder: params[:black] %>
+      <%= form.submit 'Search', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+  <%= link_to 'Clear', root_path %>
 </div>
 
-<h5>Whites</h5>
+<h5 id="whites-section">Whites (<%= @whites.count %>) <a href="#blacks-section">Go To Blacks</a></h5>
 <div class="row">
   <% @whites.each do |white| %>
   <div class="col-md-3 card-container">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title"><%= white.title %></h5>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<h5 id="blacks-section">Blacks (<%= @blacks.count %>) <a href="#whites-section">Go To Whites</a></h5>
+<div class="row">
+  <% @blacks.each do |black| %>
+  <div class="col-md-3 card-container">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= black.title %></h5>
       </div>
     </div>
   </div>

@@ -25,8 +25,8 @@ links.each { |href|
   end
 }
 
-puts "************ Whites ************"
-@whites.each { |white| pp "WhiteCard.create(title: '#{white}')" }
+#puts "************ Whites ************"
+#@whites.each { |white| pp "WhiteCard.create(title: '#{white}')" }
 
 puts "************ Blacks ************"
-@blacks.each { |black| pp black }
+@blacks.each { |black| pp "BlackCard.create(title: '#{black}')" }
