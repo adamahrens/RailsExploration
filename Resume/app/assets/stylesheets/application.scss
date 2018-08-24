@@ -1,5 +1,4 @@
 @import "bootstrap";
-
 /*
  * Globals
  */
@@ -41,8 +40,9 @@ body {
 }
 
 .cover-container {
-  max-width: 64em;
+  max-width: 42em;
 }
+
 
 /*
  * Header
@@ -98,13 +98,13 @@ body {
   font-weight: 700;
 }
 
+
 /*
  * Footer
  */
 .mastfoot {
   color: rgba(255, 255, 255, .5);
 }
-
 
 /*
  * Custom Styles
