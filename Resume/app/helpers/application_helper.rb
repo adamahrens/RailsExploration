@@ -3,7 +3,7 @@ module ApplicationHelper
   def navigation_helper(style, tag)
     navigation_links.map { |name, path|
       content_tag tag do
-        content_tag :a, href: path, class: "#{style} #{ active_class?(path) }" do
+        content_tag :a, href: path, class: "#{style} #{active_class?(path)}" do
           name.to_s.capitalize
         end
       end
