@@ -50,11 +50,16 @@ module ApplicationHelper
 
   def login_helper_application
     if current_user.is_a?(GuestUser)
-      login = link_to 'Login', new_user_session_path, class: "nav-link"
-      register = link_to 'Register', new_user_registration_path, class: "nav-link"
+      login = link_to 'Login', new_user_session_path, class: 'nav-link'
+      register = link_to 'Register',
+                         new_user_registration_path,
+                         class: 'nav-link'
       [content_tag(:span, login), content_tag(:span, register)].join(' ').html_safe
     else
-      logout = link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link"
+      logout = link_to 'Logout',
+                       destroy_user_session_path,
+                       method: :delete,
+                       class: 'nav-link'
       content_tag(:span, logout)
     end
   end
@@ -62,10 +67,15 @@ module ApplicationHelper
   def login_helper_blogs
     if current_user.is_a?(GuestUser)
       login = link_to 'Login', new_user_session_path, class: 'p-2 text-muted'
-      register = link_to 'Register', new_user_registration_path, class: 'p-2 text-muted'
+      register = link_to 'Register',
+                         new_user_registration_path,
+                         class: 'p-2 text-muted'
       [content_tag(:span, login), content_tag(:span, register)].join(' ').html_safe
     else
-      logout = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'p-2 text-muted'
+      logout = link_to 'Logout',
+                       destroy_user_session_path,
+                       method: :delete,
+                       class: 'p-2 text-muted'
       content_tag(:span, logout)
     end
   end
