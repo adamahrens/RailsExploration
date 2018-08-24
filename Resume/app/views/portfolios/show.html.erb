@@ -1,62 +1,35 @@
 <div class="album py-5 bg-light">
   <div class="container">
     <div class="row">
-      <% unless @portfolio.image.nil? %>
-        <div class="col-md-4" %>
-          <%= image_tag(@portfolio.image) %>
-        </div>
-        <div class="col-md-4" %>
-          <h1><span class="icon"><%= fa_icon 'wrench' %></span><%= @portfolio.title %></h1>
-          <h2><span class="icon"><%= fa_icon 'building' %></span> <%= @portfolio.subtitle %></h2>
-          <p>
-            <%= @portfolio.body %>
-          </p>
-          <% if logged_in?(:site_admin) %>
-            <div>
-              <%= link_to 'Edit', edit_portfolio_path(@portfolio) %>
-              |
-              <%= link_to 'Delete', @portfolio, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </div>
-          <% end %>
-        </div>
-        <div class="col-md-4" %>
-          <% if @portfolio.technologies.count > 0 %>
-            <h3>Technologies</h3>
-            <ul>
-              <% @portfolio.technologies.each do |tech| %>
-                <li>
-                  <%= tech.name %>
-                </li>
-              <% end %>
-            </ul>
-          <% end %>
-        </div>
-      <% else %>
-        <div class="col-md-12" %>
-          <h1><%= @portfolio.title %></h1>
-          <h2><%= @portfolio.subtitle %></h2>
-          <p>
-            <%= @portfolio.body %>
-          </p>
-          <% if @portfolio.technologies.count > 0 %>
-            <h3>Technologies</h3>
-            <ul>
-              <% @portfolio.technologies.each do |tech| %>
-                <li>
-                  <%= tech.name %>
-                </li>
-              <% end %>
-            </ul>
-          <% end %>
-          <% if logged_in?(:site_admin) %>
-            <div>
-              <%= link_to 'Edit', edit_portfolio_path(@portfolio) %>
-              |
-              <%= link_to 'Delete', @portfolio, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
+      <div class="col-md-4" %>
+        <%= image_tag(@portfolio.image) %>
+      </div>
+      <div class="col-md-4" %>
+        <h1><span class="icon"><%= fa_icon 'wrench' %></span><%= @portfolio.title %></h1>
+        <h2><span class="icon"><%= fa_icon 'building' %></span> <%= @portfolio.subtitle %></h2>
+        <p>
+          <%= @portfolio.body %>
+        </p>
+        <% if logged_in?(:site_admin) %>
+          <div>
+            <%= link_to 'Edit', edit_portfolio_path(@portfolio) %>
+            |
+            <%= link_to 'Delete', @portfolio, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-4" %>
+        <% if @portfolio.technologies.count > 0 %>
+          <h3>Technologies</h3>
+          <ul>
+            <% @portfolio.technologies.each do |tech| %>
+              <li>
+                <%= tech.name %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
       <hr  />
     </div>
   </div>

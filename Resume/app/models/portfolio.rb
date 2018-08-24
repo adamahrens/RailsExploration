@@ -34,6 +34,6 @@ class Portfolio < ApplicationRecord
     # set an image if it is null
     # useful if defaults arent set via a migration
     self.image ||= Placeholder.image_generator(height: 300, width: 300)
-    self.thumbnail ||= Placeholder.image_generator(height: 140, width: 100)
+    self.thumbnail ||= Placeholder.image_generator(height: 150, width: 150)
   end
 end
