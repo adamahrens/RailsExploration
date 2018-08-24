@@ -6,8 +6,8 @@
           <%= image_tag(@portfolio.image) %>
         </div>
         <div class="col-md-4" %>
-          <h1><%= @portfolio.title %></h1>
-          <h2><%= @portfolio.subtitle %></h2>
+          <h1><span class="icon"><%= fa_icon 'wrench' %></span><%= @portfolio.title %></h1>
+          <h2><span class="icon"><%= fa_icon 'building' %></span> <%= @portfolio.subtitle %></h2>
           <p>
             <%= @portfolio.body %>
           </p>
