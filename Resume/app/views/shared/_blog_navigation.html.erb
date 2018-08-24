@@ -17,11 +17,7 @@
 
 <div class="nav-scroller py-1 mb-2">
   <nav class="nav d-flex justify-content-between">
-    <%= link_to 'Home', home_path, class: "p-2 text-muted #{ active_class?(home_path) }" %>
-    <%= link_to 'About', about_path, class: "p-2 text-muted #{ active_class?(about_path) }" %>
-    <%= link_to 'Contact', contact_path, class: "p-2 text-muted #{ active_class?(contact_path) }" %>
-    <%= link_to 'Blogs', blogs_path, class: "p-2 text-muted #{ active_class?(blogs_path) }" %>
-    <%= link_to 'Portfolio', portfolios_path, class: "p-2 text-muted #{ active_class?(portfolios_path) }" %>
+    <%= navigation_helper('p-2 text-muted', :span) %>
     <%= login_links_helper('blogs') %>
   </nav>
 </div>

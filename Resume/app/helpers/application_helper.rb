@@ -1,5 +1,23 @@
 # Login logic
 module ApplicationHelper
+  def navigation_helper(style, tag)
+    navigation_links.map { |name, path|
+      content_tag tag do
+        content_tag :a, href: path, class: "#{style} active" do
+          name.to_s.capitalize
+        end
+      end
+    }.join("\n").html_safe
+  end
+
+  def navigation_links
+    { home: home_path,
+      about: about_path,
+      contact: contact_path,
+      blogs: blogs_path,
+      portfolios: portfolios_path }
+  end
+
   def login_links_helper(style)
     if style == 'application'
       login_helper_application
@@ -32,11 +50,12 @@ module ApplicationHelper
 
   def login_helper_application
     if current_user.is_a?(GuestUser)
-      login = link_to 'Login', new_user_session_path, class: "nav-link #{ active_class?(new_user_session_path) }"
-      register = link_to 'Register', new_user_registration_path, class: "nav-link #{ active_class?(new_user_registration_path) }"
-      [login, register].join(' ').html_safe
+      login = link_to 'Login', new_user_session_path, class: "nav-link"
+      register = link_to 'Register', new_user_registration_path, class: "nav-link"
+      [content_tag(:span, login), content_tag(:span, register)].join(' ').html_safe
     else
-      link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link #{ active_class?(destroy_user_session_path) }"
+      logout = link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link"
+      content_tag(:span, logout)
     end
   end
 
@@ -44,9 +63,10 @@ module ApplicationHelper
     if current_user.is_a?(GuestUser)
       login = link_to 'Login', new_user_session_path, class: 'p-2 text-muted'
       register = link_to 'Register', new_user_registration_path, class: 'p-2 text-muted'
-      [login, register].join(' ').html_safe
+      [content_tag(:span, login), content_tag(:span, register)].join(' ').html_safe
     else
-      link_to 'Logout', destroy_user_session_path, method: :delete, class: 'p-2 text-muted'
+      logout = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'p-2 text-muted'
+      content_tag(:span, logout)
     end
   end
 

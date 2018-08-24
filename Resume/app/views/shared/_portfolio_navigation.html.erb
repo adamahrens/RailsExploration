@@ -6,23 +6,13 @@
           <h4 class="text-white"><%= link_to 'About', about_path, class: 'text-white' %></h4>
           <p class="text-muted">
             Appsbyahrens has some interesting facts. We work on all types of project from mobile to web. Check them out.
+            Also not opposed to playing some Fortnite. We won't play with any bush wookies.
           </p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
           <h4 class="text-white">Explore</h4>
           <ul class="list-unstyled">
-            <li>
-              <%= link_to 'Home', home_path, class: 'text-white' %>
-            </li>
-            <li>
-              <%= link_to 'Contact', contact_path, class: 'text-white' %>
-            </li>
-            <li>
-              <%= link_to 'Blogs', blogs_path, class: 'text-white' %>
-            </li>
-            <li>
-              <%= link_to 'Portfolios', portfolios_path, class: 'text-white' %>
-            </li>
+            <%= navigation_helper('text-white', :li) %>
             <%= login_links_helper('portfolio') %>
           </ul>
         </div>
