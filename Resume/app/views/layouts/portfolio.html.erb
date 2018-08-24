@@ -12,7 +12,20 @@
 
   <body>
     <%= render 'shared/portfolio_navigation' %>
-    <%= yield %>
+    <main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Appsbyahrens Portfolio</h1>
+          <p class="lead text-muted">A showcase for all projects that Appsbyahrens has been apart of and successfully launched.</p>
+          <p>
+            <%= link_to 'New Portfolio', new_portfolio_path, class: 'btn btn-primary my-2' if logged_in?(:site_admin) %>
+          </p>
+        </div>
+      </section>
+
+      <%= yield %>
+    </main>
     <%= render 'shared/portfolio_footer' %>
     <%= source_helper %>
   </body>
