@@ -4,7 +4,7 @@
       <%= image_tag portfolio.thumbnail, class: 'card-img-top', alt: 'Card Image' %>
     <% end %>
     <div class="card-body">
-      <p class="card-text"><%= portfolio.title %></p>
+      <p class="card-text"><%= portfolio.title %>(<%= portfolio.position %>)</p>
       <p class="card-text"><%= portfolio.subtitle %></p>
       <div class="d-flex justify-content-between align-items-center">
         <div class="btn-group">

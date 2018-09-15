@@ -2,15 +2,17 @@
 #
 # Table name: portfolios
 #
-#  id         :integer          not null, primary key
-#  title      :string
-#  subtitle   :string
 #  body       :text
-#  image      :text
-#  thumbnail  :text
 #  created_at :datetime         not null
+#  id         :integer          not null, primary key
+#  image      :text
+#  position   :integer
+#  subtitle   :string
+#  thumbnail  :text
+#  title      :string
 #  updated_at :datetime         not null
 #
+
 class Portfolio < ApplicationRecord
   include Placeholder
 
@@ -25,6 +27,7 @@ class Portfolio < ApplicationRecord
   after_initialize :set_defaults
 
   scope :designers, -> { where(title: 'designer') }
+  scope :by_position, -> { all.order(position: 'ASC') }
 
   def self.designer
     where(title: 'designer')
