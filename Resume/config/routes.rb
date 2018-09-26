@@ -46,6 +46,7 @@ Rails.application.routes.draw do
 
   # adds show_portfolio_path
   get 'portfolio/:id', to: 'portfolios#show', as: 'show_portfolio'
+  put 'portfolio/sort', to: 'portfolios#sort'
 
   resources :blogs do
     member do
