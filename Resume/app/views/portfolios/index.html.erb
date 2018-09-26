@@ -1,6 +1,10 @@
 <div class="album py-5 bg-light">
   <div class="container">
-    <div class="row sortable">
+    <% if logged_in?(:site_admin) %>
+      <div class="row sortable">
+    <% else %>
+      <div class="row">
+    <% end %>
       <%= render @portfolios %>
     </div>
   </div>
