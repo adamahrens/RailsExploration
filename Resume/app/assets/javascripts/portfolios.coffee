@@ -11,6 +11,15 @@ set_positions = ->
   return
 
 ready = ->
+  console.log('Ajax setup')
+
+  token = $('meta[name="csrf-token"]').attr('content')
+  $.ajaxSetup beforeSend: (xhr) ->
+    xhr.setRequestHeader 'X-CSRF-Token', token
+    return
+
+  console.log('Ajax setup complete')
+  
   set_positions()
   console.log('Setting data-pos')
 
