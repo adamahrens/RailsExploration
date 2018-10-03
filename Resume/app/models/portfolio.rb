@@ -29,6 +29,9 @@ class Portfolio < ApplicationRecord
   scope :designers, -> { where(title: 'designer') }
   scope :by_position, -> { all.order(position: 'ASC') }
 
+  mount_uploader :thumbnail, PortfolioUploader
+  mount_uploader :image, PortfolioUploader
+
   def self.designer
     where(title: 'designer')
   end
