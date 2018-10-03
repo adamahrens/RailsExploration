@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4" %>
-        <%= image_tag @portfolio.image, class: 'portfolio-image' %>
+        <%= image_tag portfolio_image(@portfolio.image, 'main'), class: 'portfolio-image' %>
       </div>
       <div class="col-md-4" %>
         <h1><span class="icon"><%= fa_icon 'wrench' %></span><%= @portfolio.title %></h1>

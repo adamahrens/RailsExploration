@@ -12,16 +12,13 @@
 #  title      :string
 #  updated_at :datetime         not null
 #
-
 class Portfolio < ApplicationRecord
-  include Placeholder
-
   has_many :technologies, inverse_of: :portfolio, dependent: :destroy
   accepts_nested_attributes_for :technologies,
                                 reject_if: ->(attr) { attr['name'].blank? },
                                 allow_destroy: true
 
-  validates :title, :subtitle, :body, :image, :thumbnail, presence: true
+  validates :title, :subtitle, :body, presence: true
 
   # Run after Model.new
   after_initialize :set_defaults
@@ -39,7 +36,7 @@ class Portfolio < ApplicationRecord
   def set_defaults
     # set an image if it is null
     # useful if defaults arent set via a migration
-    self.image ||= Placeholder.image_generator(height: 300, width: 300)
-    self.thumbnail ||= Placeholder.image_generator(height: 150, width: 150)
+    # self.image ||= Placeholder.image_generator(height: 300, width: 300)
+    # self.thumbnail ||= Placeholder.image_generator(height: 150, width: 150)
   end
 end

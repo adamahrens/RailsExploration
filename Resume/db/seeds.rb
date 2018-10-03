@@ -25,13 +25,9 @@ puts '5 Skills created'
   body = Faker::Lorem.paragraph(10)
   title = Faker::Company.profession
   name = Faker::Company.name
-  image = 'http://via.placeholder.com/300x300'
-  thumb = 'http://via.placeholder.com/150x150'
   Portfolio.create(title: title,
                    subtitle: name,
-                   body: body,
-                   image: image,
-                   thumbnail: thumb)
+                   body: body)
 end
 
 puts '20 Portfolios created'

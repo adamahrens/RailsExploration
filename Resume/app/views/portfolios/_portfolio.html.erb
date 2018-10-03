@@ -1,7 +1,7 @@
 <div class="col-md-4" >
   <div class="card mb-4 box-shadow" data-id="<%= portfolio.id %>">
     <% unless portfolio.thumbnail.nil? %>
-      <%= image_tag portfolio.thumbnail, class: 'card-img-top', alt: 'Card Image' %>
+      <%= image_tag portfolio_image(portfolio.thumbnail, 'thumbnail'), class: 'card-img-top', alt: 'Card Image' %>
     <% end %>
     <div class="card-body">
       <p class="card-text"><%= portfolio.title %></p>

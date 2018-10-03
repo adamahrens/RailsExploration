@@ -10,12 +10,16 @@
       <%= form.text_field :subtitle, id: :portfolio_subtitle, class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= form.label :image %>
-      <%= form.file_field :image, id: :portfolio_image, class: 'form-control' %>
+      <div class="custom-file">
+        <%= form.label :image, class: 'custom-file-label' %>
+        <%= form.file_field :image, id: :portfolio_image, class: 'custom-file-input', type: 'file' %>
+      </div>
     </div>
     <div class="form-group">
-      <%= form.label :thumbnail %>
-      <%= form.file_field :thumbnail, id: :portfolio_thumbnail, class: 'form-control' %>
+      <div class="custom-file">
+        <%= form.label :thumbnail, class: 'custom-file-label' %>
+        <%= form.file_field :thumbnail, id: :portfolio_thumbnail, class: 'custom-file-input', type: 'file' %>
+      </div>
     </div>
   </div>
   <div class="col-md-8">
