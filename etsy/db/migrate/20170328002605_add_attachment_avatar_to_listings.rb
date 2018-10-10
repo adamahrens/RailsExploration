@@ -1,4 +1,4 @@
-class AddAttachmentAvatarToListings < ActiveRecord::Migration
+class AddAttachmentAvatarToListings < ActiveRecord::Migration[5.0]
   def self.up
     change_table :listings do |t|
       t.attachment :avatar
