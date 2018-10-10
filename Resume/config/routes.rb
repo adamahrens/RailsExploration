@@ -24,6 +24,7 @@
 #                          PUT    /portfolios/:id(.:format)      portfolios#update
 #                          DELETE /portfolios/:id(.:format)      portfolios#destroy
 #           show_portfolio GET    /portfolio/:id(.:format)       portfolios#show
+#           portfolio_sort PUT    /portfolio/sort(.:format)      portfolios#sort
 #           publicize_blog POST   /blogs/:id/publicize(.:format) blogs#publicize
 #                    blogs GET    /blogs(.:format)               blogs#index
 #                          POST   /blogs(.:format)               blogs#create
