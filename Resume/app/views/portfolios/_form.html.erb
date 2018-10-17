@@ -2,7 +2,7 @@
 
 <% if portfolio.errors.any? %>
   <% portfolio.errors.full_messages.each do |message| %>
-    <%= js add_gritter(message, title: 'Error!', image: :error) %>
+    <%= alert_generator message, 'Error', :error %>
   <% end %>
 <% end %>
 

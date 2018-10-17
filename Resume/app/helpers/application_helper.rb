@@ -89,4 +89,17 @@ module ApplicationHelper
       link_to 'Logout', destroy_user_session_path, method: :delete
     end
   end
+
+  def alerts
+    alert = flash[:alert] || flash[:error] || flash[:notice]
+    return unless alert
+
+    return alert_generator(alert, 'Error', :error) if flash[:error]
+    return alert_generator(alert, 'Notice', :notice) if flash[:notice]
+    return alert_generator(alert, 'Alert', :warning) if flash[:alert]
+  end
+
+  def alert_generator(message, title, image)
+    js add_gritter(message, title: title, image: image)
+  end
 end
