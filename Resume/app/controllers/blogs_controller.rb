@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[show edit update destroy publicize]
-  before_action :set_topics, only: %i[new edit]
+  before_action :set_topics, only: %i[new edit create]
   layout 'blog'
   access all: %i[show index],
          user: { except: %i[new create update edit destroy] },
@@ -42,7 +42,7 @@ class BlogsController < ApplicationController
   # POST /blogs.json
   def create
     @blog = Blog.new(blog_params)
-    @blog.topic = Topic.first
+    @blog.topic = Topic.find(blog_params[:topic_id])
 
     respond_to do |format|
       if @blog.save

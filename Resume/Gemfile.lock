@@ -108,6 +108,7 @@ GEM
       activerecord (>= 4.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    gritter (1.2.0)
     guard (2.14.2)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -289,6 +290,7 @@ DEPENDENCIES
   faker
   font-awesome-rails (~> 4.7, >= 4.7.0.4)
   friendly_id
+  gritter (~> 1.2)
   guard
   guard-rake
   guard-test
