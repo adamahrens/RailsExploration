@@ -14,6 +14,7 @@ module ApplicationHelper
     { home: home_path,
       about: about_path,
       contact: contact_path,
+      tech: tech_news_path,
       blogs: blogs_path,
       portfolios: portfolios_path }
   end
