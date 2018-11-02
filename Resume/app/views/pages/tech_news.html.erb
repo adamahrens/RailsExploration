@@ -5,7 +5,19 @@
       <div class="col-md-6">
         <div class="tech-news">
           <div class="card">
-            <%= tweet %>
+            <%= tweet_display(tweet) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <% @swifty_tweets.each do |tweet| %>
+      <div class="col-md-6">
+        <div class="tech-news">
+          <div class="card">
+            <%= tweet_display(tweet) %>
           </div>
         </div>
       </div>
