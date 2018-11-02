@@ -1,0 +1,14 @@
+<div class="tweet">
+  <div class="tweet-heading">
+    <h3 class="tweet-screen-name"><%= tweet.user.screen_name %></h3>
+  </div>
+  <div class="tweet-text">
+    <%= tweet_display("#{tweet.text}") %>
+  </div>
+  <% if tweet.favorite_count > 0 %>
+    <div class="tweet-favorite">
+      <%= fa_icon 'star' %>
+      <span><%= tweet.favorite_count %></span>
+    </div>
+  <% end %>
+</div>

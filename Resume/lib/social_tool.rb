@@ -7,8 +7,6 @@ module SocialTool
       config.access_token_secret = ENV['TWITTER_ACCESS_SECRET']
     end
 
-    client.search("#{hash_tag} -rt", lang: 'en', result_type: 'recent').take(12).collect do |tweet|
-      "#{tweet.user.screen_name}: #{tweet.text}. Fav #{tweet.favorite_count}"
-    end
+    client.search("#{hash_tag} -rt", lang: 'en', result_type: 'recent').take(25)
   end
 end

@@ -1,5 +1,6 @@
 @import "bootstrap";
 @import "gritter";
+@import "font-awesome";
 
 /*
  * Globals
@@ -156,4 +157,39 @@ body {
 
  .app-footer {
    color: white;
+ }
+
+ /* Tweets */
+ .icon {
+   padding-right: 0.5em;
+   width: 50px;
+   height: 50px;
+ }
+
+ .tweet {
+   padding: 1.0em;
+   color: #F1F1F1;
+   border-radius: 1px;
+   border-bottom: 1px solid #F1F1F1;
+
+   a {
+     color: blue;
+   }
+ }
+
+ .tweet-heading {
+   color: white;
+ }
+
+ .tweet-screen-name {
+   font-size: 17px;
+ }
+
+ .tweet-text {
+   font-size: 21px;
+ }
+
+ .tweet-favorite {
+   margin-top: 30px;
+   height: 40px;
  }
