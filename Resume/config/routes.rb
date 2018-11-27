@@ -37,13 +37,16 @@
 #                     home GET    /home(.:format)                pages#home
 #                    about GET    /about(.:format)               pages#about
 #                  contact GET    /contact(.:format)             pages#contact
+#                tech_news GET    /tech-news(.:format)           pages#tech_news
 #                     root GET    /                              pages#home
 #
+
 Rails.application.routes.draw do
   devise_for :users, path: '', path_names: { sign_in: 'login',
                                              sign_out: 'logout',
                                              sign_up: 'register' }
   resources :portfolios, except: [:show]
+  resources :comments
 
   # adds show_portfolio_path
   get 'portfolio/:id', to: 'portfolios#show', as: 'show_portfolio'

@@ -20,11 +20,11 @@
 #
 #  fk_rails_...  (topic_id => topics.id)
 #
-
 class Blog < ApplicationRecord
   extend FriendlyId
   enum status: { draft: 0, published: 1 }
   belongs_to :topic
   friendly_id :title, use: :slugged
   validates :title, :body, presence: true
+  has_many :comments, dependent: :destroy
 end
