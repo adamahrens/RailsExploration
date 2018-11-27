@@ -10,10 +10,19 @@
         <%= @blog.body %>
       </p>
 
-      <% if logged_in?(:site_admin) %>
-        <%= link_to 'Edit', edit_blog_path(@blog) %> |
-      <% end %>
-      <%= link_to 'Back', blogs_path %>
+      <!-- Start of Comment Form -->
+      <%= render 'comments/form', comment: @comment %>
+
+      <!-- Start of All comments -->
+      <%= render @blog.comments %>
+
+      <div class="show-navigation-links">
+        <% if logged_in?(:site_admin) %>
+          <%= link_to 'Edit', edit_blog_path(@blog) %> |
+        <% end %>
+        <%= link_to 'Back', blogs_path %>
+      </div>
+
     </div>
     <%= render 'shared/blog_sidebar' %>
   </div>

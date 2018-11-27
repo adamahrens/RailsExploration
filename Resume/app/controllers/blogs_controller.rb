@@ -1,5 +1,5 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: %i[show edit update destroy publicize]
+  before_action :set_blog,   only: %i[edit update destroy publicize]
   before_action :set_topics, only: %i[new edit create]
   layout 'blog'
   access all: %i[show index],
@@ -26,6 +26,8 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    @blog = Blog.includes(:comments).friendly.find(params[:id])
+    @comment = Comment.new
     @page_title = @blog.title
   end
 
