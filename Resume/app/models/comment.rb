@@ -27,4 +27,6 @@ class Comment < ApplicationRecord
   validates :content, length: { in: 6..1000 }
 
   after_create_commit { CommentBroadcastJob.perform_later(self) }
+
+  default_scope { order(created_at: :desc) }
 end

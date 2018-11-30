@@ -1,7 +1,7 @@
 jQuery(document).on 'turbolinks:load', ->
   comments = $('#comments')
   console.log('Comments count = ' + comments.length)
-  
+
   $('#new_comment').submit (event) ->
     console.log('Submit pressed')
     $this = $(this)
@@ -25,7 +25,7 @@ jQuery(document).on 'turbolinks:load', ->
       console.log('Were disconnected')
     received: (data) ->
       console.log('Received some data')
-      comments.append data['comment']
+      comments.prepend data['comment']
     send_comment: (comment, blog_id) ->
       console.log('sending comment')
       @perform 'send_comment', comment: comment, blog_id: blog_id
