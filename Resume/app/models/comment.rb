@@ -25,4 +25,6 @@ class Comment < ApplicationRecord
 
   validates :content, presence: true
   validates :content, length: { in: 6..1000 }
+
+  after_create_commit { CommentBroadcastJob.perform_later(self) }
 end

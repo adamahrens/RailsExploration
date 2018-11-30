@@ -14,7 +14,9 @@
       <%= render 'comments/form', comment: @comment %>
 
       <!-- Start of All comments -->
-      <%= render @blog.comments %>
+      <div id="comments" data-blog-id="<%= @blog.id %>">
+        <%= render @blog.comments %>
+      </div>
 
       <div class="show-navigation-links">
         <% if logged_in?(:site_admin) %>

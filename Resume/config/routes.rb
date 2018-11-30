@@ -46,7 +46,9 @@ Rails.application.routes.draw do
                                              sign_out: 'logout',
                                              sign_up: 'register' }
   resources :portfolios, except: [:show]
-  resources :comments
+
+  # Not needed since using websockets
+  # resources :comments
 
   # adds show_portfolio_path
   get 'portfolio/:id', to: 'portfolios#show', as: 'show_portfolio'
@@ -57,6 +59,8 @@ Rails.application.routes.draw do
       post :publicize
     end
   end
+
+  mount ActionCable.server => '/cable'
 
   # controller/action mapping
   get 'home', to: 'pages#home'
