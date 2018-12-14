@@ -30,13 +30,13 @@ phoneNumber: '9119114444', ssn: 5556, company: 'ABC Company')
 5.times do |index|
   now = Date.today
   time_ago = now - index
-  TimeOff.create(date: time_ago, rationale: "#{index} Going on vacation", overtime_request: 0.5, user_id: adam.id)
+  TimeOff.create(date: time_ago, rationale: "#{index} Going on vacation", daily_hours: 0.5, user_id: adam.id)
 end
 
 5.times do |index|
   now = Date.today
   time_ago = now - index
-  TimeOff.create(date: time_ago, rationale: "#{index} Going on vacation", overtime_request: 0.5, user_id: claudia.id)
+  TimeOff.create(date: time_ago, rationale: "#{index} Going on vacation", daily_hours: 0.5, user_id: claudia.id)
 end
 
 3.times do |index|

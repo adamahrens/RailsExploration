@@ -5,7 +5,7 @@ describe 'approving on homepage' do
     @admin = FactoryGirl.create(:admin_user)
     login_as(@admin, scope: :user)
     @user = FactoryGirl.create(:user)
-    @post = TimeOff.create(date: Date.today, rationale: 'Vacation', overtime_request: 0.35, user_id: @user.id)
+    @post = TimeOff.create(date: Date.today, rationale: 'Vacation', daily_hours: 0.35, user_id: @user.id)
     @audit = AuditLog.create(user_id: @user.id)
   end
   it 'is allowed for the admin to approve' do

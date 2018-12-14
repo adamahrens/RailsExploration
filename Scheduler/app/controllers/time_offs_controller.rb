@@ -62,6 +62,6 @@ class TimeOffsController < ApplicationController
   end
 
   def time_off_params
-    params.require(:time_off).permit(:rationale, :date, :status, :overtime_request)
+    params.require(:time_off).permit(:rationale, :date, :status, :daily_hours)
   end
 end

@@ -16,7 +16,7 @@
     <%= link_to time_off.rationale, time_off_path(time_off) %>
   </td>
   <td>
-    <%= time_off.overtime_request %>
+    <%= time_off.daily_hours %>
   </td>
   <td>
     <% if policy(time_off).update? %>

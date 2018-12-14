@@ -2,9 +2,9 @@
 #
 # Table name: audit_logs
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  status     :integer          default(0)
+#  id         :bigint(8)        not null, primary key
+#  user_id    :bigint(8)
+#  status     :integer          default("pending")
 #  start_date :date
 #  end_date   :date
 #  created_at :datetime         not null
@@ -21,6 +21,7 @@ class AuditLog < ApplicationRecord
   scope :by_start_date, -> { order(start_date: :desc) }
 
   private
+
   def set_defaults
     # If start date passed in use it, otherwise use default
     self.start_date ||= Date.today - 6.days

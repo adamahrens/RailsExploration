@@ -15,7 +15,7 @@
     </li>
   <% end %>
   <li class="<%= navigation_active?(new_time_off_path) %>">
-    <%= link_to 'Request Overtime', new_time_off_path %>
+    <%= link_to 'Submit Hours', new_time_off_path %>
   </li>
   <% if user_signed_in? && admin?(current_user) %>
     <li class="<%= navigation_active?(user_index_path) %>">
