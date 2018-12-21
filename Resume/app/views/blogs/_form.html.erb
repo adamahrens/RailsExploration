@@ -20,6 +20,16 @@
     <%= form.collection_select(:topic_id, @topics, :id, :title, {}, { class: 'custom-select'}) %>
   </div>
 
+  <div class="form-check">
+    <%= form.radio_button :status, 'draft' %>
+    <%= form.label :status, 'Draft' %>
+  </div>
+
+  <div class="form-check">
+    <%= form.radio_button :status, 'published' %>
+    <%= form.label :status, 'Publish' %>
+  </div>
+
   <div class="form-group">
     <%= form.submit 'Save', class: 'btn btn-primary' %>
   </div>

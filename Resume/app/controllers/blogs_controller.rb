@@ -99,12 +99,12 @@ class BlogsController < ApplicationController
   end
 
   def set_topics
-    # Sorts but the count of topics used on blogs
-    @topics = Topic.left_joins(:blogs).where.not(blogs: { id: nil} ).group(:id).order('COUNT(blogs.id) DESC')
+    # Sorts but the count of topics used on blogs that have a count > 0
+    @topics = Topic.left_joins(:blogs).where.not(blogs: { id: nil } ).group(:id).order('COUNT(blogs.id) DESC')
   end
 
   # Never trust parameters from the internet, only allow the white list through.
   def blog_params
-    params.require(:blog).permit(:title, :body, :topic_id)
+    params.require(:blog).permit(:title, :body, :status, :topic_id)
   end
 end
