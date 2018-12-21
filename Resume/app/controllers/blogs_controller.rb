@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog,   only: %i[edit update destroy publicize]
-  before_action :set_topics, only: %i[new edit create]
+  before_action :set_topics, only: %i[index new edit show create]
   layout 'blog'
   access all: %i[show index],
          user: { except: %i[new create update edit destroy] },
@@ -9,7 +9,12 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.chapter(params[:chapter]).order(created_at: 'desc')
+    if logged_in?(:site_admin)
+      @blogs = Blog.chapter(params[:chapter]).recent
+    else
+      @blogs = Blog.published.chapter(params[:chapter]).recent
+    end
+
     @featured = Blog.last
     @page_title += ' | My Blog'
   end
@@ -27,8 +32,12 @@ class BlogsController < ApplicationController
   # GET /blogs/1.json
   def show
     @blog = Blog.includes(:comments).friendly.find(params[:id])
-    @comment = Comment.new
-    @page_title = @blog.title
+    if logged_in?(:site_admin) || @blog.published?
+      @comment = Comment.new
+      @page_title = @blog.title
+    else
+      redirect_to blogs_path, notice: 'Not authorized to view'
+    end
   end
 
   # GET /blogs/new
@@ -90,7 +99,8 @@ class BlogsController < ApplicationController
   end
 
   def set_topics
-    @topics = Topic.all
+    # Sorts but the count of topics used on blogs
+    @topics = Topic.left_joins(:blogs).where.not(blogs: { id: nil} ).group(:id).order('COUNT(blogs.id) DESC')
   end
 
   # Never trust parameters from the internet, only allow the white list through.

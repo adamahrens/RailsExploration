@@ -14,6 +14,17 @@
   </div>
 
   <div class="p-3">
+    <h4 class="font-italic">Topics</h4>
+    <ol class="list-unstyled mb-0">
+      <% topics.each do |topic| %>
+        <li>
+          <h5><%= link_to topic.title, topic_path(topic) %> | <span class="badge badge-secondary"><%= topic.blogs.count %></span></h5>
+        </li>
+      <% end %>
+    </ol>
+  </div>
+
+  <div class="p-3">
     <h4 class="font-italic">Elsewhere</h4>
     <div class="container">
       <div class="row">

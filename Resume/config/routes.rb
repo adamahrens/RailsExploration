@@ -54,6 +54,10 @@ Rails.application.routes.draw do
   get 'portfolio/:id', to: 'portfolios#show', as: 'show_portfolio'
   put 'portfolio/sort', to: 'portfolios#sort'
 
+  # get 'topics', to: 'topics#index'
+  # get 'topics/:id', to: 'topics#show'
+  resources :topics, only: [:index, :show]
+
   resources :blogs do
     member do
       post :publicize

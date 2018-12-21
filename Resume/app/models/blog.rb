@@ -25,6 +25,8 @@ class Blog < ApplicationRecord
   enum status: { draft: 0, published: 1 }
   belongs_to :topic
   friendly_id :title, use: :slugged
-  validates :title, :body, presence: true
+  validates :title, :body, :topic, presence: true
   has_many :comments, dependent: :destroy
+
+  scope :recent, -> { order(created_at: :desc) }
 end

@@ -6,6 +6,6 @@
       <%= link_to 'Show', @blog %> |
       <%= link_to 'Back', blogs_path %>
     </div>
-    <%= render 'shared/blog_sidebar' %>
+    <%= render 'shared/blog_sidebar', topics: @topics %>
   </div>
 </main>

@@ -4,8 +4,9 @@
     <%= time_ago_in_words blog.created_at %>
   </p>
   <p>
-    <%= link_to blog.status, publicize_blog_path(blog), method: :post, class: 'btn btn-outline-primary btn-sm' %>
+
     <% if logged_in?(:site_admin) %>
+      <%= link_to blog.status, publicize_blog_path(blog), method: :post, class: 'btn btn-outline-primary btn-sm' %>
       /
       <%= link_to 'Edit', edit_blog_path(blog), class: 'btn btn-outline-primary btn-sm' %> /
       <%= link_to 'Delete', blog, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-outline-primary btn-sm'  %>
