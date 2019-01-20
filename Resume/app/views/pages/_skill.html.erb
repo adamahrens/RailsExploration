@@ -1,7 +1,7 @@
 <div class="skill mr-2 ml-2">
-  <%= skill.title %>
+  <h4><%= skill.title %></h4>
   <div class="progress">
-    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="<%= skill.proficiency%>" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: <%=skill.proficiency %>%" aria-valuenow="<%= skill.proficiency %>" aria-valuemin="0" aria-valuemax="100">
       <%= skill.proficiency %>%
     </div>
   </div>

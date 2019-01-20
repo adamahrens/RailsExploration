@@ -31,6 +31,7 @@ a:hover {
 html,
 body {
   height: 100%;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -197,6 +198,7 @@ body {
  .skill {
    margin-bottom: 20px;
    padding-bottom: 20px;
+   width: 98%;
 
    .progress {
      height: 20px;
