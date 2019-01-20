@@ -1,26 +1,18 @@
-<h1>About Me</h1>
-
-<div class="row">
-  <div class="col-md-4">
-    <%= image_tag 'profile-image-display.png', width: 150, height: 150, alt: 'Profile Image' %>
+<div class="about mt-2">
+  <div class="row">
+    <div class="col-md-4">
+      <%= image_tag 'profile-image-display.png', width: 200, height: 200, alt: 'Profile Image', class: 'border rounded' %>
+    </div>
+    <div class="col-md-8 text-center">
+      <h1>About Me</h1>
+      <p>iOS Developer for 7 years who's work on my iOS projects. Passionate developer who enjoys working with Rails, Swift, MongoDB, CouchDB. Also an organizer for SwiftMN</p>
+    </div>
   </div>
-  <div class="col-md-8">
-    <p class="text-left">iOS Developer for 7 years</p>
-    <p class="text-left">
-      Enjoy working in Swift
-    </p>
-    <p class="text-left">
-      Organizer of SwiftMN
-    </p>
-    <p class="text-left">
-      Time to get weird
-    </p>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <% @skills.each do |skill| %>
-      <%= render 'skill', skill: skill %>
-    <% end %>
+  <div class="row">
+    <div class="col-md-12">
+      <% @skills.each do |skill| %>
+        <%= render 'skill', skill: skill %>
+      <% end %>
+    </div>
   </div>
 </div>
