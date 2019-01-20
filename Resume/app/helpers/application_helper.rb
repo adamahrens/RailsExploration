@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 # Login logic
 module ApplicationHelper
   def navigation_helper(style, tag)
-    navigation_links.map { |name, path|
+    navigation_links.map do |name, path|
       content_tag tag do
         content_tag :a, href: path, class: "#{style} #{active_class?(path)}" do
           name.to_s.capitalize
         end
       end
-    }.join("\n").html_safe
+    end.join("\n").html_safe
   end
 
   def navigation_links
@@ -31,15 +33,15 @@ module ApplicationHelper
 
   def source_helper
     return unless session[:source]
-    content_tag :div do
-      hr = content_tag(:hr)
-      p = content_tag(:p, "Thanks for coming from #{session[:source]}")
-      hr + p
+
+    content_tag :div, class: 'bg-info text-center session-source' do
+      content_tag(:p, "Thanks for coming from #{session[:source]}. Want to work together?", class: 'bg-info text-white')
     end
   end
 
   def active_class?(path)
     return 'active' if request.path == path
+
     ''
   end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Sets the query param into Session
 module SetSource
   extend ActiveSupport::Concern
