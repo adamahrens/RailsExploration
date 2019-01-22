@@ -20,4 +20,5 @@
 //= require turbolinks
 //= require cocoon
 //= require gritter
+//= require typed-implementation
 //= require_tree .
